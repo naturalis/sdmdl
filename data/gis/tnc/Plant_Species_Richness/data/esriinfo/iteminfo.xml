@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>43478f840ac84173979b22631c2ed672</name>
+<guid>340D5424-4365-4441-8D6F-5B18965DE154</guid>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Number of terrestrial plant species, by terrestrial ecoregion. 
+
+
+
+
+
+
+
+Kier et al. (2005) estimated the number of plant species in each terrestrial ecoregion.
+
+
+
+
+
+
+
+These data were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010).  More information at http://nature.org/atlas.
+
+This dataset was uploaded to Data Basin and is available with additional information at: http://app.databasin.org/app/pages/datasetPage.jsp?id=43478f840ac84173979b22631c2ed672</description>
+<summary></summary>
+<title>Number of Plant Species by Terrestrial Ecoregion</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcMap</typekeyword>
+<typekeyword>.lpk</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>-179.999988600612</xmin>
+<ymin>-89.8919732774029</ymin>
+<xmax>179.999988600612</xmax>
+<ymax>83.6231251716938</ymax>
+</extent>
+<spatialreference>GCS_WGS_1984</spatialreference>
+<accessinformation></accessinformation>
+</ESRI_ItemInformation>

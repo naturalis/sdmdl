@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20111109</CreaDate>
+    <CreaTime>07511500</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20100312</SyncDate>
+    <SyncTime>10405400</SyncTime>
+    <ModDate>20100312</ModDate>
+    <ModTime>10405400</ModTime>
+    <DataProperties>
+      <lineage>
+        <Process ToolSource="C:\Program Files\ArcGIS\Desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CalculateField" Date="20111013" Time="110915">CalculateField "Number of Plant Species" plnt_rich -9999 VB #</Process>
+        <Process ToolSource="C:\Program Files\ArcGIS\Desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CalculateField" Date="20111013" Time="111507">CalculateField "Number of Plant Species" plant_spcs [plnt_rich] VB #</Process>
+        <Process ToolSource="C:\Program Files\ArcGIS\Desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CalculateField" Date="20111013" Time="111530">CalculateField "Number of Plant Species" plantspcsm [plnt_r_map] VB #</Process>
+        <Process ToolSource="C:\Program Files (x86)\ArcGIS\Server10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\AddSpatialIndex" Date="20111115" Time="020421">AddSpatialIndex D:\arcgisserver\services\im\43478f840ac84173979b22631c2ed672\commondata\data0\wwf_ecos_plant_spcs.shp 0 0 0</Process>
+      </lineage>
+      <itemProps>
+        <itemLocation>
+          <linkage Sync="TRUE">file://\\AA100-LKNDVD1\D$\atlas_online\terr\Number of Plant Species 2011\commondata\data0\wwf_ecos_plant_spcs</linkage>
+          <protocol Sync="TRUE">Local Area Network</protocol>
+        </itemLocation>
+      </itemProps>
+      <copyHistory>
+        <copy source="D:\atlas_online\terr\wwf_ecos_plant_spcs" dest="\\AA100-LKNDVD1\D$\atlas_online\terr\Number of Plant Species 2011\commondata\data0\wwf_ecos_plant_spcs" date="20111109" time="07511500" />
+      </copyHistory>
+    </DataProperties>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <ArcGISstyle>ISO 19139 Metadata Implementation Specification</ArcGISstyle>
+  </Esri>
+  <idinfo>
+    <native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3500</native>
+    <descript>
+      <langdata Sync="TRUE">en</langdata>
+      <abstract>Number of terrestrial plant species, by terrestrial ecoregion. 
+
+Kier et al. (2005) estimated the number of plant species in each terrestrial ecoregion.
+
+These data were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010).  More information at http://nature.org/atlas.</abstract>
+      <purpose>biogeography, biodiversity conservation and priority setting.</purpose>
+      <supplinf />
+    </descript>
+    <citation>
+      <citeinfo>
+        <origin>WWF</origin>
+        <title>Plant Species Richness by ecoregion</title>
+        <ftname Sync="TRUE">wwf_ecos_plant_spcs</ftname>
+        <geoform Sync="TRUE">vector digital data</geoform>
+        <edition>Version 2.0</edition>
+        <serinfo />
+        <othercit>Plant Species Richness by ecoregion: Kier, G., J. Mutke, E. Dinerstein, T. H. Ricketts, W. Ku, H. Kreft, and W. Barthlott. 2005. Global patterns of plant diversity and floristic knowledge. Journal of Biogeography 32: 1107-1116.</othercit>
+        <onlink Sync="TRUE">\\AA100-LKNDVD1\D$\atlas_online\terr\wwf_ecos_plant_spcs.shp</onlink>
+        <pubdate />
+        <pubinfo>
+          <publish />
+          <pubplace />
+        </pubinfo>
+      </citeinfo>
+      <citeinfo />
+    </citation>
+    <timeperd>
+      <current>publication date</current>
+      <timeinfo>
+        <sngdate>
+          <caldate>Ecoregions based on historical distribution data</caldate>
+        </sngdate>
+        <current />
+      </timeinfo>
+      <timeinfo />
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>As needed</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc Sync="TRUE">-179.999989</westbc>
+        <eastbc Sync="TRUE">179.999989</eastbc>
+        <northbc Sync="TRUE">83.623125</northbc>
+        <southbc Sync="TRUE">-89.891973</southbc>
+      </bounding>
+      <lboundng>
+        <leftbc Sync="TRUE">-179.999989</leftbc>
+        <rightbc Sync="TRUE">179.999989</rightbc>
+        <bottombc Sync="TRUE">-89.891973</bottombc>
+        <topbc Sync="TRUE">83.623125</topbc>
+      </lboundng>
+      <bounding />
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>ecoregions</themekt>
+        <themekey>ecoregions</themekey>
+        <themekey>The Nature Conservancy</themekey>
+        <themekey>Biodiversity</themekey>
+        <themekey>plants</themekey>
+        <themekey>species</themekey>
+        <themekey>world wildlife fund</themekey>
+      </theme>
+      <theme>
+        <themekt>WWF</themekt>
+        <themekey />
+      </theme>
+      <theme>
+        <themekt>World Wildlife Fund</themekt>
+        <themekey />
+      </theme>
+      <place>
+        <placekey>world</placekey>
+      </place>
+    </keywords>
+    <accconst>This data is available for use for valid scientific, conservation, and educational purposes.</accconst>
+    <useconst>Any modification of the original map by users to ecoregion boundaries, units, names, or realm and biome classes must be noted.</useconst>
+    <natvform Sync="TRUE">Shapefile</natvform>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Conservation Science Program - World Wildlife Fund</cntorg>
+          <cntper>Wesley Wettengel</cntper>
+        </cntorgp>
+        <cntemail />
+      </cntinfo>
+      <cntinfo />
+    </ptcontac>
+    <datacred>Plant Species Richness by ecoregion: Kier, G., J. Mutke, E. Dinerstein, T. H. Ricketts, W. Ku, H. Kreft, and W. Barthlott. 2005. Global patterns of plant diversity and floristic knowledge. Journal of Biogeography 32: 1107-1116.
+
+Olson, D.M., E. Dinerstein, E.D. Wikramanayake, N.D. Burgess, G.V.N. Powell, E.C. Underwood, J.A. D’Amico, H.E. Strand, J.C. Morrison, C.J. Loucks, T.F. Allnutt, J.F. Lamoreux, T.H. Ricketts, I. Itoua, W.W. Wettengel, Y. Kura, P. Hedao, and K. Kassem. 2001. Terrestrial ecoregions of the world: A new map of life on Earth. BioScience 51(11):933-938.</datacred>
+  </idinfo>
+  <dataIdInfo>
+    <envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3500</envirDesc>
+    <dataLang>
+      <languageCode Sync="TRUE" value="en" />
+    </dataLang>
+    <idCitation>
+      <resTitle Sync="TRUE">wwf_ecos_plant_spcs</resTitle>
+      <presForm>
+        <PresFormCd Sync="TRUE" value="005" />
+      </presForm>
+    </idCitation>
+    <spatRpType>
+      <SpatRepTypCd Sync="TRUE" value="001" />
+    </spatRpType>
+    <dataExt>
+      <geoEle>
+        <GeoBndBox esriExtentType="native">
+          <westBL Sync="TRUE">-179.999989</westBL>
+          <eastBL Sync="TRUE">179.999989</eastBL>
+          <northBL Sync="TRUE">83.623125</northBL>
+          <southBL Sync="TRUE">-89.891973</southBL>
+          <exTypeCode Sync="TRUE">1</exTypeCode>
+        </GeoBndBox>
+      </geoEle>
+    </dataExt>
+    <geoBox esriExtentType="decdegrees">
+      <westBL Sync="TRUE">-179.999989</westBL>
+      <eastBL Sync="TRUE">179.999989</eastBL>
+      <northBL Sync="TRUE">83.623125</northBL>
+      <southBL Sync="TRUE">-89.891973</southBL>
+      <exTypeCode Sync="TRUE">1</exTypeCode>
+    </geoBox>
+  </dataIdInfo>
+  <metainfo>
+    <langmeta Sync="TRUE">en</langmeta>
+    <metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+    <metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+    <mettc Sync="TRUE">local time</mettc>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntper>REQUIRED: The person responsible for the metadata information.</cntper>
+          <cntorg>REQUIRED: The organization responsible for the metadata information.</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>REQUIRED: The mailing and/or physical address for the organization or individual.</addrtype>
+          <city>REQUIRED: The city of the address.</city>
+          <state>REQUIRED: The state or province of the address.</state>
+          <postal>REQUIRED: The ZIP or other postal code of the address.</postal>
+        </cntaddr>
+        <cntvoice>REQUIRED: The telephone number by which individuals can speak to the organization or individual.</cntvoice>
+      </cntinfo>
+    </metc>
+    <metd Sync="TRUE">20100312</metd>
+    <metextns>
+      <onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof Sync="TRUE">ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <mdLang>
+    <languageCode Sync="TRUE" value="en" />
+  </mdLang>
+  <mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName>
+  <mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer>
+  <mdChar>
+    <CharSetCd Sync="TRUE" value="004" />
+  </mdChar>
+  <mdHrLv>
+    <ScopeCd Sync="TRUE" value="005" />
+  </mdHrLv>
+  <mdHrLvName Sync="TRUE">dataset</mdHrLvName>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Data Basin</cntorg>
+          <cntper>Data Basin Administrator</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>136 SW Washington Ave, Suite 202</address>
+          <city>Corvallis</city>
+          <state>OR</state>
+          <postal>97333</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>541-757-0687</cntvoice>
+        <cntemail>databasin_admin@consbio.org</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <distliab>No warranty is made by Data Basin for use of this dataset.  No warranty is made by Data Basin regarding the accuracy, reliability, or completeness of this dataset. In no event shall Data Basin have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of the use or reliance on the geographic or attribute data contained within this dataset or arising out of the delivery, installation, operation, or support by Data Basin.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname />
+          <formvern>ArcGIS  10</formvern>
+          <formspec />
+          <filedec>No compression applied</filedec>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr />
+              </networka>
+            </computer>
+            <accinstr>Download from http://databasin.org</accinstr>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+      <ordering>Download from http://databasin.org</ordering>
+    </stdorder>
+    <techpreq>ESRI ArcGIS Desktop and supporting operating systems.</techpreq>
+  </distinfo>
+  <distInfo>
+    <distributor>
+      <distorTran>
+        <onLineSrc>
+          <orDesc Sync="TRUE">002</orDesc>
+          <linkage Sync="TRUE">file://\\AA100-LKNDVD1\D$\atlas_online\terr\wwf_ecos_plant_spcs.shp</linkage>
+          <protocol Sync="TRUE">Local Area Network</protocol>
+        </onLineSrc>
+        <transSize Sync="TRUE">62.253</transSize>
+      </distorTran>
+      <distorFormat>
+        <formatName Sync="TRUE">Shapefile</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+  <spdoinfo>
+    <direct Sync="TRUE">Vector</direct>
+    <ptvctinf>
+      <esriterm Name="wwf_ecos_plant_spcs">
+        <efeatyp Sync="TRUE">Simple</efeatyp>
+        <efeageom Sync="TRUE">Polygon</efeageom>
+        <esritopo Sync="TRUE">FALSE</esritopo>
+        <efeacnt Sync="TRUE">14458</efeacnt>
+        <spindex Sync="TRUE">FALSE</spindex>
+        <linrefer Sync="TRUE">FALSE</linrefer>
+      </esriterm>
+      <sdtsterm Name="wwf_ecos_plant_spcs">
+        <sdtstype Sync="TRUE">G-polygon</sdtstype>
+        <ptvctcnt Sync="TRUE">14458</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <cordsysn>
+        <geogcsn Sync="TRUE">GCS_WGS_1984</geogcsn>
+      </cordsysn>
+      <geograph>
+        <geogunit Sync="TRUE">Decimal degrees</geogunit>
+        <latres Sync="TRUE">0.000000</latres>
+        <longres Sync="TRUE">0.000000</longres>
+      </geograph>
+      <geodetic>
+        <horizdn Sync="TRUE">D_WGS_1984</horizdn>
+        <ellips Sync="TRUE">WGS_1984</ellips>
+        <semiaxis Sync="TRUE">6378137.000000</semiaxis>
+        <denflat Sync="TRUE">298.257224</denflat>
+      </geodetic>
+    </horizsys>
+    <vertdef>
+      <altsys>
+        <altenc Sync="TRUE">Explicit elevation coordinate included with horizontal coordinates</altenc>
+        <altres Sync="TRUE">0.000010</altres>
+      </altsys>
+    </vertdef>
+  </spref>
+  <refSysInfo>
+    <RefSystem>
+      <refSysID>
+        <identCode Sync="TRUE">GCS_WGS_1984</identCode>
+      </refSysID>
+    </RefSystem>
+  </refSysInfo>
+  <spatRepInfo>
+    <VectSpatRep>
+      <topLvl>
+        <TopoLevCd Sync="TRUE" value="001" />
+      </topLvl>
+      <geometObjs Name="wwf_ecos_plant_spcs">
+        <geoObjTyp>
+          <GeoObjTypCd Sync="TRUE" value="001" />
+        </geoObjTyp>
+        <geoObjCnt Sync="TRUE">14458</geoObjCnt>
+      </geometObjs>
+    </VectSpatRep>
+  </spatRepInfo>
+  <eainfo>
+    <detailed Name="wwf_ecos_plant_spcs">
+      <enttyp>
+        <enttypl Sync="TRUE">wwf_ecos_plant_spcs</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">14458</enttypc>
+        <enttypd>Number of terrestrial plant species, by terrestrial ecoregion.</enttypd>
+      </enttyp>
+      <attr>
+        <attrlabl Sync="TRUE">FID</attrlabl>
+        <attalias Sync="TRUE">FID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">OBJECTID</attrlabl>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">9</attwidth>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape</attrlabl>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Feature geometry.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">AREA</attrlabl>
+        <attalias Sync="TRUE">AREA</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <attrdef>Area of each individual polygon in square kilometers.  The attribute area_km2 is a sum of this field for each ecoregion as a whole.</attrdef>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">PERIMETER</attrlabl>
+        <attalias Sync="TRUE">PERIMETER</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdef />
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">ECO_NAME</attrlabl>
+        <attalias Sync="TRUE">ECO_NAME</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">99</attwidth>
+        <attrdef>Ecoregion Name</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">REALM</attrlabl>
+        <attalias Sync="TRUE">REALM</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <attrdef>Biogeographical Realm</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>AA</edomv>
+            <edomvd>Australasia</edomvd>
+          </edom>
+          <edom>
+            <edomv>AN</edomv>
+            <edomvd>Antarctic</edomvd>
+          </edom>
+          <edom>
+            <edomv>AT</edomv>
+            <edomvd>Afrotropics</edomvd>
+          </edom>
+          <edom>
+            <edomv>IM</edomv>
+            <edomvd>IndoMalay</edomvd>
+          </edom>
+          <edom>
+            <edomv>NA</edomv>
+            <edomvd>Nearctic</edomvd>
+          </edom>
+          <edom>
+            <edomv>NT</edomv>
+            <edomvd>Neotropics</edomvd>
+          </edom>
+          <edom>
+            <edomv>OC</edomv>
+            <edomvd>Oceania</edomvd>
+          </edom>
+          <edom>
+            <edomv>PA</edomv>
+            <edomvd>Palearctic</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BIOME</attrlabl>
+        <attalias Sync="TRUE">BIOME</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Tropical &amp; Subtropical Moist Broadleaf Forests</edomvd>
+          </edom>
+          <edom>
+            <edomv>2</edomv>
+            <edomvd>Tropical &amp; Subtropical Dry Broadleaf Forests</edomvd>
+          </edom>
+          <edom>
+            <edomv>3</edomv>
+            <edomvd>Tropical &amp; Subtropical Coniferous Forests</edomvd>
+          </edom>
+          <edom>
+            <edomv>4</edomv>
+            <edomvd>Temperate Broadleaf &amp; Mixed Forests</edomvd>
+          </edom>
+          <edom>
+            <edomv>5</edomv>
+            <edomvd>Temperate Conifer Forests</edomvd>
+          </edom>
+          <edom>
+            <edomv>6</edomv>
+            <edomvd>Boreal Forests/Taiga</edomvd>
+          </edom>
+          <edom>
+            <edomv>7</edomv>
+            <edomvd>Tropical &amp; Subtropical Grasslands, Savannas &amp; Shrublands</edomvd>
+          </edom>
+          <edom>
+            <edomv>8</edomv>
+            <edomvd>Temperate Grasslands, Savannas &amp; Shrublands</edomvd>
+          </edom>
+          <edom>
+            <edomv>9</edomv>
+            <edomvd>Flooded Grasslands &amp; Savannas</edomvd>
+          </edom>
+          <edom>
+            <edomv>10</edomv>
+            <edomvd>Montane Grasslands &amp; Shrublands</edomvd>
+          </edom>
+          <edom>
+            <edomv>11</edomv>
+            <edomvd>Tundra</edomvd>
+          </edom>
+          <edom>
+            <edomv>12</edomv>
+            <edomvd>Mediterranean Forests, Woodlands &amp; Scrub</edomvd>
+          </edom>
+          <edom>
+            <edomv>13</edomv>
+            <edomvd>Deserts &amp; Xeric Shrublands</edomvd>
+          </edom>
+          <edom>
+            <edomv>14</edomv>
+            <edomvd>Mangroves</edomvd>
+          </edom>
+        </attrdomv>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdef />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">ECO_NUM</attrlabl>
+        <attalias Sync="TRUE">ECO_NUM</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <attrdef>A unique number for each ecoregion within each biome nested within each realm.</attrdef>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">ECO_ID</attrlabl>
+        <attalias Sync="TRUE">ECO_ID</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <attrdef>This number is created by combining REALM, BIOME, and ECO_NUM, thus creating a unique numeric ID for each ecoregion.</attrdef>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">ECO_SYM</attrlabl>
+        <attalias Sync="TRUE">ECO_SYM</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">19</attwidth>
+        <attrdef>Ecoregion Symbol - Used to display the map in ArcInfo</attrdef>
+        <atnumdec Sync="TRUE">11</atnumdec>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">eco_code</attrlabl>
+        <attalias Sync="TRUE">ECO_CODE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">50</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>unique code that uses realm text, biome number and ecoregion number.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">plnt_rich</attrlabl>
+        <attalias Sync="TRUE">plnt_rich</attalias>
+        <attrtype Sync="TRUE">Number</attrtype>
+        <attwidth Sync="TRUE">9</attwidth>
+        <attrdef>Number of terrestrial plant species, by terrestrial ecoregion.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">plnt_r_map</attrlabl>
+        <attalias Sync="TRUE">plnt_r_map</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <attrdef>Number of terrestrial plant species, by terrestrial ecoregion. binned for mapping purposes</attrdef>
+        <attrdomv />
+      </attr>
+    </detailed>
+  </eainfo>
+  <mdDateSt Sync="TRUE">20100312</mdDateSt>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc Sync="TRUE">Dataset copied.</procdesc>
+        <srcused Sync="TRUE">\\SASQUATCH\DATA\ecoregions\version_2\WWF_terr_eco.mdb</srcused>
+        <date Sync="TRUE">20040204</date>
+        <time Sync="TRUE">17263800</time>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Dataset copied.</procdesc>
+        <srcused Sync="TRUE" />
+        <date Sync="TRUE">20080506</date>
+        <time Sync="TRUE">10112400</time>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Dataset copied.</procdesc>
+        <srcused Sync="TRUE" />
+        <procdate Sync="TRUE">20100226</procdate>
+        <proctime Sync="TRUE">11422800</proctime>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">D:\atlas_online\terr_metadata.xml</srcused>
+        <procdate Sync="TRUE">20100312</procdate>
+        <proctime Sync="TRUE">10182700</proctime>
+      </procstep>
+    </lineage>
+    <attracc>
+      <attraccr />
+    </attracc>
+    <complete />
+  </dataqual>
+</metadata>
+

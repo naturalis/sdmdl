@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>425383de7e7845e09946c17cab45f2ea</name>
+<guid>20B4747A-9193-4A1D-863F-B3E0B2F91E68</guid>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Accessibility of natural habitats to humans, by terrestrial ecoregion. 
+
+
+
+
+
+
+
+The human accessibility map provides an index of the level of effort it would take for a human on foot to access any given square kilometer of nonconverted land from existing infrastructure. We calculated human accessibility from a one-square-kilometer spatial grid of the terrestrial world consisting of a cost surface where the value of each cell was derived from topographic slope, vegetation type, and vegetation density. We developed a second matching spatial grid of infrastructure, depicting roads, railroads, navigable rivers, cities, and towns. Then we calculated a least cost path from each noninfrastructure grid cell to infrastructure grid cells. Agricultural areas were given a cost value of zero. Accessibility scores for ecoregions were taken as the mean human access value per ecoregion.
+
+
+
+
+
+
+
+The amount of the terrestrial world falling within ten kilometers of a road was calculated from a base map of roads from the Digital Chart of the World (Defense Mapping Agency 1992) that had been variously updated with more recent road maps. Roads were buffered by ten kilometers, and the total buffered area was divided by the total terrestrial area. The 61 percent figure is likely conservative.
+
+
+
+
+
+
+
+These data were derived by The Nature Conservancy, and were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010).  More information at http://nature.org/atlas.
+
+
+
+
+
+
+
+Data and resources used in development of this data set include the following:
+
+
+
+CIESIN (Center for International Earth Science Information Network), IFPRI (International Food Policy Research Institute), the World Bank; and CIAT (Centro Internacional de Agricultura Tropical). 2004. Global Rural-Urban Mapping Project (GRUMP): Urban Extents, Columbia University Palisades, New York, USA. Available at http://sedac.ciesin
+
+
+
+.columbia.edu/gpw/. Digital media.
+
+
+
+
+
+
+
+Defense Mapping Agency. 1992. Digital Chart of the World [4 CDs]. Updated 1996. Fairfax, VA: Author.
+
+
+
+
+
+
+
+GLOBE Task Team and others, eds. 1999. The Global Land One-kilometer Base Elevation (GLOBE) Digital Elevation Model, Version 1.0. Boulder, CO: National Oceanic and Atmospheric Administration, National Geophysical Data Center. Available at www.ngdc.noaa.gov/mgg/topo/globe.html.
+
+
+
+
+
+
+
+Hansen, M., R. DeFries, J. R. Townshend, M. Carroll, C. Dimiceli, and R. Sohlberg. 2006. Vegetation Continuous Fields MOD44B, 2001 Percent Tree Cover, Collection 4, University of Maryland, College Park, Maryland, USA. Available at http://glcf.umiacs.umd.edu/index.shtml. Digital media.
+
+
+
+
+
+
+
+Joint Research Centre of the European Commission (JRC). 2003. GLC 2000: Global Land Cover Mapping for the Year 2000. Ispra, Italy: European Commission Joint Research Centre, Institute for Environment and Sustainability. Available at www-tem.jrc.it/glc2000. Digital media.
+
+
+
+
+
+
+
+South American Conservation Region. 2005. V&amp;iacute;as de Sur America. Geographic Information System data set. The Nature Conservancy, Arlington, Virginia, USA.
+
+This dataset was uploaded to Data Basin and is available with additional information at: http://app.databasin.org/app/pages/datasetPage.jsp?id=425383de7e7845e09946c17cab45f2ea</description>
+<summary></summary>
+<title>Human Accessibility by Terrestrial Ecoregion</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcMap</typekeyword>
+<typekeyword>.lpk</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>-179.999988600612</xmin>
+<ymin>-89.8919732774029</ymin>
+<xmax>179.999988600612</xmax>
+<ymax>83.6231251716938</ymax>
+</extent>
+<spatialreference>GCS_WGS_1984</spatialreference>
+<accessinformation></accessinformation>
+</ESRI_ItemInformation>
