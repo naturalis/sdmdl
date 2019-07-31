@@ -1,0 +1,39 @@
+# Dataset Title
+Number of Mammal Species by Terrestrial Ecoregion
+
+
+# URL
+http://databasin.org/datasets/863c20b7776d41d68612fa181b50e10a
+
+
+# Dataset Type
+ArcGIS
+
+
+# Credits
+World WIldlife Fund Wildfinder 2006
+
+
+# Uploaded By
+[TNC GIS Staff](http://databasin.org/people/GIS@TNC)
+
+
+# Description
+Number of mammal species, by terrestrial ecoregion.  
+  
+We compiled data on terrestrial mammals by querying the WWF WildFinder database for species occurrences by ecoregion. The WWF WildFinder database is a spatially explicit online database of vertebrate species occurrences by ecoregion.  
+  
+These data were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010). More information at http://nature.org/atlas.
+
+
+# Use Constraints
+This work is licensed under a  Creative Commons Attribution-NonCommercial 3.0 License.
+
+
+### Original Metadata
+metadata/metadata1_original.xml
+
+
+### Data Basin Metadata
+metadata/metadata1.xml
+

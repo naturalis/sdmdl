@@ -1,0 +1,39 @@
+# Dataset Title
+Number of Plant Species by Terrestrial Ecoregion
+
+
+# URL
+http://databasin.org/datasets/43478f840ac84173979b22631c2ed672
+
+
+# Dataset Type
+ArcGIS
+
+
+# Credits
+Kier, G., J. Mutke, E. Dinerstein, T. H. Ricketts, W. Ku, H. Kreft, and W. Barthlott.
+
+
+# Uploaded By
+[TNC GIS Staff](http://databasin.org/people/GIS@TNC)
+
+
+# Description
+Number of terrestrial plant species, by terrestrial ecoregion.  
+  
+Kier et al. (2005) estimated the number of plant species in each terrestrial ecoregion.  
+  
+These data were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010). More information at http://nature.org/atlas.
+
+
+# Use Constraints
+This work is licensed under a  Creative Commons Attribution-NonCommercial 3.0 License.
+
+
+### Original Metadata
+metadata/metadata1_original.xml
+
+
+### Data Basin Metadata
+metadata/metadata1.xml
+

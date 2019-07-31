@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <idinfo>
+    <descript>
+      <abstract>Number of terrestrial plant species, by terrestrial ecoregion. 
+ 
+ Kier et al. (2005) estimated the number of plant species in each terrestrial ecoregion.
+ 
+ These data were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010). More information at http://nature.org/atlas.</abstract>
+      <purpose>biogeography, biodiversity conservation and priority setting.</purpose>
+      <supplinf />
+    </descript>
+    <useconst>(http://creativecommons.org/licenses/by-nc/3.0)This work is licensed under a Creative Commons Attribution-NonCommercial 3.0 License (http://creativecommons.org/licenses/by-nc/3.0).</useconst>
+    <datacred>Plant Species Richness by ecoregion: Kier, G., J. Mutke, E. Dinerstein, T. H. Ricketts, W. Ku, H. Kreft, and W. Barthlott. 2005. Global patterns of plant diversity and floristic knowledge. Journal of Biogeography 32: 1107-1116.
+ 
+ Olson, D.M., E. Dinerstein, E.D. Wikramanayake, N.D. Burgess, G.V.N. Powell, E.C. Underwood, J.A. D’Amico, H.E. Strand, J.C. Morrison, C.J. Loucks, T.F. Allnutt, J.F. Lamoreux, T.H. Ricketts, I. Itoua, W.W. Wettengel, Y. Kura, P. Hedao, and K. Kassem. 2001. Terrestrial ecoregions of the world: A new map of life on Earth. BioScience 51(11):933-938.</datacred>
+    <citation>
+      <citeinfo>
+        <title>Number of Plant Species by Terrestrial Ecoregion</title>
+        <pubdate />
+        <othercit>Plant Species Richness by ecoregion: Kier, G., J. Mutke, E. Dinerstein, T. H. Ricketts, W. Ku, H. Kreft, and W. Barthlott. 2005. Global patterns of plant diversity and floristic knowledge. Journal of Biogeography 32: 1107-1116.</othercit>
+        <origin>Kier</origin>
+        <origin>G.</origin>
+        <origin>J. Mutke</origin>
+        <origin>E. Dinerstein</origin>
+        <origin>T. H. Ricketts</origin>
+        <origin>W. Ku</origin>
+        <origin>H. Kreft</origin>
+        <origin>and W. Barthlott. </origin>
+        <onlink>http://app.databasin.org/app/pages/datasetPage.jsp?id=43478f840ac84173979b22631c2ed672</onlink>
+        <pubinfo>
+          <publish />
+          <pubplace />
+        </pubinfo>
+      </citeinfo>
+    </citation>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Wesley Wettengel</cntper>
+          <cntorg>Conservation Science Program - World Wildlife Fund</cntorg>
+        </cntperp>
+      </cntinfo>
+    </ptcontac>
+    <status>
+      <progress />
+      <update />
+    </status>
+    <timeperd>
+      <timeinfo>
+        <sngdate />
+        <current />
+      </timeinfo>
+    </timeperd>
+    <keywords>
+      <theme>
+        <themekey>ecoregions</themekey>
+        <themekey>The Nature Conservancy</themekey>
+        <themekey>Biodiversity</themekey>
+        <themekey>plants</themekey>
+        <themekey>species</themekey>
+        <themekey>world wildlife fund</themekey>
+        <themekt>Data Basin tags</themekt>
+      </theme>
+    </keywords>
+    <spdom>
+      <bounding>
+        <northbc>85.6430228219762</northbc>
+        <eastbc>179.99999999998656</eastbc>
+        <southbc>-88.99999999999993</southbc>
+        <westbc>-179.99999999998656</westbc>
+      </bounding>
+    </spdom>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr />
+    </attracc>
+    <complete />
+    <lineage>
+      <procstep>
+        <procdesc>Consolidated Data Basin Info: Dataset copied. (\\SASQUATCH\DATA\ecoregions\version_2\WWF_terr_eco.mdb)
+ Dataset copied.
+ Dataset copied.
+ Metadata imported. (D:\atlas_online\terr_metadata.xml)</procdesc>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed>
+      <attr>
+        <attrlabl>FID</attrlabl>
+        <attalias>FID</attalias>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attalias>Shape</attalias>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attalias>OBJECTID</attalias>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>AREA</attrlabl>
+        <attalias>AREA</attalias>
+        <attrdef>Area of each individual polygon in square kilometers. The attribute area_km2 is a sum of this field for each ecoregion as a whole.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>PERIMETER</attrlabl>
+        <attalias>PERIMETER</attalias>
+        <attrdef>total distance of ecoregion</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>ECO_NAME</attrlabl>
+        <attalias>ECO_NAME</attalias>
+        <attrdef>Ecoregion Name</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>REALM</attrlabl>
+        <attalias>REALM</attalias>
+        <attrdef>Biogeographical Realm</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>BIOME</attrlabl>
+        <attalias>BIOME</attalias>
+        <attrdef>Biome name</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>ECO_NUM</attrlabl>
+        <attalias>ECO_NUM</attalias>
+        <attrdef>A unique number for each ecoregion within each biome nested within each realm.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>ECO_ID</attrlabl>
+        <attalias>ECO_ID</attalias>
+        <attrdef>This number is created by combining REALM, BIOME, and ECO_NUM, thus creating a unique numeric ID for each ecoregion.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>ECO_SYM</attrlabl>
+        <attalias>ECO_SYM</attalias>
+        <attrdef>Ecoregion Symbol - Used to display the map in ArcInfo</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>ECO_CODE</attrlabl>
+        <attalias>ECO_CODE</attalias>
+        <attrdef>unique code that uses realm text, biome number and ecoregion number.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>plant_spcs</attrlabl>
+        <attalias>plant_spcs</attalias>
+        <attrdef>number of plant species by terrestrial ecoregion</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>plantspcsm</attrlabl>
+        <attalias>plantspcsm</attalias>
+        <attrdef>number of plant species by terrestrial ecoregion for map labels</attrdef>
+        <attrdomv />
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Data Basin</cntorg>
+          <cntper>Data Basin Administrator</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>136 SW Washington Ave, Suite 202</address>
+          <city>Corvallis</city>
+          <state>OR</state>
+          <postal>97333</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>541-757-0687</cntvoice>
+        <cntemail>databasin_admin@consbio.org</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Number of Plant Species by Terrestrial Ecoregion</resdesc>
+    <distliab>No warranty is made by Data Basin for use of this dataset.  No warranty is made by Data Basin regarding the accuracy, reliability, or completeness of this dataset. In no event shall Data Basin have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of the use or reliance on the geographic or attribute data contained within this dataset or arising out of the delivery, installation, operation, or support by Data Basin.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Feature Layer</formname>
+          <formvern>ArcGIS  10</formvern>
+          <formspec>Feature Layer</formspec>
+          <filedec>No compression applied</filedec>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>http://app.databasin.org/app/pages/datasetPage.jsp?id=43478f840ac84173979b22631c2ed672</networkr>
+              </networka>
+            </computer>
+            <accinstr>Download from http://databasin.org</accinstr>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+      <ordering>Download from http://databasin.org</ordering>
+    </stdorder>
+    <techpreq>ESRI ArcGIS Desktop and supporting operating systems.</techpreq>
+  </distinfo>
+</metadata>
+

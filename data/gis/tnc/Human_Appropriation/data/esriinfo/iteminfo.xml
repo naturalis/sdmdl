@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>3d9c68ee35c74629a4f5a668fbaa6fe4</name>
+<guid>996CED26-4F08-429E-ABC1-F3A2CBE1A2F3</guid>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Human appropriation of net primary productivity, by terrestrial ecoregion. 
+
+
+
+
+
+
+
+We derived the map showing the amount of carbon fixed by photosynthesis and then consumed by humans from Imhoff et al. (2004a). A zonal sum procedure was applied to the gridded version of those data to summarize by ecoregion.
+
+
+
+
+
+
+
+These data were derived by The Nature Conservancy, and were displayed in a map published in The Atlas of Global Conservation (Hoekstra et al., University of California Press, 2010).  More information at http://nature.org/atlas.
+
+
+
+
+
+
+
+Data derived from:
+
+
+
+Imhoff, M. L., L. Bounoua, T. Ricketts, C. Loucks, R. Harriss, and W. T. Lawrence. 2004a. Human Appropriation of Net Primary Productivity (HANPP). Data distributed by the Socioeconomic Data and Applications Center (SEDAC). Available at http://sedac.ciesin.columbia.edu/es/hanpp.html.
+
+This dataset was uploaded to Data Basin and is available with additional information at: http://app.databasin.org/app/pages/datasetPage.jsp?id=3d9c68ee35c74629a4f5a668fbaa6fe4</description>
+<summary></summary>
+<title>Human Appropriation by Terrestrial Ecoregion</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcMap</typekeyword>
+<typekeyword>.lpk</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>-179.999988600612</xmin>
+<ymin>-89.8919732774029</ymin>
+<xmax>179.999988600612</xmax>
+<ymax>83.6231251716938</ymax>
+</extent>
+<spatialreference>GCS_WGS_1984</spatialreference>
+<accessinformation></accessinformation>
+</ESRI_ItemInformation>
