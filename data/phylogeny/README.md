@@ -60,5 +60,46 @@ All these trees are from release [v0.1](https://github.com/FePhyFoFum/big_seed_p
   removed.
 - [mag2015_ot_dated.tre](mag2015_ot_dated.tre), The Magallon 2015 tree with additional 
   Open Tree taxonomy added
+
+### Verification of [ALLMB.tre](ALLMB.tre)
+
+Performed by indexing the tree file using `megatree-loader -i ALLMB.tre -d ALLMB.db -v`
+
+The following domesticated taxa are in the tree:
+- _Zea mays_, but no subspecies, i.e. ssp. _mexicana_ or ssp. _parviglumis_
+- _Oryza sativa_ and _Oryza rufipogon_
+- _Sorghum bicolor_ but not ssp. _verticilliflorum_
+- _Eragrostis tef_ and _Eragrostis pilosa_
+- _Eleusine coracana_ and _Eleusine africana_ (but as _Eleusine coracana subsp. africana_)
+- _Hordeum vulgare_ and _Hordeum spontaneum_ (but as _Hordeum vulgare subsp. spontaneum_)
+- _Triticum aestivum_, _Triticum urartu_, _Aegilops speltoides_, 
+  _Triticum turgidum subsp. dicoccoides_ (but as _Triticum dicoccoides_), 
+  _Aegilops tauschii_
+- _Secale cereale_, _Secale vavilovii_
+- _Manihot esculenta_, _Manihot esculenta subsp. flabellifolia_
+- _Solanum tuberosum_ (as _Solanum tuberosum subsp. andigenum_), _Solanum bukasovii_
+  (as _Solanum bukasovii f. multidissectum_)
+- _Ipomoea batatas_, _Ipomoea trifida_
+- _Colocasia esculenta_, _Colocasia lihengiae_, _Colocasia yunnanensis_, _Colocasia formosana_  
+- _Dioscorea rotundata_ (as _Dioscorea cayennensis subsp. rotundata_), 
+  _Dioscorea cayennensis_, _Dioscorea praehensilis_, _Dioscorea abyssinica_
+  _Dioscorea minutiflora_, _Dioscorea alata_, _Dioscorea hamiltonii_, _Dioscorea persimilis_
+  _Dioscorea polystachya_, _Dioscorea bulbifera_, _Dioscorea esculenta_, _Dioscorea dumetorum_
+  _Dioscorea trifida_
+- _Musa acuminata_ (in several subspecies), _Musa balbisiana_ (as _Musa balbisiana var. balbisiana_)
+- _Ensete ventricosum_
+- _Fagopyrum esculentum_ but not _Fagopyrum esculentum subsp. ancestrale_
+- _Fagopyrum tataricum subsp. potanini_
+- _Arachis hypogaea_ (in several cultivars), _Arachis duranensis_, _Arachis ipaensis_
+- _Cucurbita argyrosperma_, _Cucurbita argyrosperma subsp. sororia_, _Cucurbita ficifolia_
+  _Cucurbita maxima_, _Cucurbita maxima subsp. andreana_, _Cucurbita moschata_
+  _Cucurbita pepo_, _Cucurbita pepo subsp. fraterna_
+- _Artocarpus altilis_, _Artocarpus camansi_, _Artocarpus mariannensis_
+- _Mangifera indica_, _Mangifera sylvatica_
+- _Cocos nucifera_
+- _Phoenix dactylifera_, _Phoenix sylvestris_
+- _Metroxylon sagu_  
   
-  
+Missing:
+- _Musa x paradisiaca_
+- _Fagopyrum tataricum_  
