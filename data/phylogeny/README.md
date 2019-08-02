@@ -48,7 +48,7 @@ Trees from [Smith & Brown](https://doi.org/10.1002/ajb2.1019)
 All these trees are from release [v0.1](https://github.com/FePhyFoFum/big_seed_plant_trees/releases/tag/v0.1)
 
 - [ALLMB.tre](ALLMB.tre), 356,305 tips, GenBank and Open Tree of Life taxa with a 
-  backbone provided by Magallón et al. (2015)
+  backbone provided by [Magallón et al. (2015)](https://doi.org/10.1111/nph.13264)
 - [ALLOTB.tre](ALLOTB.tre), 353,185 tips, GenBank and Open Tree of Life taxa with a 
   backbone provided by Open Tree of Life version 9.1
 - [GBMB.tre](GBMB.tre), 79,874 tips, GenBank taxa with a backbone provided by Magallón et 
