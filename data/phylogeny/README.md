@@ -2,7 +2,8 @@ This folder contains phylogenies for the comparative analysis of trait values
 (domestication, woodiness, mycorrhiza) and niche dimensions. We currently have the
 following trees:
 
-### [Tree.nex.bt.nex](Tree.nex.bt.nex)
+[Tree.nex.bt.nex](Tree.nex.bt.nex)
+----------------------------------
 
 Phylogeny used in [Feijen et al.](http://doi.org/10.1038/s41598-018-28920-x). For this 
 tree, the pattern of mycorrhizal association on all tips is known. 
@@ -36,6 +37,28 @@ The following taxa are missing:
 - _Phoenix dactylifera_: **whole genus is missing**
 - _Metroxylon sagu_: **whole genus is missing**
 
-### [PhytoPhylo.tre](PhytoPhylo.tre)
+[PhytoPhylo.tre](PhytoPhylo.tre)
+--------------------------------
 
-Phylogeny used in [Qian & Yin, 2016](https://doi.org/10.1093/jpe/rtv047)
+Phylogeny used in [Qian & Yin, 2016](https://doi.org/10.1093/jpe/rtv047).
+
+Trees from [Smith & Brown](https://doi.org/10.1002/ajb2.1019)
+-------------------------------------------------------------
+
+All these trees are from release [v0.1](https://github.com/FePhyFoFum/big_seed_plant_trees/releases/tag/v0.1)
+
+- [ALLMB.tre](ALLMB.tre), 356,305 tips, GenBank and Open Tree of Life taxa with a 
+  backbone provided by Magallón et al. (2015)
+- [ALLOTB.tre](ALLOTB.tre), 353,185 tips, GenBank and Open Tree of Life taxa with a 
+  backbone provided by Open Tree of Life version 9.1
+- [GBMB.tre](GBMB.tre), 79,874 tips, GenBank taxa with a backbone provided by Magallón et 
+  al. (2015)
+- [GBOTB.tre](GBOTB.tre), 79,881 tips, GenBank taxa with a backbone provided by Open Tree 
+  of Life version 9.1
+- [ot_seedpruned_dated.tre](ot_seedpruned_dated.tre), The Open Tree synth release v 9.1 
+  of seed plants with dates from Magallon 2015 and with non monophyletic major clades 
+  removed.
+- [mag2015_ot_dated.tre](mag2015_ot_dated.tre), The Magallon 2015 tree with additional 
+  Open Tree taxonomy added
+  
+  
