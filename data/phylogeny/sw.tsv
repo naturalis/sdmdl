@@ -727,7 +727,7 @@ Ruschia_indurata	Ruschia_indurata
 Ruschia_insidens	
 Ruschia_intermedia	Ruschia_intermedia
 Ruschia_intricata	Ruschia_intricata
-Ruschia_intrusa	
+Ruschia_intrusa	Brianhuntleya_intrusa
 Ruschia_karrachabensis	Ruschia_karrachabensis
 Ruschia_karrooica	Ruschia_karrooica
 Ruschia_kenhardtensis	Ruschia_kenhardtensis
@@ -1077,7 +1077,7 @@ Halothamnus_subaphyllus	Halothamnus_subaphyllus
 Halothamnus_turcomanicus	Halothamnus_turcomanicus
 Haloxylon_ammodendron	Haloxylon_ammodendron
 Haloxylon_persicum	Haloxylon_persicum
-Hammada_salicornica	
+Hammada_salicornica	Haloxylon_salicornicum
 Hebanthe_eriantha	Hebanthe_eriantha
 Hebanthe_grandiflora	Hebanthe_grandiflora
 Hebanthe_hookeriana	
@@ -1097,7 +1097,7 @@ Iljinia_regelii	Iljinia_regelii
 Iresine_alternifolia	Iresine_alternifolia
 Iresine_arbuscula	Iresine_arbuscula
 Iresine_calea	Iresine_calea
-Iresine_cassiniaeformis	
+Iresine_cassiniaeformis	Iresine_cassiniiformis
 Iresine_discolor	Iresine_discolor
 Iresine_grandis	Iresine_grandis
 Iresine_hartmanii	Iresine_hartmanii
@@ -1129,7 +1129,7 @@ Kaviria_rubescens	Kaviria_rubescens
 Kaviria_tomentosa	Kaviria_tomentosa
 Krascheninnikovia_ceratoides	Krascheninnikovia_ceratoides
 Lagenantha_cycloptera	
-Lagenantha_gillettii	
+Lagenantha_gillettii	Gyroptera_gillettii
 Maireana_amoena	Maireana_amoena
 Maireana_aphylla	Maireana_aphylla
 Maireana_appressa	Maireana_appressa
@@ -1229,13 +1229,13 @@ Ptilotus_whitei	Ptilotus_whitei
 Quaternella_confusa	Quaternella_confusa
 Quaternella_ephedroides	Quaternella_ephedroides
 Rhagodia_acicularis	
-Rhagodia_baccata	
+Rhagodia_baccata	Chenopodium_baccatum
 Rhagodia_candollea	Rhagodia_candolleana
 Rhagodia_carssifolia	
 Rhagodia_drumondii	
 Rhagodia_eremaea	Rhagodia_eremaea
 Rhagodia_latifolia	
-Rhagodia_parabolica	
+Rhagodia_parabolica	Chenopodium_parabolicum
 Rhagodia_preissii	
 Rhagodia_spinescens	Rhagodia_spinescens
 Rhagodia_ulicina	
@@ -1357,7 +1357,7 @@ Bupleurum_dianthifolium	Bupleurum_dianthifolium
 Bupleurum_dracaenoides	Bupleurum_dracaenoides
 Bupleurum_fruticescens	Bupleurum_fruticescens_subsp._spinosum
 Bupleurum_fruticescens	Bupleurum_fruticescens_subsp._fruticescens
-Bupleurum_handiense	
+Bupleurum_handiense	Bupleurum_canescens_var._handiense
 Bupleurum_salicifolium	Bupleurum_salicifolium
 Daucus_decipiens	Daucus_decipiens
 Daucus_edulis	Daucus_edulis
@@ -1379,7 +1379,7 @@ Gymnophyton_polycephalum	Gymnophyton_polycephalum
 Gymnophyton_robustum	Gymnophyton_robustum
 Gymnophyton_spinossissimum	
 Marlothiella_gummifera	Marlothiella_gummifera
-Myrrhidendron_donnellsmithii	
+Myrrhidendron_donnellsmithii	Myrrhidendron_donnell-smithii
 Myrrhidendron_maxonii	Myrrhidendron_maxonii
 Nirarathamnos_asarifolius	Nirarathamnos_asarifolius
 Rughidia_milleri	Rughidia_milleri
@@ -1460,7 +1460,7 @@ Minaria_refractifolia	Minaria_refractifolia
 Minaria_semirii	Minaria_semirii
 Orthanthera_albida	
 Orthanthera_viminaea	
-Rhyssostelma_nigricans	
+Rhyssostelma_nigricans	Oxypetalum_nigricans
 Schizostephanus_alatus	Schizostephanus_alatus
 Schizostephanus_gossweileri	Schizostephanus_gossweileri
 Vincetoxicum_anthopotamicum	
@@ -1586,7 +1586,7 @@ Aster_argyropholis	Aster_argyropholis
 Aster_fulgidulus	
 Aster_hersileoides	Aster_hersileoides
 Aster_hypoleucus	
-Aster_lavanduliifolius	
+Aster_lavanduliifolius	Aster_lavandulifolius
 Aster_nitidus	Aster_nitidus
 Aster_polius	Aster_polius
 Atractylis_arbuscula	Atractylis_arbuscula
@@ -1728,7 +1728,7 @@ Cheirolophus_crassifolius	Cheirolophus_crassifolius
 Cheirolophus_dariasii	Cheirolophus_dariasii
 Cheirolophus_duranii	Cheirolophus_duranii
 Cheirolophus_falcisectus	Cheirolophus_falcisectus
-Cheirolophus_ghomerythus	
+Cheirolophus_ghomerythus	Cheirolophus_gomerythus
 Cheirolophus_intybaceus	Cheirolophus_intybaceus_var._capillifolius
 Cheirolophus_intybaceus	Cheirolophus_intybaceus_var._microcephalus
 Cheirolophus_junonianus	Cheirolophus_junonianus_var._isoplexiphyllus
@@ -1772,7 +1772,7 @@ Coreopsis_cuneifolia
 Coreopsis_davillae	
 Coreopsis_fasciculata	Coreopsis_fasciculata
 Coreopsis_foliosa	
-Coreopsis_gigantea	
+Coreopsis_gigantea	Leptosyne_gigantea
 Coreopsis_glaucodes	
 Coreopsis_holodasya	
 Coreopsis_imbricata	
@@ -1802,7 +1802,7 @@ Coreopsis_pringlei
 Coreopsis_rudis	Coreopsis_rudis
 Coreopsis_scopulorum	
 Coreopsis_senaria	Coreopsis_senaria
-Coreopsis_sherfii	
+Coreopsis_sherfii	Coreopsis_sherffii
 Coreopsis_spectabilis	
 Coreopsis_suaveolens	
 Coreopsis_townsendii	
@@ -1999,7 +1999,7 @@ Espeletia_praesidentis
 Espeletia_pulcherrima	
 Espeletia_pycnophylla	Espeletia_pycnophylla
 Espeletia_raquirensis	Espeletia_raquirensis
-Espeletia_robertii	
+Espeletia_robertii	Espeletia_roberti
 Espeletia_rositae	Espeletia_rositae
 Espeletia_schultesiana	Espeletia_schultesiana
 Espeletia_schultzii	Espeletia_schultzii
@@ -2096,7 +2096,7 @@ Haplopappus_ledifolius
 Haplopappus_lehmannii	
 Haplopappus_linifolius	
 Haplopappus_lucidulus	
-Haplopappus_marginalis	
+Haplopappus_marginalis	Noticastrum_marginatum
 Haplopappus_mendonicus	
 Haplopappus_mucronatus	
 Haplopappus_multifolius	Haplopappus_multifolius
@@ -2153,11 +2153,11 @@ Helichrysum_caespititium
 Helichrysum_callicomum	Helichrysum_callicomum
 Helichrysum_chionoides	Helichrysum_chionoides
 Helichrysum_chlorochrysum	
-Syncarpha_dregeana_(DC.)_B.Nord.	
-Syncarpha_milleflora_(L.f.)_B.Nord.	
-Syncarpha_eximia_(L.)_B.Nord.	
-Syncarpha_marlothii_(Schltr.)_B.Nord.	
-Syncarpha_aurea_B._Nord.	
+Syncarpha_dregeana_(DC.)_B.Nord.	Syncarpha_dregeana
+Syncarpha_milleflora_(L.f.)_B.Nord.	Syncarpha_milleflora
+Syncarpha_eximia_(L.)_B.Nord.	Syncarpha_eximia
+Syncarpha_marlothii_(Schltr.)_B.Nord.	Syncarpha_marlothii
+Syncarpha_aurea_B._Nord.	Syncarpha_aurea
 Helichrysum_citrispinum	Helichrysum_citrispinum
 Helichrysum_dasycephalum	Helichrysum_dasycephalum
 Helichrysum_densiflorum	
@@ -2202,9 +2202,9 @@ Helichrysum_yuccifolium	Helichrysum_yuccifolium
 Helichrysum_zeyheri	Helichrysum_zeyheri
 Herodotia_haitiensis	Herodotia_haitiensis
 Herreranthus_rivalis	Herreranthus_rivalis
-Hirpicium_alienatum	
+Hirpicium_alienatum	Gorteria_alienata
 Hirpicium_bechuanense	Hirpicium_bechuanense
-Hirpicium_integrifolium	
+Hirpicium_integrifolium	Gorteria_integrifolia
 Hubertia_adenodonta	
 Hubertia_alleizettei	
 Hubertia_ambavilla	Hubertia_ambavilla
@@ -2570,7 +2570,7 @@ Phonus_mareoticus
 Phonus_rhiphaeus	Phonus_rhiphaeus
 Pladaroxylon_leucadendron	Pladaroxylon_leucadendron
 Pleiacanthus_spinosus	Pleiacanthus_spinosus
-Pluchea_absinthioides	
+Pluchea_absinthioides	Tessaria_absinthioides
 Pluchea_arabica	Pluchea_arabica
 Pluchea_arguta	Pluchea_arguta
 Pluchea_baccharoides	
@@ -2737,14 +2737,14 @@ Senecio_adamsii
 Senecio_adenophylloides	
 Senecio_adenophyllus	
 Senecio_alaeagnifolius	
-Senecio_alliariifolius	
+Senecio_alliariifolius	Dauresia_alliariifolia
 Senecio_alniphilus	
 Senecio_aloides	Senecio_aloides
 Senecio_anethifolius	Senecio_anethifolius
 Senecio_antaicochensis	
 Senecio_antaisaka	
 Senecio_apolobambensis	
-Senecio_articulatus	
+Senecio_articulatus	Curio_articulatus
 Senecio_attenuatus	
 Senecio_axillifoliatus	
 Senecio_barbertonicus	
@@ -2862,7 +2862,7 @@ Senecio_odoratus
 Senecio_otuscensis	
 Senecio_palmeri	
 Senecio_parvocapitatus	
-Senecio_pellucidus	
+Senecio_pellucidus	Senecio_madagascariensis
 Senecio_pensilis	
 Senecio_perdicioides	
 Senecio_petiolincrassatus	
@@ -2877,7 +2877,7 @@ Senecio_pleniauritus
 Senecio_polyphyllus	
 Senecio_pongoensis	
 Senecio_potosianus	
-Senecio_pubigerus	
+Senecio_pubigerus	Senecio_pubiger
 Senecio_puchii	
 Senecio_pyrenophilus	
 Senecio_quinquelepis	
@@ -3097,7 +3097,7 @@ Echium_sventenii	Echium_sventenii
 Echium_virescens	Echium_virescens
 Echium_vulcanorum	Echium_vulcanorum
 Echium_webbii	Echium_webbii
-Echium_wildprettii	
+Echium_wildprettii	Echium_wildpretii
 Glandora_diffusa	Glandora_diffusa
 Glandora_moroccana	Glandora_moroccana
 Glandora_nitida	Glandora_nitida
@@ -3113,7 +3113,7 @@ Aethionema_alanyae
 Aethionema_armenum	Aethionema_armenum
 Aethionema_capitatum	Aethionema_capitatum
 Aethionema_cordatum	Aethionema_cordatum
-Aethionema_coridifolium	
+Aethionema_coridifolium	Aethionema_cordifolium
 Aethionema_demirizzi	
 Aethionema_diastrophis	Aethionema_diastrophis
 Aethionema_dumanii	
@@ -3253,7 +3253,7 @@ Cyphocardamum_aretioides	Cyphocardamum_aretioides
 Dactylocardamum_imbricatifolium	Dactylocardamum_imbricatifolium
 Delpinophytum_patagonicum	Delpinophytum_patagonicum
 Dendroarabis_fruticulosa	Dendroarabis_fruticulosa
-Descurainia_artemisoides	
+Descurainia_artemisoides	Descurainia_artemisioides
 Descurainia_bourgeauana	Descurainia_bourgeauana
 Descurainia_gilva	Descurainia_gilva
 Descurainia_gonzalesii	
@@ -3468,7 +3468,7 @@ Neuontobotrys_taracapana
 Noccaea_iberidea	
 Noccaea_trinervia	
 Pachycladon_cheesemanii	Pachycladon_cheesemanii
-Pachycladon_exilis	
+Pachycladon_exilis	Pachycladon_exile
 Parolinia_filifolia	Parolinia_filifolia
 Parolinia_glabriuscula	Parolinia_glabriuscula
 Parolinia_intermedia	Parolinia_intermedia
@@ -3525,7 +3525,7 @@ Xerodraba_monantha
 Xerodraba_patagonica	Xerodraba_patagonica
 Xerodraba_pectinata	Xerodraba_pectinata
 Xerodraba_pycnophylloides	Xerodraba_pycnophylloides
-Zilla_macroptera	
+Zilla_macroptera	Zilla_spinosa_subsp._macroptera
 Zilla_spinosa	Zilla_spinosa_subsp._macroptera
 Zilla_spinosa	Zilla_spinosa_subsp._spinosa
 Apetahia_longistigmata	Apetahia_longistigmata
@@ -3614,7 +3614,7 @@ Centropogon_pilalensis	Centropogon_pilalensis
 Centropogon_preslii	Centropogon_preslii
 Centropogon_rubiginosus	
 Centropogon_saltuum	Centropogon_saltuum
-Centropogon_salviaeformis	
+Centropogon_salviaeformis	Centropogon_salviiformis
 Centropogon_simulans	Centropogon_simulans
 Centropogon_smithi	Centropogon_smithii
 Centropogon_sodiroanus	Centropogon_sodiroanus
@@ -3759,7 +3759,7 @@ Lobelia_excelsa	Lobelia_excelsa
 Lobelia_fawcettii	Lobelia_fawcettii
 Lobelia_gaudichaudii	Lobelia_gaudichaudii
 Lobelia_ghiesbreghtii	Lobelia_ghiesbreghtii
-Lobelia_giberroa	
+Lobelia_giberroa	Lobelia_gibberoa
 Lobelia_gloria-montis	Lobelia_gloria-montis
 Lobelia_grayana	Lobelia_grayana
 Lobelia_guerrerensis	Lobelia_guerrerensis
@@ -3849,7 +3849,7 @@ Siphocampylus_comosus
 Siphocampylus_convolvulaceus	Siphocampylus_convolvulaceus
 Siphocampylus_cordatus	Siphocampylus_cordatus
 Siphocampylus_correoides	Siphocampylus_correoides
-Siphocampylus_corymbiferus	
+Siphocampylus_corymbiferus	Siphocampylus_corymbifer
 Siphocampylus_corynellus	Siphocampylus_corynellus
 Siphocampylus_corynoides	Siphocampylus_corynoides
 Siphocampylus_cutervensis	Siphocampylus_cutervensis
@@ -3889,13 +3889,13 @@ Siphocampylus_leptophyllus	Siphocampylus_leptophyllus
 Siphocampylus_lindleyi	Siphocampylus_lindleyi
 Siphocampylus_lobbii	Siphocampylus_lobbii
 Siphocampylus_longibracteolatus	Siphocampylus_longibracteolatus
-Siphocampylus_longipedunculatus	
+Siphocampylus_longipedunculatus	Siphocampylus_longepedunculatus
 Siphocampylus_loxensis	Siphocampylus_loxensis
 Siphocampylus_lucidus	Siphocampylus_lucidus
 Siphocampylus_lucifer	Siphocampylus_lucifer
 Siphocampylus_macropodoides	Siphocampylus_macropodoides
 Siphocampylus_macropodus	Siphocampylus_macropodus
-Siphocampylus_manettiaeflorus	
+Siphocampylus_manettiaeflorus	Siphocampylus_manettiiflorus
 Siphocampylus_matthiaei	Siphocampylus_matthiaei
 Siphocampylus_megalanthus	Siphocampylus_megalanthus
 Siphocampylus_megastoma	Siphocampylus_megastoma
@@ -4167,7 +4167,7 @@ Cleome_pruriens
 Cleome_rubiginosa	
 Cleome_stylosa	Cleome_stylosa
 Cleome_viridiflora	Cleome_viridiflora
-Peritoma_arborea	
+Peritoma_arborea	Cleomella_arborea
 Argyreia_acuta	Argyreia_acuta
 Argyreia_adpressa	Argyreia_adpressa
 Argyreia_akoensis	Argyreia_akoensis
@@ -4287,7 +4287,7 @@ Ipomoea_dumosa	Ipomoea_dumosa
 Ipomoea_elongata	Ipomoea_elongata
 Ipomoea_expansa	Ipomoea_expansa
 Ipomoea_fiebrigii	Ipomoea_fiebrigii
-Ipomoea_fistulosa	
+Ipomoea_fistulosa	Ipomoea_carnea_subsp._fistulosa
 Ipomoea_flavivillosa	Ipomoea_flavivillosa
 Ipomoea_gesnerioides	Ipomoea_gesnerioides
 Ipomoea_grantii	Ipomoea_grantii
@@ -4326,7 +4326,7 @@ Ipomoea_pearceana	Ipomoea_pearceana
 Ipomoea_perpartita	Ipomoea_perpartita
 Ipomoea_peruviana	Ipomoea_peruviana
 Ipomoea_pharbitiformis	
-Ipomoea_phyllomega	
+Ipomoea_phyllomega	Ipomoea_philomega
 Ipomoea_populina	Ipomoea_populina
 Ipomoea_praecana	Ipomoea_praecana
 Ipomoea_praecox	
@@ -4357,7 +4357,7 @@ Ipomoea_teotitlanica	Ipomoea_teotitlanica
 Ipomoea_trichosperma	Ipomoea_trichosperma
 Ipomoea_triflora	Ipomoea_triflora
 Ipomoea_tuba	
-Ipomoea_uhdeana	
+Ipomoea_uhdeana	Ipomoea_urbinei
 Ipomoea_urbaniana	Ipomoea_urbaniana
 Ipomoea_vargasiana	
 Ipomoea_verbasciformis	Ipomoea_verbasciformis
@@ -4948,7 +4948,7 @@ Lupinus_hornemannii
 Lupinus_humifusus	Lupinus_humifusus
 Lupinus_insulae	
 Lupinus_involutus	
-Lupinus_jaimehintoniana	
+Lupinus_jaimehintoniana	Lupinus_jaime-hintonianus
 Lupinus_kellermanianus	Lupinus_kellermanianus
 Lupinus_kunthii	Lupinus_kunthii
 Lupinus_lacus	
@@ -5180,8 +5180,8 @@ Aeschynanthus_tubulosus	Aeschynanthus_tubulosus
 Aeschynanthus_wallichii	
 Aeschynanthus_wardii	Aeschynanthus_wardii
 Agalmyla_erecta	Agalmyla_erecta
-Alloplectus_ambonensis	
-Alloplectus_savannarum	
+Alloplectus_ambonensis	Drymonia_ambonensis
+Alloplectus_savannarum	Lesia_savannarum
 Anna_mollifolia	Anna_mollifolia
 Anna_ophiorrhizoides	Anna_ophiorrhizoides
 Anna_submontana	Anna_submontana
@@ -5241,10 +5241,10 @@ Besleria_variabilis	Besleria_variabilis
 Boeica_fulva	Boeica_fulva
 Boeica_porosa	Boeica_porosa
 Boeica_yunnanensis	Boeica_yunnanensis
-Capanea_grandiflora	
+Capanea_grandiflora	Kohleria_tigridia
 Codonanthe_cordifolia	Codonanthe_cordifolia
-Codonanthe_crassifolia	
-Codonanthe_uleana	
+Codonanthe_crassifolia	Codonanthopsis_crassifolia
+Codonanthe_uleana	Codonanthopsis_uleana
 Codonanthe_venosa	Codonanthe_venosa
 Codonanthopsis_ulei	Codonanthopsis_ulei
 Codonoboea_alba	
@@ -5633,7 +5633,7 @@ Paliavana_lasiantha
 Paliavana_plumerioides	Paliavana_plumerioides
 Paliavana_prasinata	Paliavana_prasinata
 Paliavana_racemosa	
-Paliavana_schiffneri	
+Paliavana_schiffneri	Sinningia_schiffneri
 Paliavana_sericiflora	Paliavana_sericiflora
 Paliavana_tenuiflora	Paliavana_tenuiflora
 Paliavana_wedermannii	
@@ -5840,7 +5840,7 @@ Scaevola_pulvinaris	Scaevola_pulvinaris
 Scaevola_repens	Scaevola_repens
 Scaevola_restiacea	Scaevola_restiacea
 Scaevola_revoluta	Scaevola_revoluta
-Scaevola_sericea	
+Scaevola_sericea	Scaevola_taccada
 Scaevola_sericophylla	Scaevola_sericophylla
 Scaevola_spicigera	Scaevola_spicigera
 Scaevola_spinescens	Scaevola_spinescens
@@ -5894,8 +5894,8 @@ Otostegia_fruticosa	Otostegia_fruticosa_subsp._schimperi
 Otostegia_hildebrandtii	Otostegia_hildebrandtii
 Otostegia_migiurtiana	Otostegia_migiurtiana
 Otostegia_modesta	Otostegia_modesta
-Otostegia_olgae	
-Otostegia_somala	
+Otostegia_olgae	Moluccella_olgae
+Otostegia_somala	Isoleucas_somala
 Otostegia_tomentosa	Otostegia_tomentosa_subsp._ambigens
 Phlomis_amanica	Phlomis_amanica
 Phlomis_chimerae	Phlomis_chimerae
@@ -6065,8 +6065,8 @@ Petalonyx_linearis	Petalonyx_linearis
 Petalonyx_parryi	Petalonyx_parryi
 Petalonyx_thurberi	Petalonyx_thurberi
 Plakothira_frutescens	Plakothira_frutescens
-Presliophytum_arequipensis	
-Presliophytum_heucheraefolium	
+Presliophytum_arequipensis	Presliophytum_arequipense
+Presliophytum_heucheraefolium	Presliophytum_heucherifolium
 Presliophytum_incanum	Presliophytum_incanum
 Xylopodia_klaprothioides	Xylopodia_klaprothioides
 Dendrosida_batesii	Dendrosida_batesii
@@ -6090,7 +6090,7 @@ Malva_pacifica	Malva_pacifica
 Malva_subovata	
 Malva_wigandii	Malva_wigandii
 Navaea_phoenicea	Navaea_phoenicea
-Hypertelis_angrae-pequenae	
+Hypertelis_angrae-pequenae	Kewa_angrae-pequenae
 Mollugo_ulei	
 Paramollugo_decandra	
 Pharnaceum_albens	Pharnaceum_albens
@@ -6124,7 +6124,7 @@ Castilleja_guadalupensis	Castilleja_guadalupensis
 Castilleja_hololeuca	
 Cyclocheilon_kelleri	
 Cyclocheilon_physocalyx	Cyclocheilon_physocalyx
-Cyclocheilon_somalense	
+Cyclocheilon_somalense	Cyclocheilon_somaliense
 Esterhazya_caesarea	Esterhazya_caesarea
 Esterhazya_eitenorum	Esterhazya_eitenorum
 Esterhazya_macrodonta	Esterhazya_macrodonta
@@ -6133,7 +6133,7 @@ Esterhazya_splendida
 Esterhazya_triflora	Esterhazya_triflora
 Nesogenes_tenuis	
 Radamaea_latifolia	Radamaea_latifolia
-Radamaea_montana	
+Radamaea_montana	Ruellia_brevicaulis
 Radamaea_perrieri	Radamaea_perrieri
 Radamaea_prostrata	
 Radamaea_rupestris	
@@ -6158,7 +6158,7 @@ Diplacus_clevelandii	Diplacus_clevelandii
 Diplacus_grandiflorus	Diplacus_grandiflorus
 Diplacus_leptanthus	
 Diplacus_longiflorus	Diplacus_longiflorus
-Diplacus_parviflorus	
+Diplacus_parviflorus	Erythranthe_parviflora
 Diplacus_puniceus	Diplacus_puniceus
 Diplacus_stellatus	Diplacus_stellatus
 Hemichaena_coulteri	Hemichaena_coulteri
@@ -6260,7 +6260,7 @@ Monttea_aphylla	Monttea_aphylla
 Monttea_chilensis	Monttea_chilensis
 Monttea_schickendantzii	Monttea_schickendantzii
 Nanorrhinum_azraqensis	
-Nanorrhinum_heterophyllum	
+Nanorrhinum_heterophyllum	Kickxia_heterophylla
 Nanorrhinum_macilentum	Nanorrhinum_macilentum
 Nanorrhinum_ramosissimum	Nanorrhinum_ramosissimum
 Otacanthus_azureus	Otacanthus_azureus
@@ -6431,7 +6431,7 @@ Atraphaxis_angustifolia	Atraphaxis_angustifolia
 Atraphaxis_ariana	Atraphaxis_ariana
 Atraphaxis_aucheri	Atraphaxis_aucheri
 Atraphaxis_badghysi	Atraphaxis_badghysi
-Atraphaxis_billardieri	
+Atraphaxis_billardieri	Atraphaxis_billardierei
 Atraphaxis_binaludensis	Atraphaxis_binaludensis
 Atraphaxis_bracteata	Atraphaxis_bracteata
 Atraphaxis_canescens	Atraphaxis_canescens
@@ -6446,7 +6446,7 @@ Atraphaxis_karataviensis	Atraphaxis_karataviensis
 Atraphaxis_laetevirens	Atraphaxis_laetevirens
 Atraphaxis_macrocarpa	Atraphaxis_macrocarpa
 Atraphaxis_manshurica	Atraphaxis_manshurica
-Atraphaxis_muschketovii	
+Atraphaxis_muschketovii	Atraphaxis_muschketowii
 Atraphaxis_pungens	Atraphaxis_pungens
 Atraphaxis_pyrifolia	Atraphaxis_pyrifolia
 Atraphaxis_radkanensis	Atraphaxis_radkanensis
@@ -6508,7 +6508,7 @@ Dedeckera_eurekensis	Dedeckera_eurekensis
 Duma_coccoloboides	Duma_coccoloboides
 Duma_florulenta	Duma_florulenta
 Duma_horrida	Duma_horrida_subsp._horrida
-Eriogonum__umbellatum	
+Eriogonum__umbellatum	Eriogonum_umbellatum
 Eriogonum_arborescens	Eriogonum_arborescens
 Eriogonum_cinereum	Eriogonum_cinereum
 Eriogonum_congdonii	Eriogonum_congdonii
@@ -6555,8 +6555,8 @@ Muehlenbeckia_zippellii
 Oxygonum_auriculatum	Oxygonum_auriculatum
 Oxygonum_fruticosum	Oxygonum_fruticosum
 Oxygonum_tristachyum	Oxygonum_tristachyum
-Polygonum_affine	
-Polygonum_arianum	
+Polygonum_affine	Bistorta_affinis
+Polygonum_arianum	Atraphaxis_ariana
 Polygonum_aridum	Polygonum_aridum
 Polygonum_biaristatum	Polygonum_biaristatum
 Polygonum_botuliforme	Polygonum_botuliforme
@@ -6566,9 +6566,9 @@ Polygonum_intramongolicum
 Polygonum_kermanica	
 Polygonum_khajeh-jamali	Polygonum_khajeh-jamali
 Polygonum_maritimum	Polygonum_maritimum
-Polygonum_molle	
+Polygonum_molle	Koenigia_mollis
 Polygonum_paronychioides	Polygonum_paronychioides
-Polygonum_polystachyum	
+Polygonum_polystachyum	Koenigia_polystachya
 Polygonum_popovii	
 Polygonum_salicornoides	
 Polygonum_schischkinii	Polygonum_schischkinii
@@ -6577,7 +6577,7 @@ Polygonum_shastense	Polygonum_shastense
 Polygonum_spinosum	Polygonum_spinosum
 Polygonum_thymifolium	Polygonum_thymifolium
 Polygonum_tibeticum	
-Polygonum_tortuosum	
+Polygonum_tortuosum	Koenigia_tortuosa
 Polygonum_vacciniifolium	
 Pteropyrum_aucheri	Pteropyrum_aucheri
 Pteropyrum_noeanum	Pteropyrum_noeanum
@@ -6759,7 +6759,7 @@ Acaena_elongata	Acaena_elongata
 Alchemilla_argyrophylla	Alchemilla_argyrophylla
 Alchemilla_dewildemanii	Alchemilla_dewildemanii
 Alchemilla_elgonensis	Alchemilla_elgonensis
-Alchemilla_haumannii	
+Alchemilla_haumannii	Alchemilla_haumanii
 Alchemilla_johnstonii	Alchemilla_johnstonii
 Alchemilla_polylepis	Alchemilla_polylepis
 Alchemilla_roccattii	
@@ -6783,7 +6783,7 @@ Arcytophyllum_ciliolatum	Arcytophyllum_ciliolatum
 Arcytophyllum_ericoides	Arcytophyllum_ericoides
 Arcytophyllum_filiforme	Arcytophyllum_filiforme
 Arcytophyllum_lavarum	Arcytophyllum_lavarum
-Arcytophyllum_macbridei	
+Arcytophyllum_macbridei	Arcytophyllum_peruvianum
 Arcytophyllum_muticum	Arcytophyllum_muticum
 Arcytophyllum_nitidum	Arcytophyllum_nitidum
 Arcytophyllum_rivetii	Arcytophyllum_rivetii
@@ -6858,7 +6858,7 @@ Hedyotis_longipetala	Hedyotis_longipetala
 Hedyotis_macraei	Hedyotis_macraei
 Hedyotis_macrostegia	Hedyotis_macrostegia
 Hedyotis_maingayi	Hedyotis_maingayi
-Hedyotis_marginata	
+Hedyotis_marginata	Hedyotis_lessertiana_var._marginata
 Hedyotis_membranacea	Hedyotis_membranacea
 Hedyotis_neolessertiana	Hedyotis_neolessertiana
 Hedyotis_obscura	Hedyotis_obscura
@@ -6950,7 +6950,7 @@ Spermacoce_brachyantha	Spermacoce_brachyantha
 Spermacoce_dispersa	Spermacoce_dispersa
 Spermacoce_linearifolia	Spermacoce_linearifolia
 Spermacoce_resinosula	Spermacoce_resinosula
-Spermacoce_verticillata	
+Spermacoce_verticillata	Hedyotis_verticillata
 Thamnoldenlandia_ambovobensis	
 Scrophularia_alata	
 Scrophularia_atroglandulosa	Scrophularia_atroglandulosa
@@ -7012,7 +7012,7 @@ Stylidium_glandulosum	Stylidium_glandulosum
 Gesnouinia_arborea	Gesnouinia_arborea
 Urtica_domingensis	Urtica_domingensis
 Urtica_ferox	Urtica_ferox
-Urtica_glomerulaeflora	
+Urtica_glomerulaeflora	Urtica_glomeruliflora
 Urtica_longispica	Urtica_longispica
 Urtica_macbridei	Urtica_macbridei
 Urtica_morifolia	Urtica_morifolia
