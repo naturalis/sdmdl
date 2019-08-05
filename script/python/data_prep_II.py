@@ -12,6 +12,10 @@ import pycrs
 
 file_dir=r'/Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms'
 
+var_names = open(file_dir+"/data/gis/env_stacked/variable_list.txt")
+var_names = var_names.read()
+var_names = var_names.split("\n")[1:-1]
+
 #access file with list of taxa names
 taxa=pd.read_csv(file_dir+"/data/crops_cleaned/taxalist.txt",header=None)
 taxa.columns=["taxon"]
@@ -167,7 +171,7 @@ for key in species_occ_dict:
     #Dataset including occurrences and pseudo-absence points
     new_data=pd.DataFrame({"gbif_id": gbif,"taxon_name":taxon,"decimalLongitude": lon, "decimalLatitude":lat, "present/pseudo_absent": psa})
     data=pd.concat([presence_data,new_data],ignore_index=True)
-    data=data[['taxon_name','gbif_id','decimal_longitude','decimal_latitude','present/pseudo_absent']]
+    data=data[['taxon_name','gbif_id','decimalLongitude','decimalLatitude','present/pseudo_absent']]
     data["taxon_name"]=spec
     data["row_n"]=np.arange(len(data))
      
@@ -195,7 +199,7 @@ with open(file_dir+'/data/GIS/env_bio_mean_std.txt','w+') as file:
     file.write("band"+"\t"+"mean"+"\t"+"std_dev"+"\n")
     file.close()
     
-for i in range(1,186):
+for i in range(1,65):
     print(i)
     profile.update(count=1)
     band=raster.read(i)
@@ -259,7 +263,7 @@ for i in taxa["taxon"][:]:
     X=[]
     species =["%s"%spec]*int(len(row))
 
-    for j in range(0,186):
+    for j in range(0,64):
         band=myarray[j]
         x=[]
 
@@ -317,8 +321,8 @@ print(type(myarray))
 df=pd.read_csv(file_dir+'/data/GIS/world_locations_to_predict.csv')
 
 len_pd=np.arange(len(df))
-lon=df["decimalLongitude"]
-lat=df["decimalLatitude"]
+lon=df["decimal_longitude"]
+lat=df["decimal_latitude"]
 lon=lon.values
 lat=lat.values
 
@@ -342,7 +346,7 @@ mean_std=mean_std.to_numpy()
 ###########################################################
 X=[]
 
-for j in range(0,186):
+for j in range(0,65):
     print(j)
     band=myarray[j]
     x=[]
@@ -358,35 +362,35 @@ for j in range(0,186):
     X.append(x)
 
 
-#include row and column values
-X.append(row)
-X.append(col)
-
-#set as numpy 2d array
-X =np.array([np.array(xi) for xi in X])
-
-df=pd.DataFrame(X)
-
-df=df.T
-df.rename(columns=dict(zip(df.columns[0:186], var_names)),inplace=True)
-df=df.dropna(axis=0, how='any')
-df.head()
-
-input_X=df.iloc[:,0:186]
-np.shape(input_X)
-
-row=df[186]
-col=df[187]
-
-row_col=pd.DataFrame({"row":row,"col":col})
-
-#convert dataframe back to numpy array
-input_X=input_X.values
-
-#convert rows and col indices back to array
-row=row.values
-col=col.values
-
-#save
-prediction_array=np.save(file_dir+'/data/GIS/world_prediction_array.npy',input_X)
-prediction_pandas=row_col.to_csv(file_dir+'/data/GIS/world_prediction_row_col.csv')
+    #include row and column values
+    X.append(row)
+    X.append(col)
+    
+    #set as numpy 2d array
+    X =np.array([np.array(xi) for xi in X])
+    
+    df=pd.DataFrame(X)
+    
+    df=df.T
+    df.rename(columns=dict(zip(df.columns[0:65], var_names)),inplace=True)
+    df=df.dropna(axis=0, how='any')
+    df.head()
+    
+    input_X=df.iloc[:,0:65]
+    np.shape(input_X)
+    
+    row=df[64]
+    col=df[65]
+    
+    row_col=pd.DataFrame({"row":row,"col":col})
+    
+    #convert dataframe back to numpy array
+    input_X=input_X.values
+    
+    #convert rows and col indices back to array
+    row=row.values
+    col=col.values
+    
+    #save
+    prediction_array=np.save(file_dir+'/data/GIS/world_prediction_array.npy',input_X)
+    prediction_pandas=row_col.to_csv(file_dir+'/data/GIS/world_prediction_row_col.csv')
