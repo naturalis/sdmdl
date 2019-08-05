@@ -95,7 +95,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # this is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.fragmntndx))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 #Human Accessibility
@@ -117,7 +117,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # this is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.humAcc_ndx))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 #Human Appropriation
@@ -139,7 +139,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # this is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.HumAppIndx))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 #Mammal species richness
@@ -161,7 +161,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # this is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.mamml_spcs))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 
@@ -183,7 +183,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # this is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.plant_spcs))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 #Ecoregion attribute dataset
@@ -216,7 +216,7 @@ with rasterio.open(out_fn, 'w', **meta) as out:
     # This is where we create a generator of geom, value pairs to use in rasterizing
     shapes = ((geom,value) for geom, value in zip(df.geometry, df.WWF_MHTNUM))
 
-    burned = features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
+    burned = rasterio.features.rasterize(shapes=shapes, fill=0, out=out_arr, transform=out.transform,all_touched=True)
     out.write_band(1, burned)
     
 clipped = rasterio.open(out_fn)
@@ -271,14 +271,14 @@ for root, dirs, files in os.walk(file_dir+'/data/GIS/tnc/ecoregion_rasters'):
             names_ecoregion.append(name)
             
 #access file with list of taxa names
-taxa=pd.read_csv(file_dir+"/data/SQL_filtered_gbif/taxa_list.txt",header=None)
+taxa=pd.read_csv(file_dir+"/data/crops_cleaned/taxalist.txt",header=None)
 taxa.columns=["taxon"]
 
 
 species_occ_dict={}
 
 for i in taxa["taxon"]:
-    taxon_data = pd.read_csv(file_dir+"/data/SQL_filtered_gbif/%s_filtered_data.csv"%i)
+    taxon_data = pd.read_csv(file_dir+"/data/crops_cleaned/%s.csv"%i)
     #add species dataframe to dict
     species_occ_dict["%s"%i] = taxon_data  
     #check whether all species have been included and inspect dictionary
@@ -297,8 +297,8 @@ for key in species_occ_dict:
     presence_data = species_occ_dict[key]
     presence_data["present/pseudo_absent"]=1
     spec = key
-    long=presence_data["decimal_longitude"]
-    lati=presence_data["decimal_latitude"]
+    long=presence_data["decimalLongitude"]
+    lati=presence_data["decimalLatitude"]
     long=pd.Series.tolist(long)
     lati=pd.Series.tolist(lati)
 
@@ -324,3 +324,39 @@ for root, dirs, files in os.walk(file_dir+"/data/GIS/spec_presence"):
             name=file.replace(".tif","")
             names_species.append(name)
             
+#Stack ENVIREM+BIOCLIM+HISTORIC+ECOREGION+SPECIES datasets
+list_variables=[]
+list_names=[]
+
+
+for item in list_bioclim_files:
+    list_variables.append(item)   
+for item in list_envirem_files:
+    list_variables.append(item)
+for item in list_eco_attrib_files:
+    list_variables.append(item)
+for item in list_ecoregion_files:
+    list_variables.append(item)
+for item in list_species_files:
+    list_variables.append(item)
+    
+     
+es.stack(list_variables, file_dir+"/data/GIS/env_stacked/stacked_env_variables.tif")
+
+
+for item in names_bioclim:
+    list_names.append(item)   
+for item in names_envirem:
+    list_names.append(item)
+for item in names_eco_attrib:
+    list_names.append(item)
+for item in names_ecoregion:
+    list_names.append(item)
+for item in names_species:
+    list_names.append(item)
+    
+#save the names of the variables in order to list
+myfile = open(file_dir+'/data/GIS/env_stacked/variable_list.txt', 'w+')
+for item in list_names:
+    myfile.write(item+"\n")
+myfile.close()
