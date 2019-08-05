@@ -142,7 +142,6 @@ Convallaria_majalis
 Conyza_canadensis
 Corallorhiza_trifida
 Cornus_suecica
-Corycium_carnosum
 Corylus_avellana
 Corylus_colurna
 Crataegus_monogyna
@@ -203,7 +202,6 @@ Dioscorea_minutiflora
 Dioscorea_persimilis
 Dioscorea_polystachya
 Dioscorea_praehensilis
-Dioscorea_rotundata
 Dioscorea_trifida
 Dipterocarpus_tuberculatus
 Disa_bracteata
@@ -212,7 +210,6 @@ Dodonaea_viscosa_subsp._angustifolia
 Dryas_integrifolia
 Dryas_octopetala
 Dysphania_ambrosioides
-Elephantopus_scaber
 Eleusine_coracana
 Eleusine_coracana_subsp._africana
 Empetrum_nigrum
@@ -234,7 +231,6 @@ Epipactis_dunensis
 Epipactis_helleborine
 Epipactis_palustris
 Epipactis_purpurata
-Equisetum_fluviatile
 Eragrostis_pilosa
 Eragrostis_tef
 Erica_carnea
@@ -286,7 +282,6 @@ Gliricidia_sepium
 Glycine_max
 Gnetum_gnemon
 Goodyera_foliosa
-Goodyera_maximowicziana
 Goodyera_oblongifolia
 Goodyera_procera
 Goodyera_pubescens
@@ -612,7 +607,7 @@ Sonneratia_alba
 Sorbus_aucuparia
 Sorghum_bicolor
 Spiranthes_sinensis
-Subularia_aquatica
+Sisymbrium_amphibium
 Swietenia_macrophylla
 Tacca_plantaginea
 Tainia_latifolia
