@@ -55,7 +55,7 @@ TAXON: while( my $taxon = $trs->next ) {
 			
 			# we can update at least the GBIF name and speciesKey
 			$update->{'gbif_name'} = $res->{'canonicalName'};
-			$update->{'gbif_name'} = $key;
+			$update->{'gbif_species_key'} = $key;
 			
 			# do occurrence query, returns hashref or undef
 			if ( my $occ = do_query( sprintf( $url_data, $key ) ) ) {
