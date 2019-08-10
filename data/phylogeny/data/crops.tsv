@@ -1,73 +1,73 @@
-allmb_name	gbif_species_key	domestication
-Zea_mays	5290052	2
-Zea_mays_subsp._mexicana	5290051	1
-Zea_mays_subsp._parviglumis	5678457	1
-Oryza_sativa	2703459	2
-Oryza_rufipogon	2703463	1
-Sorghum_bicolor	2705181	2
-Sorghum_bicolor_subsp._verticilliflorum_	4105880	1
-Eragrostis_tef	2705325	2
-Eragrostis_pilosa	2705400	1
-Eleusine_coracana	2705957	2
-Eleusine_africana	4124350	1
-Hordeum_vulgare	2706056	2
-Hordeum_spontaneum	2706075	1
-Triticum_aestivum	7795888	2
-Triticum_urartu	2706411	1
-Aegilops_speltoides	5289790	1
-Triticum_turgidum_subsp._dicoccoides_	4932502	1
-Aegilops_tauschii	5289779	1
-Secale_cereale	2705966	2
-Secale_vavilovii	4121006	1
-Manihot_esculenta	3060998	2
-Manihot_esculenta_subsp._flabellifolia	3061012	1
-Solanum_tuberosum	2930262	2
-Solanum_bukasovii	7299615	1
-Ipomoea_batatas	2928551	2
-Ipomoea_trifida	4267463	1
-Colocasia_esculenta	5330776	2
-Colocasia_lihengiae	5330771	1
-Colocasia_yunnanensis	5330819	1
-Colocasia_formosana	5330763	1
-Dioscorea_rotundata	2755105	2
-Dioscorea_cayennensis	6406374	1
-Dioscorea_praehensilis	2754460	1
-Dioscorea_abyssinica	2754610	1
-Dioscorea_cayennensis	6406374	2
-Dioscorea_minutiflora	2755468	1
-Dioscorea_alata	2754476	2
-Dioscorea_hamiltonii	2754651	1
-Dioscorea_persimilis	2754654	1
-Dioscorea_polystachya	2754732	2
-Dioscorea_bulbifera	2755489	2
-Dioscorea_esculenta	2755195	2
-Dioscorea_dumetorum	2754673	2
-Dioscorea_trifida	2755239	2
-Musa_x_paradisiaca	2762752	2
-Musa_acuminata	2762680	1
-Musa_balbisiana	2762950	1
-Ensete_ventricosum	2763050	2
-Fagopyrum_esculentum	2889373	2
-Fagopyrum_esculentum_subsp._ancestrale	4036222	1
-Fagopyrum_tataricum	2889378	2
-Fagopyrum_tataricum_subsp._potanini		1
-Arachis_hypogaea	5353770	2
-Arachis_duranensis	5353841	1
-Arachis_ipaensis	5353793	1
-Cucurbita_argyrosperma	7156471	2
-Cucurbita_argyrosperma_subsp._sororia	3623807	1
-Cucurbita_ficifolia	2874512	2
-Cucurbita_maxima	7655426	2
-Cucurbita_maxima_subsp._andreana	4939874	1
-Cucurbita_moschata	7393329	2
-Cucurbita_pepo	2874508	2
-Cucurbita_pepo_subsp._fraterna	4939873	1
-Artocarpus_altilis	2984573	2
-Artocarpus_camansi	3765081	1
-Artocarpus_mariannensis	8282919	1
-Mangifera_indica	3190638	2
-Mangifera_sylvatica	3662046	1
-Cocos_nucifera	2735117	2
-Phoenix_dactylifera	6109699	2
-Phoenix_sylvestris	5293177	1
-Metroxylon_sagu_	2733781	2
+allmb_name	gbif_species_key	domestication	progenitor_of
+Zea_mays	5290052	2	
+Zea_mays_subsp._mexicana	5290051	1	Zea_mays
+Zea_mays_subsp._parviglumis	5678457	1	Zea_mays
+Oryza_sativa	2703459	2	
+Oryza_rufipogon	2703463	1	Oryza_sativa
+Sorghum_bicolor	2705181	2	
+Sorghum_bicolor_subsp._verticilliflorum	4105880	1	Sorghum_bicolor
+Eragrostis_tef	2705325	2	
+Eragrostis_pilosa	2705400	1	Eragrostis_tef
+Eleusine_coracana	2705957	2	
+Eleusine_africana	4124350	1	Eleusine_coracana
+Hordeum_vulgare	2706056	2	
+Hordeum_spontaneum	2706075	1	Hordeum_vulgare
+Triticum_aestivum	7795888	2	
+Triticum_urartu	2706411	1	Triticum_aestivum
+Aegilops_speltoides	5289790	1	Triticum_aestivum
+Triticum_turgidum_subsp._dicoccoides	4932502	1	Triticum_aestivum
+Aegilops_tauschii	5289779	1	Triticum_aestivum
+Secale_cereale	2705966	2	
+Secale_vavilovii	4121006	1	Secale_cereale
+Manihot_esculenta	3060998	2	
+Manihot_esculenta_subsp._flabellifolia	3061012	1	Manihot_esculenta
+Solanum_tuberosum	2930262	2	
+Solanum_bukasovii	7299615	1	Solanum_tuberosum
+Ipomoea_batatas	2928551	2	
+Ipomoea_trifida	4267463	1	Ipomoea_batatas
+Colocasia_esculenta	5330776	2	
+Colocasia_lihengiae	5330771	1	Colocasia_esculenta
+Colocasia_yunnanensis	5330819	1	Colocasia_esculenta
+Colocasia_formosana	5330763	1	Colocasia_esculenta
+Dioscorea_rotundata	2755105	2	
+Dioscorea_cayennensis	6406374	1	Dioscorea_rotundata
+Dioscorea_praehensilis	2754460	1	Dioscorea_rotundata
+Dioscorea_abyssinica	2754610	1	Dioscorea_rotundata
+Dioscorea_cayennensis	6406374	2	
+Dioscorea_minutiflora	2755468	1	Dioscorea_cayennensis
+Dioscorea_alata	2754476	2	
+Dioscorea_hamiltonii	2754651	1	Dioscorea_alata
+Dioscorea_persimilis	2754654	1	Dioscorea_alata
+Dioscorea_polystachya	2754732	2	
+Dioscorea_bulbifera	2755489	2	
+Dioscorea_esculenta	2755195	2	
+Dioscorea_dumetorum	2754673	2	
+Dioscorea_trifida	2755239	2	
+Musa_x_paradisiaca	2762752	2	
+Musa_acuminata	2762680	1	Musa_x_paradisiaca
+Musa_balbisiana	2762950	1	Musa_x_paradisiaca
+Ensete_ventricosum	2763050	2	
+Fagopyrum_esculentum	2889373	2	
+Fagopyrum_esculentum_subsp._ancestrale	4036222	1	Fagopyrum_esculentum
+Fagopyrum_tataricum	2889378	2	
+Fagopyrum_tataricum_subsp._potanini		1	Fagopyrum_tataricum
+Arachis_hypogaea	5353770	2	
+Arachis_duranensis	5353841	1	Arachis_hypogaea
+Arachis_ipaensis	5353793	1	Arachis_hypogaea
+Cucurbita_argyrosperma	7156471	2	
+Cucurbita_argyrosperma_subsp._sororia	3623807	1	Cucurbita_argyrosperma
+Cucurbita_ficifolia	2874512	2	
+Cucurbita_maxima	7655426	2	
+Cucurbita_maxima_subsp._andreana	4939874	1	Cucurbita_maxima
+Cucurbita_moschata	7393329	2	
+Cucurbita_pepo	2874508	2	
+Cucurbita_pepo_subsp._fraterna	4939873	1	Cucurbita_pepo
+Artocarpus_altilis	2984573	2	
+Artocarpus_camansi	3765081	1	Artocarpus_altilis
+Artocarpus_mariannensis	8282919	1	Artocarpus_altilis
+Mangifera_indica	3190638	2	
+Mangifera_sylvatica	3662046	1	Mangifera_indica
+Cocos_nucifera	2735117	2	
+Phoenix_dactylifera	6109699	2	
+Phoenix_sylvestris	5293177	1	Phoenix_dactylifera
+Metroxylon_sagu	2733781	2	
