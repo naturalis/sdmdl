@@ -29,7 +29,22 @@ __PACKAGE__->table("taxon");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 ncbi_name
+=head2 allmb_id
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 gbif_species_key
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 is_gbif_tnrs
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 allmb_name
 
   data_type: 'text'
   is_nullable: 1
@@ -49,9 +64,9 @@ __PACKAGE__->table("taxon");
   data_type: 'text'
   is_nullable: 1
 
-=head2 is_domesticated
+=head2 domestication
 
-  data_type: 'boolean'
+  data_type: 'integer'
   is_nullable: 1
 
 =head2 has_ascomycota
@@ -109,22 +124,18 @@ __PACKAGE__->table("taxon");
   data_type: 'integer'
   is_nullable: 1
 
-=head2 gbif_species_key
-
-  data_type: 'integer'
-  is_nullable: 1
-
-=head2 is_gbif_tnrs
-
-  data_type: 'integer'
-  is_nullable: 1
-  
 =cut
 
 __PACKAGE__->add_columns(
   "taxon_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "ncbi_name",
+  "allmb_id",
+  { data_type => "integer", is_nullable => 1 },
+  "gbif_species_key",
+  { data_type => "integer", is_nullable => 1 },
+  "is_gbif_tnrs",
+  { data_type => "integer", is_nullable => 1 },
+  "allmb_name",
   { data_type => "text", is_nullable => 1 },
   "myco_name",
   { data_type => "text", is_nullable => 1 },
@@ -132,8 +143,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "gbif_name",
   { data_type => "text", is_nullable => 1 },
-  "is_domesticated",
-  { data_type => "boolean", is_nullable => 1 },
+  "domestication",
+  { data_type => "integer", is_nullable => 1 },
   "has_ascomycota",
   { data_type => "boolean", is_nullable => 1 },
   "has_basidiomycota",
@@ -156,10 +167,6 @@ __PACKAGE__->add_columns(
   { data_type => "boolean", is_nullable => 1 },
   "num_occurrences",
   { data_type => "integer", is_nullable => 1 },
-  "gbif_species_key",
-  { data_type => "integer", is_nullable => 1 },
-  "is_gbif_tnrs",
-  { data_type => "integer", is_nullable => 1 },  
 );
 
 =head1 PRIMARY KEY
@@ -175,8 +182,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("taxon_id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-06 12:43:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:w/1s9SjFQewI7qELaMdpvQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-10 20:55:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+2l6o+gUVN9/DnvCILgyYQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
