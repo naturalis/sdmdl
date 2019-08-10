@@ -38,15 +38,15 @@ Dioscorea_minutiflora	2755468	1	Dioscorea_cayennensis
 Dioscorea_alata	2754476	2	
 Dioscorea_hamiltonii	2754651	1	Dioscorea_alata
 Dioscorea_persimilis	2754654	1	Dioscorea_alata
-Dioscorea_polystachya	2754732	2	
-Dioscorea_bulbifera	2755489	2	
-Dioscorea_esculenta	2755195	2	
-Dioscorea_dumetorum	2754673	2	
-Dioscorea_trifida	2755239	2	
+Dioscorea_polystachya	2754732	3	
+Dioscorea_bulbifera	2755489	3	
+Dioscorea_esculenta	2755195	3	
+Dioscorea_dumetorum	2754673	3	
+Dioscorea_trifida	2755239	3	
 Musa_x_paradisiaca	2762752	2	
 Musa_acuminata	2762680	1	Musa_x_paradisiaca
 Musa_balbisiana	2762950	1	Musa_x_paradisiaca
-Ensete_ventricosum	2763050	2	
+Ensete_ventricosum	2763050	3	
 Fagopyrum_esculentum	2889373	2	
 Fagopyrum_esculentum_subsp._ancestrale	4036222	1	Fagopyrum_esculentum
 Fagopyrum_tataricum	2889378	2	
@@ -56,10 +56,10 @@ Arachis_duranensis	5353841	1	Arachis_hypogaea
 Arachis_ipaensis	5353793	1	Arachis_hypogaea
 Cucurbita_argyrosperma	7156471	2	
 Cucurbita_argyrosperma_subsp._sororia	3623807	1	Cucurbita_argyrosperma
-Cucurbita_ficifolia	2874512	2	
+Cucurbita_ficifolia	2874512	3	
 Cucurbita_maxima	7655426	2	
 Cucurbita_maxima_subsp._andreana	4939874	1	Cucurbita_maxima
-Cucurbita_moschata	7393329	2	
+Cucurbita_moschata	7393329	3	
 Cucurbita_pepo	2874508	2	
 Cucurbita_pepo_subsp._fraterna	4939873	1	Cucurbita_pepo
 Artocarpus_altilis	2984573	2	
@@ -67,7 +67,7 @@ Artocarpus_camansi	3765081	1	Artocarpus_altilis
 Artocarpus_mariannensis	8282919	1	Artocarpus_altilis
 Mangifera_indica	3190638	2	
 Mangifera_sylvatica	3662046	1	Mangifera_indica
-Cocos_nucifera	2735117	2	
+Cocos_nucifera	2735117	3	
 Phoenix_dactylifera	6109699	2	
 Phoenix_sylvestris	5293177	1	Phoenix_dactylifera
-Metroxylon_sagu	2733781	2	
+Metroxylon_sagu	2733781	3	
