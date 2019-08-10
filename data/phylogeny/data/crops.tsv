@@ -8,10 +8,10 @@ Sorghum_bicolor	2705181	2
 Sorghum_bicolor_subsp._verticilliflorum	4105880	1	Sorghum_bicolor
 Eragrostis_tef	2705325	2	
 Eragrostis_pilosa	2705400	1	Eragrostis_tef
-Eleusine_coracana	2705957	2	
-Eleusine_africana	4124350	1	Eleusine_coracana
-Hordeum_vulgare	2706056	2	
-Hordeum_spontaneum	2706075	1	Hordeum_vulgare
+Eleusine_coracana_subsp._coracana	2705957	2	
+Eleusine_coracana_subsp._africana	4124350	1	Eleusine_coracana
+Hordeum_vulgare_subsp._vulgare	2706056	2	
+Hordeum_vulgare_subsp._spontaneum	2706075	1	Hordeum_vulgare
 Triticum_aestivum	7795888	2	
 Triticum_urartu	2706411	1	Triticum_aestivum
 Aegilops_speltoides	5289790	1	Triticum_aestivum
@@ -21,15 +21,15 @@ Secale_cereale	2705966	2
 Secale_vavilovii	4121006	1	Secale_cereale
 Manihot_esculenta	3060998	2	
 Manihot_esculenta_subsp._flabellifolia	3061012	1	Manihot_esculenta
-Solanum_tuberosum	2930262	2	
-Solanum_bukasovii	7299615	1	Solanum_tuberosum
+Solanum_tuberosum_subsp._andigenum	2930262	2	
+Solanum_bukasovii_f._multidissectum	7299615	1	Solanum_tuberosum
 Ipomoea_batatas	2928551	2	
 Ipomoea_trifida	4267463	1	Ipomoea_batatas
 Colocasia_esculenta	5330776	2	
 Colocasia_lihengiae	5330771	1	Colocasia_esculenta
 Colocasia_yunnanensis	5330819	1	Colocasia_esculenta
 Colocasia_formosana	5330763	1	Colocasia_esculenta
-Dioscorea_rotundata	2755105	2	
+Dioscorea_cayennensis_subsp._rotundata	2755105	2	
 Dioscorea_cayennensis	6406374	1	Dioscorea_rotundata
 Dioscorea_praehensilis	2754460	1	Dioscorea_rotundata
 Dioscorea_abyssinica	2754610	1	Dioscorea_rotundata
@@ -51,7 +51,11 @@ Fagopyrum_esculentum	2889373	2
 Fagopyrum_esculentum_subsp._ancestrale	4036222	1	Fagopyrum_esculentum
 Fagopyrum_tataricum	2889378	2	
 Fagopyrum_tataricum_subsp._potanini		1	Fagopyrum_tataricum
-Arachis_hypogaea	5353770	2	
+Arachis_hypogaea_var._vulgaris	5353770	2	
+Arachis_hypogaea_var._aequatoriana	5353770	2	
+Arachis_hypogaea_var._hirsuta	5353770	2	
+Arachis_hypogaea_var._hypogaea	5353770	2	
+Arachis_hypogaea_var._peruviana	5353770	2	
 Arachis_duranensis	5353841	1	Arachis_hypogaea
 Arachis_ipaensis	5353793	1	Arachis_hypogaea
 Cucurbita_argyrosperma	7156471	2	
