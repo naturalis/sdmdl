@@ -34,6 +34,7 @@ for my $r ( @{ csv( 'in' => $infile, 'headers' => 'auto', 'sep_char' => "\t" ) }
 	my $name = $r->{allmb_name};
 	if ( my $taxon = $db->search({ allmb_name => $name })->single ) {
 		INFO "Have literal match for $name";
+		$taxon->update({ domestication => $r->{domestication} });
 	}
 	else {
 		WARN "No literal match for $name";
