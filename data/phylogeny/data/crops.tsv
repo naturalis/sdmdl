@@ -1,11 +1,11 @@
 allmb_name	gbif_species_key	domestication	progenitor_of
 Zea_mays	5290052	2	
-Zea_mays_subsp._mexicana	5290051	1	Zea_mays
+Zea_mays_subsp._mexicana	5290049	1	Zea_mays
 Zea_mays_subsp._parviglumis	5678457	1	Zea_mays
 Oryza_sativa	2703459	2	
 Oryza_rufipogon	2703463	1	Oryza_sativa
 Sorghum_bicolor	2705181	2	
-Sorghum_bicolor_subsp._verticilliflorum	4105880	1	Sorghum_bicolor
+Sorghum_arundinaceum	4108497	1	Sorghum_bicolor
 Eragrostis_tef	2705325	2	
 Eragrostis_pilosa	2705400	1	Eragrostis_tef
 Eleusine_coracana_subsp._coracana	2705957	2	
@@ -15,7 +15,7 @@ Hordeum_vulgare_subsp._spontaneum	2706075	1	Hordeum_vulgare
 Triticum_aestivum	7795888	2	
 Triticum_urartu	2706411	1	Triticum_aestivum
 Aegilops_speltoides	5289790	1	Triticum_aestivum
-Triticum_turgidum_subsp._dicoccoides	4932502	1	Triticum_aestivum
+Triticum_dicoccoides	4932502	1	Triticum_aestivum
 Aegilops_tauschii	5289779	1	Triticum_aestivum
 Secale_cereale	2705966	2	
 Secale_vavilovii	4121006	1	Secale_cereale
