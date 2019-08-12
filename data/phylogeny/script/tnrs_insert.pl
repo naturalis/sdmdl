@@ -41,6 +41,7 @@ NAME: while(<$fh>) {
 		next NAME;
 	}
 	my %record = map { $header[$_] => $line[$_] } 0 .. $#header;
+	delete $record{'family'}; # XXX is not in database, so we delete it here for the ORM
 	
 	# the input that has the taxon name
 	my $input = $record{$column};
@@ -54,7 +55,7 @@ NAME: while(<$fh>) {
 	# check if literally in local DB
 	my $sanitized = $input;
 	$sanitized =~ s/\Q$sep\A/_/g; # local DB has underscores	
-	next NAME if db_check($sanitized);	
+	next NAME if db_check($sanitized, \%record);	
 	
 	# fetch canonical from NCBI
 	$input =~ s/\Q$sep\A/ /g; # NCBI has spaces
@@ -84,15 +85,15 @@ NAME: while(<$fh>) {
 		}
 		my $canonical = $taxon->scientific_name;
 		$canonical =~ s/ /_/g;
-		WARN "No match for Entrez TNRS $input => $canonical" unless db_check($canonical);		
+		WARN "No match for Entrez TNRS $input => $canonical" unless db_check($canonical, \%record);		
 	}
 }
 
 sub db_check {
-	my $name = shift;
+	my ( $name, $record ) = @_;
 	if ( my $allmb = $db->search({ 'allmb_name' => $name })->single ) {
 		INFO "Found literal match $name";
-		# insert into database here
+		$allmb->update($record);
 		return 1;
 	}
 
@@ -102,7 +103,7 @@ sub db_check {
 	while ( my $match = $allmb->next ) {
 		my $subsp = $match->allmb_name;
 		INFO "Found fuzzy match $name => $subsp";
-		# insert into database here
+		$match->update($record);
 		$matches++;
 	}
 	return $matches;
