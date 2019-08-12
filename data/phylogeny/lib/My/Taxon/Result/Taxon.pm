@@ -49,7 +49,7 @@ __PACKAGE__->table("taxon");
   data_type: 'text'
   is_nullable: 1
 
-=head2 myco_name
+=head2 feijen_name
 
   data_type: 'text'
   is_nullable: 1
@@ -137,7 +137,7 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_nullable => 1 },
   "allmb_name",
   { data_type => "text", is_nullable => 1 },
-  "myco_name",
+  "feijen_name",
   { data_type => "text", is_nullable => 1 },
   "lens_name",
   { data_type => "text", is_nullable => 1 },
