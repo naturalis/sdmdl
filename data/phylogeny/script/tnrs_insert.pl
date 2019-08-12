@@ -9,6 +9,7 @@ use Bio::DB::Taxonomy;
 use Bio::Phylo::Util::Logger ':simple';
 
 # process command line arguments
+my $match;
 my $dbfile;
 my $infile;
 my $column;
@@ -16,6 +17,7 @@ my $sep = '_';
 my $verbosity = WARN;
 GetOptions(
 	'sep=s'    => \$sep,
+	'match'    => \$match,
 	'dbfile=s' => \$dbfile,
 	'infile=s' => \$infile,
 	'column=s' => \$column,
@@ -93,7 +95,7 @@ sub db_check {
 	my ( $name, $record ) = @_;
 	if ( my $allmb = $db->search({ 'allmb_name' => $name })->single ) {
 		INFO "Found literal match $name";
-		$allmb->update($record);
+		$allmb->update($record) if match( $record, $allmb, $name );
 		return 1;
 	}
 
@@ -103,8 +105,21 @@ sub db_check {
 	while ( my $match = $allmb->next ) {
 		my $subsp = $match->allmb_name;
 		INFO "Found fuzzy match $name => $subsp";
-		$match->update($record);
+		$match->update($record) if match( $record, $match, $subsp );
 		$matches++;
 	}
 	return $matches;
+}
+
+sub match {
+	my ( $update, $record, $name ) = @_;
+	my @keys = grep { $_ ne $column } keys %$update;
+	for my $k ( @keys ) {
+		next unless defined $update->{$k};
+		my ( $new, $old ) = ( $update->{$k}, $record->$k );
+		next if $new == $old;
+		ERROR "mismatch in ${name}.${k}: $new != $old (new, old)";
+		return 0;
+	}
+	return 1;
 }
