@@ -49,11 +49,6 @@ __PACKAGE__->table("taxon");
   data_type: 'text'
   is_nullable: 1
 
-=head2 feijen_name
-
-  data_type: 'text'
-  is_nullable: 1
-
 =head2 lens_name
 
   data_type: 'text'
@@ -64,34 +59,24 @@ __PACKAGE__->table("taxon");
   data_type: 'text'
   is_nullable: 1
 
+=head2 maherali_name
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 steidinger_name
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 werner_name
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 domestication
 
   data_type: 'integer'
-  is_nullable: 1
-
-=head2 has_ascomycota
-
-  data_type: 'boolean'
-  is_nullable: 1
-
-=head2 has_basidiomycota
-
-  data_type: 'boolean'
-  is_nullable: 1
-
-=head2 has_glomeromycotina
-
-  data_type: 'boolean'
-  is_nullable: 1
-
-=head2 has_mucoromycotina
-
-  data_type: 'boolean'
-  is_nullable: 1
-
-=head2 has_mycorrhiza
-
-  data_type: 'boolean'
   is_nullable: 1
 
 =head2 is_sw
@@ -124,6 +109,36 @@ __PACKAGE__->table("taxon");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 has_am
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 has_ecm
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 has_nm
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 has_er
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 has_orm
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 has_nfix
+
+  data_type: 'boolean'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -137,24 +152,18 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_nullable => 1 },
   "allmb_name",
   { data_type => "text", is_nullable => 1 },
-  "feijen_name",
-  { data_type => "text", is_nullable => 1 },
   "lens_name",
   { data_type => "text", is_nullable => 1 },
   "gbif_name",
   { data_type => "text", is_nullable => 1 },
+  "maherali_name",
+  { data_type => "text", is_nullable => 1 },
+  "steidinger_name",
+  { data_type => "text", is_nullable => 1 },
+  "werner_name",
+  { data_type => "text", is_nullable => 1 },
   "domestication",
   { data_type => "integer", is_nullable => 1 },
-  "has_ascomycota",
-  { data_type => "boolean", is_nullable => 1 },
-  "has_basidiomycota",
-  { data_type => "boolean", is_nullable => 1 },
-  "has_glomeromycotina",
-  { data_type => "boolean", is_nullable => 1 },
-  "has_mucoromycotina",
-  { data_type => "boolean", is_nullable => 1 },
-  "has_mycorrhiza",
-  { data_type => "boolean", is_nullable => 1 },
   "is_sw",
   { data_type => "boolean", is_nullable => 1 },
   "habit",
@@ -167,6 +176,18 @@ __PACKAGE__->add_columns(
   { data_type => "boolean", is_nullable => 1 },
   "num_occurrences",
   { data_type => "integer", is_nullable => 1 },
+  "has_am",
+  { data_type => "boolean", is_nullable => 1 },
+  "has_ecm",
+  { data_type => "boolean", is_nullable => 1 },
+  "has_nm",
+  { data_type => "boolean", is_nullable => 1 },
+  "has_er",
+  { data_type => "boolean", is_nullable => 1 },
+  "has_orm",
+  { data_type => "boolean", is_nullable => 1 },
+  "has_nfix",
+  { data_type => "boolean", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -182,8 +203,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("taxon_id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-10 20:55:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+2l6o+gUVN9/DnvCILgyYQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-12 15:17:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OgYVrQynuJiz8UAIJIe8Tg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
