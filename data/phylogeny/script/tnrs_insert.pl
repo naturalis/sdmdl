@@ -8,16 +8,25 @@ use Data::Dumper;
 use Bio::DB::Taxonomy;
 use Bio::Phylo::Util::Logger ':simple';
 
+# Usage:
+# $o -d <sqlite.db> -i <table.tsv> -c <col in tsv and db> \
+# 	-u <actually do updates> \
+# 	-m <check if myco data from new source matches existing record>
+# 	-s <separator, e.g. _>
+# 	-v [-v]
+
 # process command line arguments
 my $match;
 my $dbfile;
 my $infile;
 my $column;
+my $update;
 my $sep = '_';
 my $verbosity = WARN;
 GetOptions(
 	'sep=s'    => \$sep,
 	'match'    => \$match,
+	'update'   => \$update,
 	'dbfile=s' => \$dbfile,
 	'infile=s' => \$infile,
 	'column=s' => \$column,
@@ -95,7 +104,8 @@ sub db_check {
 	my ( $name, $record ) = @_;
 	if ( my $allmb = $db->search({ 'allmb_name' => $name })->single ) {
 		INFO "Found literal match $name";
-		$allmb->update($record) if match( $record, $allmb, $name );
+		match( $record, $allmb, $name ) if $match;
+		$allmb->update($record) if $update;		
 		return 1;
 	}
 
@@ -105,7 +115,8 @@ sub db_check {
 	while ( my $match = $allmb->next ) {
 		my $subsp = $match->allmb_name;
 		INFO "Found fuzzy match $name => $subsp";
-		$match->update($record) if match( $record, $match, $subsp );
+		match( $record, $match, $subsp ) if $match;
+		$match->update($record) if $update;		
 		$matches++;
 	}
 	return $matches;
