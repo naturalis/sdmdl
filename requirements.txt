@@ -1,0 +1,14 @@
+earthpy
+fiona
+gdal
+geopandas
+matplotlib
+natsort
+numpy
+osgeo
+pandas
+pycrs
+pygbif
+rasterio
+shapely
+zipfile
