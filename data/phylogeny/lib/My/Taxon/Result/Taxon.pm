@@ -136,7 +136,7 @@ __PACKAGE__->table("taxon");
 
 =head2 has_nfix
 
-  data_type: 'boolean'
+  data_type: 'real'
   is_nullable: 1
 
 =cut
@@ -187,7 +187,7 @@ __PACKAGE__->add_columns(
   "has_orm",
   { data_type => "boolean", is_nullable => 1 },
   "has_nfix",
-  { data_type => "boolean", is_nullable => 1 },
+  { data_type => "real", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -203,8 +203,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("taxon_id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-12 15:17:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OgYVrQynuJiz8UAIJIe8Tg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-13 10:57:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8PUSOZT/AmrlhHPmovFAEw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
