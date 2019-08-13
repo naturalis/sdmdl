@@ -1,19 +1,29 @@
-# trait-geo-diverse-angiosperms
-This repository is built for the development a deep learning species distribution modelling (DL-SDM) package using the python and R programming languages. The DL-SDM package will allow for a more intuitive and easy exploration of biodiversity patterns by modelling preferences for a great number of environmental variables. 
-This repository contains three different sub-projects. These are used as case studies to evaluate the performance of the DL-SDM package:
+# sdmdl
+
+An object-oriented python package for species distribution modelling using deep learning.
+The package allows for a more intuitive and easy exploration of biodiversity patterns by 
+modelling preferences for a great number of environmental variables. 
+
+The functionality of this package and the estimates of environmental preferences it
+obtains is demonstrated by way of three use cases:
 
 * Domesticated crops and their wild progenitors
 * Mycorhizzal associations
 * Secondary woodiness
 
-The files included in the repository are organized as follows:
-
-* scripts - scripts and final DL-SDM package.
-* data - all data, including occurrences & GIS layers
-* results - output of the models
-* docs - documentation files
-
-This project builds on the previous results obtained by:
+The project builds on the previous results obtained by:
 
 - [MAXENT modelling](https://github.com/naturalis/trait-geo-diverse-ungulates) by Elke Hendrix.
 - [Deep learning](https://github.com/naturalis/trait-geo-diverse-dl) by Mark Rademaker.
+
+### Package layout
+
+- [LICENSE](LICENSE) - the MIT license, which applies to this package
+- [README.md](README.md) - the README file, which you are now reading
+- [requirements.txt](requirements.txt) - prerequisites to install this package, used by pip
+- [setup.py](setup.py) - installer script
+- [data](data)/ - contains (some of) the data for the use cases
+- [docs](docs)/ - contains project documentation files
+- [script](script)/ - contains utility scripts
+- [sdmdl](sdmdl)/ - the library code itself
+- [tests](tests)/ - unit tests
