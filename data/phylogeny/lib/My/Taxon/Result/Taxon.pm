@@ -34,6 +34,11 @@ __PACKAGE__->table("taxon");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 try_acc_species_id
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 gbif_species_key
 
   data_type: 'integer'
@@ -70,6 +75,11 @@ __PACKAGE__->table("taxon");
   is_nullable: 1
 
 =head2 werner_name
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 try_acc_species_name
 
   data_type: 'text'
   is_nullable: 1
@@ -139,12 +149,59 @@ __PACKAGE__->table("taxon");
   data_type: 'real'
   is_nullable: 1
 
+=head2 plant_growth_form
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 succulent
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 climber
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 parasitic
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 aquatic
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 epiphyte
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 crop
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 palmoid
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 woodiness
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
   "taxon_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "allmb_id",
+  { data_type => "integer", is_nullable => 1 },
+  "try_acc_species_id",
   { data_type => "integer", is_nullable => 1 },
   "gbif_species_key",
   { data_type => "integer", is_nullable => 1 },
@@ -161,6 +218,8 @@ __PACKAGE__->add_columns(
   "steidinger_name",
   { data_type => "text", is_nullable => 1 },
   "werner_name",
+  { data_type => "text", is_nullable => 1 },
+  "try_acc_species_name",
   { data_type => "text", is_nullable => 1 },
   "domestication",
   { data_type => "integer", is_nullable => 1 },
@@ -188,6 +247,24 @@ __PACKAGE__->add_columns(
   { data_type => "boolean", is_nullable => 1 },
   "has_nfix",
   { data_type => "real", is_nullable => 1 },
+  "plant_growth_form",
+  { data_type => "text", is_nullable => 1 },
+  "succulent",
+  { data_type => "text", is_nullable => 1 },
+  "climber",
+  { data_type => "text", is_nullable => 1 },
+  "parasitic",
+  { data_type => "text", is_nullable => 1 },
+  "aquatic",
+  { data_type => "text", is_nullable => 1 },
+  "epiphyte",
+  { data_type => "text", is_nullable => 1 },
+  "crop",
+  { data_type => "text", is_nullable => 1 },
+  "palmoid",
+  { data_type => "text", is_nullable => 1 },
+  "woodiness",
+  { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -203,8 +280,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("taxon_id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-13 10:57:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8PUSOZT/AmrlhHPmovFAEw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-13 12:04:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:B8qQ9bnooDqIObswZZ4Jdg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
