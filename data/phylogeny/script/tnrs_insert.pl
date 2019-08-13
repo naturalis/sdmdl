@@ -128,6 +128,7 @@ sub match {
 	for my $k ( @keys ) {
 		next unless defined $update->{$k};
 		my ( $new, $old ) = ( $update->{$k}, $record->$k );
+		next unless defined $old;
 		next if $new == $old;
 		ERROR "mismatch in ${name}.${k}: $new != $old (new, old)";
 		return 0;
