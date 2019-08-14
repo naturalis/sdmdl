@@ -53,6 +53,11 @@ NAME: while(<$fh>) {
 	}
 	my %record = map { $header[$_] => $line[$_] } 0 .. $#header;
 	delete $record{'family'}; # XXX is not in database, so we delete it here for the ORM
+	for my $k ( keys %record ) {
+	
+		# don't match or insert NULL records
+		delete $record{$k} if not defined $record{$k} or $record{$k} eq '';
+	}	
 	
 	# the input that has the taxon name
 	my $input = $record{$column};
@@ -112,11 +117,11 @@ sub db_check {
 	# check if fuzzily in local DB
 	my $matches = 0;
 	my $allmb = $db->search({ 'allmb_name' => { '-like' => $name.'%' } });
-	while ( my $match = $allmb->next ) {
-		my $subsp = $match->allmb_name;
+	while ( my $fuzzy = $allmb->next ) {
+		my $subsp = $fuzzy->allmb_name;
 		INFO "Found fuzzy match $name => $subsp";
-		match( $record, $match, $subsp ) if $match;
-		$match->update($record) if $update;		
+		match( $record, $fuzzy, $subsp ) if $match;
+		$fuzzy->update($record) if $update;		
 		$matches++;
 	}
 	return $matches;
@@ -129,7 +134,7 @@ sub match {
 		next unless defined $update->{$k};
 		my ( $new, $old ) = ( $update->{$k}, $record->$k );
 		next unless defined $old;
-		next if $new == $old;
+		next if "$new" eq "$old";
 		ERROR "mismatch in ${name}.${k}: $new != $old (new, old)";
 		return 0;
 	}
