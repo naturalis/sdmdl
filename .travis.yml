@@ -3,6 +3,7 @@ python:
   - "3.6"
 # command to install dependencies
 install:
+  - add-apt-repository -y ppa:ubuntugis/ppa && apt update && apt install gdal-bin python-gdal python3-gdal
   - pip install -r requirements.txt
 # command to run tests
 script:
