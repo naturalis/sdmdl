@@ -5721,7 +5721,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 5602	Aspidosperma megalocarpon	tree								woody
 5603	Aspidosperma megaphyllum	tree								woody
 5604	Aspidosperma nitidum	tree								woody
-59900	Aspidosperma nitidum	tree								woody
 5605	Aspidosperma oblongum	tree								woody
 5606	Aspidosperma obscurinervium	tree								woody
 5607	Aspidosperma parvifolium	tree								woody
@@ -12409,7 +12408,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 13028	Cirsium douglasii	herb								non-woody
 13029	Cirsium drummondii	herb								non-woody
 13030	Cirsium eatonii	herb								non-woody
-59752	Cirsium eatonii	herb								non-woody
 13031	Cirsium echinus	herb								non-woody
 13032	Cirsium eriophorum	herb								non-woody
 13034	Cirsium esculentum	herb								non-woody
@@ -12623,7 +12621,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 13293	Clavija costaricana	shrub								woody
 13294	Clavija elliptica	shrub/tree								woody
 13295	Clavija lancifolia	shrub								woody
-59730	Clavija lancifolia	shrub								woody
 13296	Clavija longifolia	tree								woody
 13297	Clavija mezii	tree								woody
 13299	Clavija procera	tree								woody
@@ -19404,11 +19401,9 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 20667	Entadopsis polyphylla			climber						woody
 20669	Entandrophragma angolense	tree								woody
 62840	Entandrophragma candollei	tree								woody
-20671	Entandrophragma candollei	tree								woody
 20672	Entandrophragma caudatum	tree								woody
 20674	Entandrophragma cylindricum	shrub/tree								woody
 20668	Entandrophragma delevoyi	tree								woody
-20676	Entandrophragma delevoyi	tree								woody
 20677	Entandrophragma excelsum	tree								woody
 20679	Entandrophragma stolzii	tree								woody
 20680	Entandrophragma utile	shrub/tree								woody
@@ -23677,7 +23672,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 25132	Floydia praealta									woody
 25136	Flueggea spirei	shrub/tree								woody
 25135	Flueggea virosa	shrub/tree								woody
-25137	Flueggea virosa	shrub/tree								woody
 25139	Foeniculum vulgare	herb								non-woody
 25140	Foetidia asymetrica	tree								woody
 25141	Foetidia clusioides	tree								woody
@@ -27241,7 +27235,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 29491	Hopea vesquei	tree								woody
 29492	Hopea wightiana	tree								woody
 58547	Horaninovia ulicina	herb								non-woody
-29498	Horaninovia ulicina	herb								non-woody
 29499	Hordelymus europaeus	graminoid								non-woody
 29500	Hordeum aegiceras	graminoid								non-woody
 29501	Hordeum arizonicum	graminoid								non-woody
@@ -27270,7 +27263,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 29523	Hordeum innermongolicum	graminoid								non-woody
 29524	Hordeum intercedens	graminoid								non-woody
 61356	Hordeum jubatum	graminoid								non-woody
-29525	Hordeum jubatum	graminoid								non-woody
 29526	Hordeum lechleri	graminoid								non-woody
 29527	Hordeum leporinum	graminoid								non-woody
 29528	Hordeum marinum	graminoid								non-woody
@@ -30756,8 +30748,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 33335	Licania membranacea	tree								woody
 33336	Licania michauxii	tree								woody
 61389	Licania michelli	tree								woody
-61389	Licania michelli	tree								woody
-61411	Licania michelli	tree								woody
 33337	Licania micrantha	tree								woody
 33338	Licania miltonii	tree								woody
 33339	Licania minutiflora	tree								woody
@@ -46434,7 +46424,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 52929	Taiwania cryptomerioides									woody
 52930	Taiwania flousiana	tree								woody
 64010	Takeikadzuchia lomonossowii	herb								non-woody
-60848	Takeikadzuchia lomonossowii	herb								non-woody
 52932	Talauma amazonica									woody
 52933	Talauma candollei	tree								woody
 52934	Talauma gigantifolia	tree								woody
@@ -46924,7 +46913,6 @@ try_acc_species_id	try_acc_species_name	plant_growth_form	succulent	climber	para
 53938	Tetrorchidium macrophyllum									woody
 53939	Tetrorchidium rotundatum	tree								woody
 60837	Tetrorchidium rubrivenium	tree								woody
-53940	Tetrorchidium rubrivenium	tree								woody
 53944	Teucrium botrys	herb								non-woody
 53946	Teucrium canadense	herb								non-woody
 53947	Teucrium capitatum									woody
