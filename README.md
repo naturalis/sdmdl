@@ -10,7 +10,7 @@ The functionality of this package and the estimates of environmental preferences
 obtains is demonstrated by way of three use cases:
 
 * Domesticated crops and their wild progenitors
-* Mycorhizzal associations
+* Mycorrhizal associations
 * Secondary woodiness
 
 The project builds on the previous results obtained by:
