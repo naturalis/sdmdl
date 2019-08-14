@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms.svg?branch=master)](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms)
+
 # sdmdl
 
 An object-oriented python package for species distribution modelling using deep learning.
