@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms.svg?branch=master)](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms)
+
 # sdmdl
 
 An object-oriented python package for species distribution modelling using deep learning.
@@ -8,7 +10,7 @@ The functionality of this package and the estimates of environmental preferences
 obtains is demonstrated by way of three use cases:
 
 * Domesticated crops and their wild progenitors
-* Mycorhizzal associations
+* Mycorrhizal associations
 * Secondary woodiness
 
 The project builds on the previous results obtained by:
