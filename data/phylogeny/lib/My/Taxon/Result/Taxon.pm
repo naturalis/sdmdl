@@ -89,11 +89,6 @@ __PACKAGE__->table("taxon");
   data_type: 'integer'
   is_nullable: 1
 
-=head2 is_sw
-
-  data_type: 'boolean'
-  is_nullable: 1
-
 =head2 habit
 
   data_type: 'text'
@@ -194,6 +189,11 @@ __PACKAGE__->table("taxon");
   data_type: 'text'
   is_nullable: 1
 
+=head2 woody_state
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -223,8 +223,6 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "domestication",
   { data_type => "integer", is_nullable => 1 },
-  "is_sw",
-  { data_type => "boolean", is_nullable => 1 },
   "habit",
   { data_type => "text", is_nullable => 1 },
   "distribution",
@@ -265,6 +263,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "woodiness",
   { data_type => "text", is_nullable => 1 },
+  "woody_state",
+  { data_type => "text", is_nullable => 1 },  
 );
 
 =head1 PRIMARY KEY
