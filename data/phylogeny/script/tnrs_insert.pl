@@ -62,6 +62,12 @@ NAME: while(<$fh>) {
 	# the input that has the taxon name
 	my $input = $record{$column};
 	
+	# XXX skip existing
+	if ( $db->search({ $column => $input })->single ) {
+		print "already done $input\n";
+		next NAME;
+	}
+	
 	# need to go easy on Entrez API: sleep 10 seconds every 400 queries
 	if ( ( $attempts % 400 ) == 0 ) {
 		WARN "NEED TO SLEEP A BIT";
