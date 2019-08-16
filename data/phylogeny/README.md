@@ -1,105 +1,81 @@
-This folder contains phylogenies for the comparative analysis of trait values
-(domestication, woodiness, mycorrhiza) and niche dimensions. We currently have the
-following trees:
+# Obtaining an optimal set of taxa
 
-[Tree.nex.bt.nex](Tree.nex.bt.nex)
-----------------------------------
+## What is the problem we're facing?
 
-Phylogeny used in [Feijen et al.](http://doi.org/10.1038/s41598-018-28920-x). For this 
-tree, the pattern of mycorrhizal association on all tips is known. 
+The complete SDM-DL workflow is *costly*, specifically the following steps:
 
-The following domesticated taxa are in the tree:
-- _Zea mays_ - no subspecies, i.e. ssp. _mexicana_ or ssp. _parviglumis_
-- _Oryza sativa_, but no _O. rufipogon_ (could graft as sister)
-- _Sorgum bicolor_ - no subspecies, i.e. ssp. _verticilliflorum_
-- _Hordeum vulgare_, but no _H. spontaneum_ (could graft as sister)
-- _Triticum aestivum_, but no _T. urartu_ or _T. turgidum_ (could graft as sisters)
-- _Solanum tuberosum_, but no _S. bukasovii_ (could graft as sister)
-- _Dioscorea rotundata_, but none of the other genus members
-- _Musa acuminata_, but none of the other genus members
-- _Fagopyrum esculentum_, but no ssp. _ancestrale_
-- _Fagopyrum tataricum_, but no ssp. _potanini_
-- _Arachis hypogaea_, but no _A. duranensis_, _A. ipaensis_
-- _Mangifera indica_, but no _M. sylvatica_ (could graft as sister)
+1. **Fetching occurrence data sets from GBIF**. In the special case of the Ungulates
+   (i.e. Artiodactyla+Perissodactyla) it was possible to fetch the entire higher
+   taxon - something that GBIF facilitates - and then filter the occurrences
+   locally. This is not feasible for the plants because it would be a dataset 
+   that is about 1000x larger. Hence, we have to fetch the occurrences per 
+   selected species through GBIF's programmable API. 
+2. **Cleaning the occurrences**. Even with the rather good CoordinateCleaner package
+   this still takes some time. Hundres of species, or a thousand, is doable in 
+   reasonable time. Above that becomes dicy.
+3. **Doing the actual DL**. Training the models takes a long time and a lot of CPU
+   (or GPU). Again, this ought to be doable for up to a thousand species but it
+   looks difficulat to scale beyond that.
 
-The following taxa are missing:
-- _Eragrostis tef_, _Eragrostis pilosa_, **whole genus is missing**
-- _Eleusine coracana_, _Eleusine africana_, **whole genus is missing**
-- _Aegilops tauschii_, _Aegilops speltoides_, **whole genus is missing**
-- _Secale cereale_, _Secale vavilovii_, **whole genus is missing**
-- _Manihot esculenta_, _Manihot esculenta subsp. flabellifolia_, **whole genus is missing**
-- _Ipomoea batatas_, _I. trifida_, but _Ipomoea pes caprae_ present (could graft)
-- _Colocasia esculenta_, etc.: **whole genus is missing**
-- _Ensete ventricosum_: **whole genus is missing**
-- _Cucurbita pepo_, etc.: **whole genus is missing**
-- _Artocarpus altilis_, etc.: **whole genus is missing**
-- _Cocos nucifera_: **whole genus is missing**
-- _Phoenix dactylifera_: **whole genus is missing**
-- _Metroxylon sagu_: **whole genus is missing**
+## How can we limit this problem?
 
-[PhytoPhylo.tre](PhytoPhylo.tre)
---------------------------------
+We have three use cases:
 
-Phylogeny used in [Qian & Yin, 2016](https://doi.org/10.1093/jpe/rtv047).
+1. Switches between mycorrhizal assocation, which we assume to be connected to
+   shifts in niche dimensions.
+2. Switches between forms of woodiness, which we assume to be adaptations to
+   certain environmental conditions.
+3. Preadaptations of staple crops, which we assume to be related at least in
+   part to climate.
+   
+For each of these we have states that we are interested in (e.g. secondarily
+woody, or domesticated) and 'background' states. We expect identifiable differences 
+in certain niche dimensions between those (spoiler alert: to be identified using
+AIC variable selection and then modelled under phyloglm on the tree of Smith
+& Brown) but to detect these we need sufficient numbers of shifts between
+the interesting foreground state and the background state. It would be 
+opportunistic of the foreground taxa for one use case could be the background
+taxa for another use case so that we limit the problem described above. This means
+coming up with some optimal intersection between taxon sets for the different
+use cases.
 
-Trees from [Smith & Brown](https://doi.org/10.1002/ajb2.1019)
--------------------------------------------------------------
+## What might be the approach?
 
-All these trees are from release [v0.1](https://github.com/FePhyFoFum/big_seed_plant_trees/releases/tag/v0.1)
+1. Reconcile the different data sets with a common taxonomy/phylogeny. The backbone
+   we've selected for this is the ALLMB phylogeny (v0.1) by Smith & Brown. This is
+   a tree whose backbone constraint is the tree from Magallon et al., enriched with
+   sequence data from GenBank. This tree has branch lengths that are supposedly
+   proportional to time (the root is 325,050,492 MYA, which is 325,048,473 years 
+   before Christ). The tips are labelled using the NCBI taxonomy. We thus match against
+   this using i) literal string matches, ii) substring matches (sometimes only a
+   sequence for a subspecies is deposited while other data sets have the species),
+   iii) fuzzy and synonym matches via the Entrez web service. This results in two
+   SQLite databases:
+   - **ALLMB.db**, which is the Smith and Brown tree, indexed for somewhat fast 
+     traversal and pruning using 
+     [Bio::Phylo::Forest::DBTree](https://metacpan.org/pod/Bio::Phylo::Forest::DBTree)
+   - **taxa.db**, which is like a giant character state matrix where one column
+     maps back to the tips in ALLMB.db and others contain information about the
+     taxonomic name reconciliations (i.e. the name variants as we encounter them in 
+     the various data sources) and the data themselves, i.e.:
+     - data on derived woodiness vetted by Lens and general woodiness and habit from TRY
+     - data on mycorrhizal associations from data sets by Steidinger et al., Werner
+       et al. and Maherali et al.
+     - data on major crop species from SCCS
+2. Take the intersection between the taxon sets, identify the taxa that are 'redundant'
+   in the sense that they participate in a clade with other taxa that have the same
+   combination of states, and from these select the one with the most occurrences.
+   All this is easier said than done because the switches that are relevant for the
+   different use cases happen at different taxonomic depths. For now the approach is
+   going to be to do some data exploration to see how well the overlap pans out, whether
+   the generic filtering approach introduces serious biases or whether specific clades
+   (e.g. families) jump out as of special interest.
 
-- [ALLMB.tre](ALLMB.tre), 356,305 tips, GenBank and Open Tree of Life taxa with a 
-  backbone provided by [Magallón et al. (2015)](https://doi.org/10.1111/nph.13264)
-- [ALLOTB.tre](ALLOTB.tre), 353,185 tips, GenBank and Open Tree of Life taxa with a 
-  backbone provided by Open Tree of Life version 9.1
-- [GBMB.tre](GBMB.tre), 79,874 tips, GenBank taxa with a backbone provided by Magallón et 
-  al. (2015)
-- [GBOTB.tre](GBOTB.tre), 79,881 tips, GenBank taxa with a backbone provided by Open Tree 
-  of Life version 9.1
-- [ot_seedpruned_dated.tre](ot_seedpruned_dated.tre), The Open Tree synth release v 9.1 
-  of seed plants with dates from Magallon 2015 and with non monophyletic major clades 
-  removed.
-- [mag2015_ot_dated.tre](mag2015_ot_dated.tre), The Magallon 2015 tree with additional 
-  Open Tree taxonomy added
+### So what is in this directory?
 
-### Verification of [ALLMB.tre](ALLMB.tre)
-
-Performed by indexing the tree file using `megatree-loader -i ALLMB.tre -d ALLMB.db -v`
-
-The following domesticated taxa are in the tree:
-- _Zea mays_, but no subspecies, i.e. ssp. _mexicana_ or ssp. _parviglumis_
-- _Oryza sativa_ and _Oryza rufipogon_
-- _Sorghum bicolor_ but not ssp. _verticilliflorum_
-- _Eragrostis tef_ and _Eragrostis pilosa_
-- _Eleusine coracana_ and _Eleusine africana_ (but as _Eleusine coracana subsp. africana_)
-- _Hordeum vulgare_ and _Hordeum spontaneum_ (but as _Hordeum vulgare subsp. spontaneum_)
-- _Triticum aestivum_, _Triticum urartu_, _Aegilops speltoides_, 
-  _Triticum turgidum subsp. dicoccoides_ (but as _Triticum dicoccoides_), 
-  _Aegilops tauschii_
-- _Secale cereale_, _Secale vavilovii_
-- _Manihot esculenta_, _Manihot esculenta subsp. flabellifolia_
-- _Solanum tuberosum_ (as _Solanum tuberosum subsp. andigenum_), _Solanum bukasovii_
-  (as _Solanum bukasovii f. multidissectum_)
-- _Ipomoea batatas_, _Ipomoea trifida_
-- _Colocasia esculenta_, _Colocasia lihengiae_, _Colocasia yunnanensis_, _Colocasia formosana_  
-- _Dioscorea rotundata_ (as _Dioscorea cayennensis subsp. rotundata_), 
-  _Dioscorea cayennensis_, _Dioscorea praehensilis_, _Dioscorea abyssinica_
-  _Dioscorea minutiflora_, _Dioscorea alata_, _Dioscorea hamiltonii_, _Dioscorea persimilis_
-  _Dioscorea polystachya_, _Dioscorea bulbifera_, _Dioscorea esculenta_, _Dioscorea dumetorum_
-  _Dioscorea trifida_
-- _Musa acuminata_ (in several subspecies), _Musa balbisiana_ (as _Musa balbisiana var. balbisiana_)
-- _Ensete ventricosum_
-- _Fagopyrum esculentum_ but not _Fagopyrum esculentum subsp. ancestrale_
-- _Fagopyrum tataricum subsp. potanini_
-- _Arachis hypogaea_ (in several cultivars), _Arachis duranensis_, _Arachis ipaensis_
-- _Cucurbita argyrosperma_, _Cucurbita argyrosperma subsp. sororia_, _Cucurbita ficifolia_
-  _Cucurbita maxima_, _Cucurbita maxima subsp. andreana_, _Cucurbita moschata_
-  _Cucurbita pepo_, _Cucurbita pepo subsp. fraterna_
-- _Artocarpus altilis_, _Artocarpus camansi_, _Artocarpus mariannensis_
-- _Mangifera indica_, _Mangifera sylvatica_
-- _Cocos nucifera_
-- _Phoenix dactylifera_, _Phoenix sylvestris_
-- _Metroxylon sagu_  
-  
-Missing:
-- _Musa x paradisiaca_
-- _Fagopyrum tataricum_  
+- [data](data)/ contains input data in tab-separated format, for ingestion in the taxa.db
+  database
+- [script](script)/ contains utility scripts to do the ingestion
+- [lib](lib)/ a simple object-relational mapping between the schema of taxa.db and
+  the Perl programming language, generated using 
+  [DBIx::Class](https://metacpan.org/pod/DBIx::Class)
