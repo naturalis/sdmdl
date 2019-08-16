@@ -144,6 +144,16 @@ __PACKAGE__->table("taxon");
   data_type: 'real'
   is_nullable: 1
 
+=head2 has_myco_conflict
+
+  data_type: 'boolean'
+  is_nullable: 1
+
+=head2 myco_state
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 plant_growth_form
 
   data_type: 'text'
@@ -245,6 +255,10 @@ __PACKAGE__->add_columns(
   { data_type => "boolean", is_nullable => 1 },
   "has_nfix",
   { data_type => "real", is_nullable => 1 },
+  "has_myco_conflict",
+  { data_type => "boolean", is_nullable => 1 },
+  "myco_state",  
+  { data_type => "text", is_nullable => 1 },  
   "plant_growth_form",
   { data_type => "text", is_nullable => 1 },
   "succulent",
