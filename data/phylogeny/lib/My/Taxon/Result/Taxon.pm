@@ -89,6 +89,11 @@ __PACKAGE__->table("taxon");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 crop_state
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 habit
 
   data_type: 'text'
@@ -233,6 +238,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "domestication",
   { data_type => "integer", is_nullable => 1 },
+  "crop_state",
+  { data_type => "text", is_nullable => 1 },    
   "habit",
   { data_type => "text", is_nullable => 1 },
   "distribution",
