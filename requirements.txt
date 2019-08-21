@@ -7,6 +7,6 @@ natsort==6.0.0
 numpy==1.17.0
 pandas==0.25.0
 pycrs==1.0.1
-pygbif
+pygbif==0.3.0
 rasterio
 shapely
