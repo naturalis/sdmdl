@@ -55,7 +55,7 @@ def predict_global_distribution (path):
     
         spec=species
         print("processing", spec)
-        spec_index=var_names.index("%s presence map.tif"%spec.replace('_',' ')) #to later remove species own occurrences from prediction array
+        spec_index=var_names.index("%s_presence_map"%spec) #to later remove species own occurrences from prediction array
         print(spec_index)
     
         ##########################################################
