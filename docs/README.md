@@ -7,7 +7,8 @@ Probleem: hard coderen van paden op veel locaties
 Op heel veel plekken los van elkaar worden dezelfde paden hard gecodeerd in de code.
 (Voorbeeld: `/data/GIS/layers/...` komt heel vaak terug in de code). Dat is een probleem 
 omdat we hierdoor vanaf nu getrouwd zijn met bepaalde locaties die vrijwel niet meer te 
-wijzigen zijn. Wat als ik mijn mapje `gis` in plaats van `GIS` wil noemen?
+wijzigen zijn. Bovendien is de code niet consequent: de ene keer is het `gis`, de andere
+keer `GIS`. Dat werkt op OSX en Windows maar niet op Linux (want dat is case sensitive).
 
 Niet alleen is dat een probleem voor onszelf, maar nog veel erger voor eventuele 
 gebruikers (=Wouter), die hun TIF layers op exact de juiste (niet-gedocumenteerde) plek, 
