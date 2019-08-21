@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms.svg?branch=master)](https://travis-ci.com/naturalis/trait-geo-diverse-angiosperms)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # sdmdl
 
