@@ -26,5 +26,5 @@ setup(
     
     packages=find_packages(exclude=('tests', 'docs', 'data', 'script')),
                            
-    install_requires=['natsort','earthpy','pandas','rasterio','shapely','geopandas','numpy','pyproj','pycrs','gdal>=2.3.3,<2.3.4']
+    install_requires=['natsort','earthpy','pandas','rasterio','shapely','geopandas','numpy','pyproj','pycrs']
 )
