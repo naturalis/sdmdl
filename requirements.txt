@@ -8,5 +8,5 @@ numpy==1.17.0
 pandas==0.25.0
 pycrs==1.0.1
 pygbif==0.3.0
-rasterio
+rasterio==1.0.25
 shapely
