@@ -1,9 +1,0 @@
-https://www.gbif.org/occurrence/download/0016805-190621201848488
-
-Citation GBIF.org (25 July 2019) GBIF Occurrence Download https://doi.org/10.15468/dl.z9eo4b
-
-License CC BY-NC 4.0
-
-File 457 KB Darwin Core Archive
-
-Involved datasets 10
