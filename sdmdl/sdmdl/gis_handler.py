@@ -14,10 +14,15 @@ class gis_handler():
         self.non_scaled = ''        
         self.variables = []
         self.names = []
-        self.scaled_len = 0        
+        self.length = 0
+        self.scaled_len = 0   
+        
+        self.presence = ''
         self.stack = ''
         self.stack_clip = '' 
-        self.presence = ''
+        self.spec_ppa = ''
+        self.spec_ppa_env = ''        
+        
         self.validate_gis()
         self.validate_tif()
         self.define_output()
@@ -37,9 +42,9 @@ class gis_handler():
                     self.world_locations_to_predict = root + '/' + f
                 elif 'empty_land_map.tif' == f:
                     self.empty_map = root + '/' + f                    
-        if self.world_locations_to_predict == '' or self.empty_map == '' or self.gis == '':
+        if self.world_locations_to_predict == '' or self.empty_map == '':
             raise IOError('world_locations_to_predict.csv and/or empty_land_map.tif files are not present in the data folder.')            
-        if self.scaled == '' or self.non_scaled == '':
+        if self.scaled == '' or self.non_scaled == '' or self.gis == '':
             raise IOError('scaled, non-scaled and/or gis folders are not present in the data folder.')
             
     def validate_tif(self):
@@ -61,7 +66,8 @@ class gis_handler():
         variables_ns, names_ns = variables_list(self.non_scaled)        
         self.variables = variables_s + variables_ns
         self.names = names_s + names_ns        
-        self.scaled_len = len(variables_s)        
+        self.scaled_len = len(variables_s)
+        self.length = len(self.variables)
         if len(self.variables) == 0 or len(self.names) == 0:
             raise IOError('no tif files are present in the scaled and non_scaled folders.')
             
@@ -78,4 +84,5 @@ class gis_handler():
         self.stack = self.gis + '/stack'
         self.stack_clip = self.gis + '/stack_clip'
         self.spec_ppa = self.root + '/spec_ppa'
+        self.spec_ppa_env = self.root + '/spec_ppa_env'
         
