@@ -1,5 +1,6 @@
+from sdmdl.sdmdl.import_variable_list import import_variable_list
 from sklearn.metrics.ranking import roc_auc_score, roc_curve
-from sdmdl.import_variable_list import import_variable_list
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
 from sklearn.model_selection import train_test_split
 from keras.layers import Dense, Dropout, Activation
 from imblearn.keras import balanced_batch_generator
@@ -7,7 +8,6 @@ from imblearn.under_sampling import NearMiss
 from keras.models import Sequential
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
-from sdmdl.load_taxa_list import load_taxa_list
 import pandas as pd
 import numpy as np
 import tqdm
@@ -32,7 +32,7 @@ def train_model (path,verbose = True):
     ###column variable names
     var_names, _, _ = import_variable_list(path)
         
-    for species in taxa["taxon"][:]:
+    for species in tqdm.tqdm(taxa["taxon"][:],desc = 'training models' + (35 * ' ')) if verbose else taxa["taxon"][:]:
         
         #open dataframe and rename columns
         spec = species
@@ -63,7 +63,7 @@ def train_model (path,verbose = True):
             X.append(x)
     
         df = pd.DataFrame(data=X, columns=band_columns + ["presence"])
-        df.to_csv("filtered.csv", index=None)
+        df.to_csv(path + "/data/filtered.csv", index=None)
     
         # extract n. of occ. and abs. samples
         occ_len=int(len(df[df["presence" ]==1]))
@@ -119,10 +119,10 @@ def train_model (path,verbose = True):
         Best_model_AUC=[0]
         
         # Five repetitions
-        for i in (tqdm.tqdm(range(1,6),desc='Training %s model'%spec) if verbose else range(1,6)):
+        for i in (tqdm.tqdm(range(1,6),desc = '%s' % spec + ((50-len(spec)) * ' ')) if verbose else range(1,6)):
             btchs = 75
             num_classes = 2
-            epch = 250
+            epch = 150
     
             num_inputs = X.shape[1]  # number of features
     
@@ -145,8 +145,6 @@ def train_model (path,verbose = True):
             out_layer = Dense(num_classes, activation=None)
             model.add(out_layer)
             model.add(Activation("softmax"))
-    
-            model.summary()
     
             model.compile(loss="categorical_crossentropy",
                         optimizer=Adam(lr=0.001),

@@ -1,5 +1,5 @@
-from sdmdl.load_taxa_list import load_taxa_list
-from sdmdl.import_variable_list import import_variable_list
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
+from sdmdl.sdmdl.import_variable_list import import_variable_list
 import pandas as pd
 import numpy as np
 import rasterio
@@ -16,12 +16,11 @@ def create_env_df (path,verbose=True):
     src=rasterio.open(path+'/data/GIS/stack/stacked_env_variables.tif')
     inRas=gdal.Open(path+'/data/GIS/stack/stacked_env_variables.tif')
     
-    for i in (tqdm.tqdm(taxa["taxon"][:],desc='Creating training dataframe') if verbose else taxa["taxon"][:]):
+    for i in (tqdm.tqdm(taxa["taxon"][:],desc='Creating training dataframe' + (23 * ' ')) if verbose else taxa["taxon"][:]):
         
         data = pd.read_csv(path+"/data/spec_ppa/%s_ppa_dataframe.csv"%i)
         spec = data["taxon_name"][0]
         spec = spec.replace(" ","_")
-        print("processing species ", spec)
         
     
         #get all collumn and row numbers 

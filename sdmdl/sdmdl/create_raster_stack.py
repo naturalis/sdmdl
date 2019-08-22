@@ -4,7 +4,7 @@ import os
 def create_raster_stack(path,verbose = True):
     
     if verbose:
-        print('Creating raster stack:',end='')
+        print('Creating raster stack' + (29 * ' ') + ':',end='')
     
     # variables_list function that collects all .tif files in a specific folder.
     

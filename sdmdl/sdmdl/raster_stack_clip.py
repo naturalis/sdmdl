@@ -1,7 +1,7 @@
 from shapely.geometry import Point, MultiPolygon, Polygon, box
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
 from shapely.ops import unary_union, transform
 from functools import partial
-from sdmdl.load_taxa_list import load_taxa_list
 import geopandas as gpd
 import numpy as np
 import rasterio
@@ -66,7 +66,7 @@ def raster_stack_clip(path,verbose=True):
         
     # For each species in species dictionary.
     
-    for key in (tqdm.tqdm(species_occ_dict,desc='Creating raster clips') if verbose else species_occ_dict):  
+    for key in (tqdm.tqdm(species_occ_dict,desc='Creating raster clips' + (29 *' ')) if verbose else species_occ_dict):  
         
         # Load occurrence data for 'key' species.
         

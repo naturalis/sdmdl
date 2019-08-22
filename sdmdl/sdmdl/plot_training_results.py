@@ -5,7 +5,7 @@ import math
 def plot_training_results (path,verbose = True):
     
     if verbose:
-        print('Plotting training results:', end = '')
+        print('Plotting training results' + (24 * ' ') + ':', end = '')
     
     #Open the file with model performance metrics
     data=pd.read_csv(path+'/results/_DNN_performance/DNN_eval.txt',sep="\t")
