@@ -4,7 +4,7 @@ import os
 
 class occurrence_handler():
     
-    # root = config root of 'occurrences'
+    # root = config root of 'occurrences' folder.
     
     def __init__(self,root):
         
@@ -13,8 +13,7 @@ class occurrence_handler():
         self.path = []
         self.name = []
         
-        self.validate_occurrences()
-        
+        self.validate_occurrences()        
         self.spec_dict = self.species_dictionary()
     
     def validate_occurrences(self):
@@ -34,10 +33,9 @@ class occurrence_handler():
                     self.path += [root + '/' + file]
                     self.name += [file.replace('.%s' % file_ext,'')]
                 else:
-                    warnings.warn("file '%s' is missing either the 'decimalLatitude' or 'decimalLongitude' column and was excluded." % file)
-                    
+                    warnings.warn('file "%" is missing either the "decimalLatitude" or "decimalLongitude" column and was excluded.' % file)                    
         if self.length == 0:
-            raise IOError("no occurrences are present in the occurrences folder: %s." % self.root)
+            raise IOError('no occurrences are present in the occurrences folder: %s.' % self.root)
         
     def species_dictionary(self):
         species_occ_dict = {}
