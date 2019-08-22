@@ -2,21 +2,22 @@ import os
 
 class gis_handler():
     
+    # root = config root of 'data' folder.
+    
     def __init__(self,root):
         
-        self.root = root
-        
+        self.root = root        
         self.world_locations_to_predict = ''
         self.empty_map = ''
+        self.gis = ''
         self.scaled = ''
-        self.non_scaled = ''
-        
+        self.non_scaled = ''        
         self.variables = []
         self.names = []
-        self.scaled_len = 0
-        
+        self.scaled_len = 0        
+        self.stack = ''
+        self.stack_clip = '' 
         self.presence = ''
-        
         self.validate_gis()
         self.validate_tif()
         self.define_output()
@@ -29,17 +30,17 @@ class gis_handler():
                     self.scaled = root + '/' + d
                 elif 'non-scaled' == d:
                     self.non_scaled = root + '/' + d
+                elif 'gis' == d:
+                    self.gis = root + '/' + d
             for f in files:
                 if 'world_locations_to_predict.csv' == f:
                     self.world_locations_to_predict = root + '/' + f
                 elif 'empty_land_map.tif' == f:
-                    self.empty_map = root + '/' + f
-                    
-        if self.world_locations_to_predict == '' or self.empty_map == '':
-            raise IOError("world_locations_to_predict.csv and/or empty_land_map.tif files are not present in the gis folder.")
-            
+                    self.empty_map = root + '/' + f                    
+        if self.world_locations_to_predict == '' or self.empty_map == '' or self.gis == '':
+            raise IOError('world_locations_to_predict.csv and/or empty_land_map.tif files are not present in the data folder.')            
         if self.scaled == '' or self.non_scaled == '':
-            raise IOError("scaled and/or non-scaled folders are not present in the gis folder.")
+            raise IOError('scaled, non-scaled and/or gis folders are not present in the data folder.')
             
     def validate_tif(self):
         
@@ -57,23 +58,24 @@ class gis_handler():
             return([f,n])
         
         variables_s, names_s = variables_list(self.scaled)
-        variables_ns, names_ns = variables_list(self.non_scaled)
-        
+        variables_ns, names_ns = variables_list(self.non_scaled)        
         self.variables = variables_s + variables_ns
         self.names = names_s + names_ns        
-        self.scaled_len = len(variables_s)
-        
+        self.scaled_len = len(variables_s)        
         if len(self.variables) == 0 or len(self.names) == 0:
-            raise IOError("no tif files are present in the scaled and non_scaled folders.")
+            raise IOError('no tif files are present in the scaled and non_scaled folders.')
             
     def reload_tifs(self):
         
         self.variables = []
         self.names = []
-        self.scaled_len = 0
-        
+        self.scaled_len = 0        
         self.validate_tif()        
     
     def define_output(self):
         
         self.presence = self.non_scaled + '/presence'
+        self.stack = self.gis + '/stack'
+        self.stack_clip = self.gis + '/stack_clip'
+        self.spec_ppa = self.root + '/spec_ppa'
+        
