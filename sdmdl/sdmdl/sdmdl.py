@@ -1,19 +1,22 @@
-from sdmdl.read_config import read_config
+import os
+import logging
 
-from sdmdl.create_presence_maps import create_presence_maps
-from sdmdl.create_raster_stack import create_raster_stack
-from sdmdl.raster_stack_clip import raster_stack_clip
-from sdmdl.create_presence_pseudo_absence import create_presence_pseudo_absence
-from sdmdl.calc_band_mean_and_stddev import calc_band_mean_and_stddev
-from sdmdl.create_env_df import create_env_df
-from sdmdl.create_prediction_df import create_prediction_df
+from sdmdl.sdmdl.read_config import read_config
 
-from sdmdl.train_model import train_model
-from sdmdl.plot_training_results import plot_training_results
+from sdmdl.sdmdl.create_presence_maps import create_presence_maps
+from sdmdl.sdmdl.create_raster_stack import create_raster_stack
+from sdmdl.sdmdl.raster_stack_clip import raster_stack_clip
+from sdmdl.sdmdl.create_presence_pseudo_absence import create_presence_pseudo_absence
+from sdmdl.sdmdl.calc_band_mean_and_stddev import calc_band_mean_and_stddev
+from sdmdl.sdmdl.create_training_df import create_training_df
+from sdmdl.sdmdl.create_prediction_df import create_prediction_df
 
-from sdmdl.predict_global_distribution import predict_global_distribution
+from sdmdl.sdmdl.train_model import train_model
+from sdmdl.sdmdl.plot_training_results import plot_training_results
 
-class sdmdl():
+from sdmdl.sdmdl.predict_global_distribution import predict_global_distribution
+
+class sdmdl:
     
     def __init__ (self,path):
         
@@ -22,6 +25,11 @@ class sdmdl():
         _, verbose = read_config(self.path)
         
         self.verbose = verbose
+        
+        # set when not on debug
+        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+        
+        logging.getLogger("tensorflow").setLevel(logging.ERROR)
         
         # add other config settings
         

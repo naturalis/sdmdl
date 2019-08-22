@@ -1,6 +1,6 @@
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from sdmdl.import_variable_list import import_variable_list
-from sdmdl.load_taxa_list import load_taxa_list
+from sdmdl.sdmdl.import_variable_list import import_variable_list
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
 from keras.models import model_from_json
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
@@ -8,9 +8,10 @@ import matplotlib.colors
 import pandas as pd
 import numpy as np
 import rasterio
+import tqdm
 import gdal
 
-def predict_global_distribution (path):
+def predict_global_distribution (path,verbose=True):
         
     np.random.seed(42)
     
@@ -21,8 +22,6 @@ def predict_global_distribution (path):
     ##opening raster as 3d numpy array
     inRas=gdal.Open(path+'/data/GIS/stack/stacked_env_variables.tif')
     myarray=inRas.ReadAsArray()
-    print(myarray.shape)
-    print(type(myarray))
     
     #create colormap for maps
     norm = matplotlib.colors.Normalize(0,1)
@@ -42,7 +41,6 @@ def predict_global_distribution (path):
     y = np.linspace(-1,1,10)
     sc = ax.scatter(x,y, c=y, norm=norm, cmap=custom_cmap)
     fig.colorbar(sc, orientation="horizontal")
-    plt.show()
     
     ###create an index of the continental borders and coastal, lake cells that should be excluded from prediction
     ### Aspect and clay percentage raster have high resolution outline 
@@ -51,12 +49,10 @@ def predict_global_distribution (path):
     minb=np.min(b)
     index_minb1=np.where(b==minb)
     
-    for species in taxa[:]["taxon"]:
+    for species in tqdm.tqdm(taxa[:]["taxon"],desc = 'Predicting globally'+(31 * ' ')+':') if verbose else taxa[:]["taxon"]:
     
         spec=species
-        print("processing", spec)
         spec_index=var_names.index("%s_presence_map"%spec) #to later remove species own occurrences from prediction array
-        print(spec_index)
     
         ##########################################################
         #  reconstruct the model and run the prediction globally #

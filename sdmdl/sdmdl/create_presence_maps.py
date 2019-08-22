@@ -1,10 +1,10 @@
-from sdmdl.load_taxa_list import load_taxa_list
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
 import pandas as pd
 import tqdm
 import rasterio
 import os
 
-# create_presence_maps function that uses occurrence data present in ~/data/occurrences_cleaned and creates a raster file for each species.
+'''create_presence_maps function that uses occurrence data present in ~/data/occurrences_cleaned and creates a raster file for each species.'''
 
 def create_presence_maps(path,verbose=True):
     
@@ -25,7 +25,7 @@ def create_presence_maps(path,verbose=True):
     
     # Create presence map for each species.
     
-    for key in (tqdm.tqdm(species_occ_dict,desc='Creating presence maps') if verbose else species_occ_dict):
+    for key in (tqdm.tqdm(species_occ_dict,desc='Creating presence maps' + (28 * ' ')) if verbose else species_occ_dict):
         new_band = band.copy()
         
         # Obtain lon - lat presence points.

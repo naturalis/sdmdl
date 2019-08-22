@@ -1,4 +1,4 @@
-from sdmdl.load_taxa_list import load_taxa_list
+from sdmdl.sdmdl.load_taxa_list import load_taxa_list
 import pandas as pd
 import numpy as np
 import rasterio
@@ -15,7 +15,7 @@ def create_presence_pseudo_absence (path,verbose = True):
 
     # For each species in dictionary.    
     
-    for key in (tqdm.tqdm(species_occ_dict,desc='Sampling pseudo absence') if verbose else species_occ_dict): 
+    for key in (tqdm.tqdm(species_occ_dict,desc='Sampling pseudo absence' + (27 * ' ')) if verbose else species_occ_dict): 
         
         # Extract longitude and latitude of occurrence locations and label them as present (1)
         
@@ -78,7 +78,7 @@ def create_presence_pseudo_absence (path,verbose = True):
             
         #Dataset including occurrences and pseudo-absence points
         new_data=pd.DataFrame({"gbif_id": gbif,"taxon_name":taxon,"decimalLongitude": lon, "decimalLatitude":lat, "present/pseudo_absent": psa})
-        data=pd.concat([presence_data,new_data],ignore_index=True)
+        data=pd.concat([presence_data,new_data],ignore_index=True,sort=True)
         data=data[['taxon_name','gbif_id','decimalLongitude','decimalLatitude','present/pseudo_absent']]
         data["taxon_name"]=spec
         data["row_n"]=np.arange(len(data))

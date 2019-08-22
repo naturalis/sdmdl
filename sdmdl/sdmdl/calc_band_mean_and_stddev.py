@@ -1,8 +1,9 @@
-from sdmdl.import_variable_list import import_variable_list
+from sdmdl.sdmdl.import_variable_list import import_variable_list
 import numpy as np
 import rasterio
+import tqdm
 
-def calc_band_mean_and_stddev(path):
+def calc_band_mean_and_stddev(path,verbose=True):
     
     _,_,var_len = import_variable_list(path)   
     
@@ -13,8 +14,7 @@ def calc_band_mean_and_stddev(path):
         file.write("band"+"\t"+"mean"+"\t"+"std_dev"+"\n")
         file.close()
         
-    for i in range(1,var_len):
-        print(i)
+    for i in (tqdm.tqdm(range(1,var_len),desc='Computing band means and standard deviations' + (6 * ' ')) if verbose else range(1,var_len)):
         profile.update(count=1)
         band=raster.read(i)
         band[band < -9999] = -9999

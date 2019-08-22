@@ -1,4 +1,4 @@
-from sdmdl.import_variable_list import import_variable_list
+from sdmdl.sdmdl.import_variable_list import import_variable_list
 import pandas as pd
 import numpy as np
 import rasterio
@@ -8,15 +8,13 @@ import gdal
 def create_prediction_df (path,verbose = True):
     
     if verbose:
-        print('Creating prediction dataframe:',end='')
+        print('Creating prediction dataframe' + (21 * ' ') + ':',end='')
     
     var_names,scaled_len,var_len = import_variable_list(path)
     
     ##opening raster as 3d numpy array
     inRas=gdal.Open(path+'/data/GIS/stack/stacked_env_variables.tif')
     myarray=inRas.ReadAsArray()
-    print(myarray.shape)
-    print(type(myarray))
     
     #get all collumn and row values for all cells to predict over 
     df=pd.read_csv(path+'/data/GIS/world_locations_to_predict.csv')
@@ -48,7 +46,6 @@ def create_prediction_df (path,verbose = True):
     X=[]
     
     for j in range(0,var_len):
-        print(j)
         band=myarray[j]
         x=[]
     
