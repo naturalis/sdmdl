@@ -1,4 +1,4 @@
-'# config file': ''
-'data_path': /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/data
-'occurrence_path': /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/data/occurrences
-'result_path': /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/results
+# config file
+data_path: /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/data
+occurrence_path: /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/data/occurrences
+result_path: /Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms/results
