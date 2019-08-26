@@ -4,3 +4,4 @@ Some simple guidelines:
 - Any additional imports are added to requirements.txt
 - You break it, you bought it: fix broken builds
 - Test coverage should get to ±80%
+- Keep cruft (.DS_Store, Thumbs.db, etc.) out of the repo
