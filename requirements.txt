@@ -1,4 +1,4 @@
-GDAL
+GDAL==3.0.1
 earthpy==0.7.3
 fiona==1.8.6
 geopandas==0.5.1
