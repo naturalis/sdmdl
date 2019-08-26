@@ -19,8 +19,8 @@ To create an sdmdl object and subsequently train deep learning models a few requ
 1. Several input files (simply obtainable by copying the git repo)
 2. A number of .tif files which will serve as the source of data for the deep learning process. 
    This project distinguishes between two types of environmental layers:
-   a. Scaled layers, that need to be scaled during the process of preparing the data. 
-   b. Non-scaled layers, that are already normalized or are categorical (0 = not present while 1 = present).
+   i. Scaled layers, that need to be scaled during the process of preparing the data. 
+   ii. Non-scaled layers, that are already normalized or are categorical (0 = not present while 1 = present).
 3. A set of occurrences (.csv or .xls) that will serve as training examples of where the species currently occurs.
 
 Before running the tool a few important details should be taken into account:
