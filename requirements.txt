@@ -1,3 +1,4 @@
+GDAL
 earthpy==0.7.3
 fiona==1.8.6
 # gdal # sudo add-apt-repository -y ppa:ubuntugis/ppa && sudo apt update && sudo apt install gdal-bin python-gdal python3-gdal
