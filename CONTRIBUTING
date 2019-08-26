@@ -1,0 +1,4 @@
+Some simple guidelines:
+- We use UNIX line breaks (\n) always
+- We follow the PEP recommendations as indicated by the IDE
+- Any additional imports are added to requirements.txt
