@@ -11,9 +11,9 @@ setup(
     version='0.1.0',    
     description='Species Distribution Modelling using Deep Learning',    
     long_description=readme,    
-    author='Winand Hulleman, Wouter Koch, Rutger Vos',    
-    author_email='winand@live.nl, wouter.koch@artsdatabanken.no, rutger.vos@naturalis.nl',    
-    url='https://github.com/naturalis/trait-geo-diverse-angiosperms',    
+    author='Laurens Hogeweg, Winand Hulleman, Wouter Koch, Rutger Vos',    
+    author_email='laurens.hogeweg@naturalis.nl, winand@live.nl, wouter.koch@artsdatabanken.no, rutger.vos@naturalis.nl',    
+    url='https://github.com/naturalis/sdmdl',    
     license=license,    
     packages=find_packages(exclude=('tests', 'docs', 'data', 'script')),                           
 )
