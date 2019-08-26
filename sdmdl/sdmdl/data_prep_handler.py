@@ -1,7 +1,6 @@
 from shapely.geometry import Point, MultiPolygon, Polygon, box
 from shapely.ops import unary_union, transform
 from functools import partial
-import earthpy.spatial as es
 import geopandas as gpd
 import pandas as pd
 import numpy as np
@@ -28,38 +27,18 @@ class data_prep_handler():
     def create_presence_maps(self):
         
         '''create_presence_maps function creates a set of presence maps from occurrence tables.'''
-        
-        src=rasterio.open(self.gh.empty_map.replace('\\','/'))
-        profile=src.profile
-        band=src.read(1)
-        if not os.path.isdir(self.gh.presence.replace('\\','/')):
-            os.makedirs(self.gh.presence.replace('\\','/'),exist_ok=True)
-        for key in self.oh.spec_dict:
-            new_band = band.copy()
-            presence_data = self.oh.spec_dict[key]
-            presence_data["present/pseudo_absent"]=1
-            spec = key
-            long=presence_data["dLon"]
-            lati=presence_data["dLat"]
-            long=pd.Series.tolist(long)
-            lati=pd.Series.tolist(lati)
-            for i in range(0,len(presence_data)):
-                row,col=src.index(long[i],lati[i])
-                new_band[row,col]=1
-            with rasterio.open(self.gh.presence.replace('\\','/') + '/%s_presence_map.tif'%spec, 'w', **profile) as dst:
-                dst.write(new_band.astype(rasterio.float32), 1)
+
+        from sdmdl.sdmdl.data_prep.create_presence_maps_helper import create_presence_maps_helper        
+        cpmh = create_presence_maps_helper(self.oh,self.gh,self.ch,True)        
+        cpmh.create_presence_maps()
                 
     def create_raster_stack(self):
         
         '''create_raster_stack function that combines all present .tif layers into one file.'''
         
-        if self.verbose:
-            print('Creating raster stack' + (29 * ' ') + ':',end='')        
-        if not os.path.isdir(self.gh.stack):
-            os.makedirs(self.gh.stack,exist_ok=True)         
-        es.stack(self.gh.variables, self.gh.stack + '/stacked_env_variables.tif')                
-        if self.verbose:
-            print(' Done!',end='\n')
+        from sdmdl.sdmdl.data_prep.create_raster_stack_helper import create_raster_stack_helper        
+        crsh = create_raster_stack_helper(self.oh,self.gh,self.ch,True)        
+        crsh.create_raster_stack()
             
     def raster_stack_clip(self):
     
