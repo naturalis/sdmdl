@@ -1,6 +1,6 @@
 pyproj
 imblearn
-keras
+keras==2.2.5
 tqdm
 PyYAML==5.1.2
 earthpy==0.7.3
