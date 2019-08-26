@@ -7,7 +7,7 @@ class ConfigHandlerTestSuite(unittest.TestCase):
     """Test cases for Config Handler class."""
 
     def setUp(self):
-        self.root = '/Users/winand.hulleman/Documents/trait-geo-diverse-angiosperms'
+        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         self.config = config_handler(self.root)
         
     def test_instance_variables(self):
