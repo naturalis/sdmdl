@@ -1,3 +1,7 @@
+pyproj
+imblearn
+keras
+tqdm
 PyYAML==5.1.2
 earthpy==0.7.3
 fiona==1.8.6
@@ -10,3 +14,4 @@ pycrs==1.0.1
 pygbif==0.3.0
 rasterio==1.0.26
 shapely==1.6.4.post2
+scikit-learn
