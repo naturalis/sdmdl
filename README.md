@@ -25,6 +25,7 @@ The project builds on the previous results obtained by:
 
 ### Package layout
 
+- [CONTRIBUTING.md](CONTRIBUTING.md) - hints for how to contribute to this project
 - [LICENSE](LICENSE) - the MIT license, which applies to this package
 - [README.md](README.md) - the README file, which you are now reading
 - [requirements.txt](requirements.txt) - prerequisites to install this package, used by pip
