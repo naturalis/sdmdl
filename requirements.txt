@@ -1,5 +1,5 @@
 pyproj
-imblearn
+imblearn==0.0
 keras
 tqdm
 PyYAML==5.1.2
