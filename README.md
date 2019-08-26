@@ -11,8 +11,9 @@ The package allows for a more intuitive and easy exploration of biodiversity pat
 modelling preferences for a great number of environmental variables. 
 
 The functionality of this package and the estimates of environmental preferences it
-obtains is demonstrated by way of three use cases:
+obtains is demonstrated by way of several use cases:
 
+* Habitat suitability predictions with which to scale visual object identifications
 * Domesticated crops and their wild progenitors
 * Mycorrhizal associations
 * Secondary woodiness
