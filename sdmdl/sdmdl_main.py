@@ -10,7 +10,11 @@ from sdmdl.sdmdl.predict_handler import predict_handler
 
 class sdmdl:
     
+    '''sdmdl object with one parameter: root of the repository, that is holding all occurrences and environmental layers.'''
+    
     def __init__ (self,root):
+        
+        '''sdmdl object initiation.'''
         
         self.root = root        
         self.ch = config_handler(root)        
@@ -21,13 +25,18 @@ class sdmdl:
         self.verbose = True       
         if self.verbose:
             os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-            logging.getLogger("tensorflow").setLevel(logging.ERROR)        
+            logging.getLogger("tensorflow").setLevel(logging.ERROR)    
         
     def reload_config (self):
+        
+        '''pass.'''
+        
         pass
         
     def prep (self):
 
+        '''prep function that manages the process of data pre-processing.'''
+        
         dph = data_prep_handler(self.oh,self.gh,self.ch,self.verbose)
         dph.create_presence_maps()  
         self.gh.reload_tifs()
@@ -39,16 +48,28 @@ class sdmdl:
         dph.create_prediction_df()      
         
     def train (self):
+        
+        '''train function that manages the process of model training.'''
+        
         th = train_handler(self.oh,self.gh,self.ch,self.verbose)
         th.train_model()
         
     def plot_performance_metric(self):
+        
+        '''pass'''
+        
         pass
         
     def predict (self):
+        
+        '''predict function that manages the process of model prediction.'''
+        
         ph = predict_handler(self.oh,self.gh,self.ch,self.verbose)
         ph.predict_model()
         
     def clean (self):
+        
+        '''pass.'''
+        
         pass
         # create a function to remove all created files

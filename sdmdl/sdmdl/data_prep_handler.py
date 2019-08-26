@@ -14,7 +14,11 @@ import os
 
 class data_prep_handler():
     
+    '''data_prep_handler object that manages all data preperation steps.'''
+    
     def __init__(self,occurrence_handler,gis_handler,config_handler,verbose):
+        
+        '''data_prep_handler object initiation.'''
         
         self.oh = occurrence_handler        
         self.gh = gis_handler  
@@ -22,6 +26,8 @@ class data_prep_handler():
         self.verbose = verbose  
 
     def create_presence_maps(self):
+        
+        '''create_presence_maps function creates a set of presence maps from occurrence tables.'''
         
         src=rasterio.open(self.gh.empty_map.replace('\\','/'))
         profile=src.profile
@@ -45,6 +51,8 @@ class data_prep_handler():
                 
     def create_raster_stack(self):
         
+        '''create_raster_stack function that combines all present .tif layers into one file.'''
+        
         if self.verbose:
             print('Creating raster stack' + (29 * ' ') + ':',end='')        
         if not os.path.isdir(self.gh.stack):
@@ -55,7 +63,11 @@ class data_prep_handler():
             
     def raster_stack_clip(self):
     
+        '''raster_stack_clip function that creates a unique (clipped) raster file for further parameter extraction.'''
+        
         def buff_on_globe(points, radius):
+            
+            '''buff_on_globe function that utilizes a geoseries object and for each point creates a geodesic buffer. Subsequently aggregates these buffers into one final buffer object'''
             
             geometry_list = [disk_on_globe(points.iloc[g], radius) for g in range(len(points))]
             polygon_list = []
@@ -69,6 +81,8 @@ class data_prep_handler():
         
         def disk_on_globe(point, radius):
         
+            '''disk_on_globe function used for creating geodesic buffers, taking into account coordinate singularities.'''
+            
             wgs84_globe = pyproj.Proj(proj='latlong', ellps='WGS84')
             lon, lat = point.dLon, point.dLat
             aeqd = pyproj.Proj(proj='aeqd', ellps='WGS84', datum='WGS84', lat_0=lat, lon_0=lon)
@@ -114,6 +128,8 @@ class data_prep_handler():
                 
     def create_presence_pseudo_absence(self):
     
+        '''create_presence_pseudo_absence function that creates a random set of pseudo absences based on a specific buffer size.'''
+        
         np.random.seed(1)
         
         stack_path=self.gh.stack + '/stacked_env_variables.tif'
@@ -172,6 +188,8 @@ class data_prep_handler():
             
             
     def calc_band_mean_and_stddev(self):
+        
+        '''calc_band_mean_and_stddev function that calculates the mean and standard deviation of each band in the raster stack'''
                 
         raster=rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
         profile=raster.profile
@@ -191,6 +209,8 @@ class data_prep_handler():
                 file.write(str(i)+"\t"+str(mean)+"\t"+str(std_dev)+"\n")
                 
     def create_training_df(self):
+        
+        '''create_training_df function that creates the inputs for model training'''
         
         src=rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
         inRas=gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
@@ -251,6 +271,8 @@ class data_prep_handler():
             input_data.to_csv(self.gh.spec_ppa_env + '/%s_env_dataframe.csv'%spec)
     
     def create_prediction_df(self):
+        
+        '''create_prediction_df function that creates a global prediction dataframe.'''
     
         if self.verbose:
             print('Creating prediction dataframe' + (21 * ' ') + ':',end='')

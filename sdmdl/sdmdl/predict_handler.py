@@ -11,7 +11,11 @@ import gdal
 
 class predict_handler():
     
+    '''predict_handler object that manages model predictions'''
+    
     def __init__(self,occurrence_handler,gis_handler,config_handler,verbose):
+        
+        '''predict_handler object initiation'''
         
         self.oh = occurrence_handler
         self.gh = gis_handler
@@ -19,6 +23,8 @@ class predict_handler():
         self.verbose = verbose
         
     def predict_model(self):
+        
+        '''predict_model function that performs global predictions and saves the resulting images (.png & .tif) to file'''
         
         np.random.seed(42)
         inRas=gdal.Open(self.gh.stack + '/stacked_env_variables.tif')

@@ -14,7 +14,11 @@ import os
 
 class train_handler():
     
+    '''train_handler object that manages model training. '''
+    
     def __init__(self,occurrence_handler,gis_handler,config_handler,verbose):
+        
+        '''train_handler object initiation'''
         
         self.oh = occurrence_handler
         self.gh = gis_handler
@@ -22,6 +26,8 @@ class train_handler():
         self.verbose = verbose
         
     def train_model(self):
+        
+        '''train_model function, responsible for training the deep learning models and writing the resulting models to file.'''
         
         np.random.seed(42)    
         if not os.path.isdir(self.ch.result_path + '/_DNN_performance'):
