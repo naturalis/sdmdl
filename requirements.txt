@@ -1,7 +1,7 @@
 pyproj
 imblearn
 keras
-tqdm
+tqdm==4.35.0
 PyYAML==5.1.2
 earthpy==0.7.3
 fiona==1.8.6
