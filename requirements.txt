@@ -1,4 +1,4 @@
-pyproj
+pyproj==2.3.0
 imblearn
 keras
 tqdm
