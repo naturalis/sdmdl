@@ -1,21 +1,26 @@
-''SDMDL'' or species distribution modelling with deep learning is a tool that as the name suggests allows for modelling of the distribution of any (terrestrial) species.
+SDMDL - species distribution modelling with deep learning
+=========================================================
 
-This tool was built to maximize ease of use while still offering in depth parameter control for deep learning model. 
-As such this package offers only a single class and a handful of functions. If further customization of these models is required it comes with a config.yml file that can be edited in order change important model hyper parameters. 
+This toolkit was built to maximize ease of use while still offering in-depth parameter control for deep learning models.
+As such this package offers only a single class and a handful of functions. If further customization of these models is 
+required it comes with a config.yml file that can be edited in order to change important model hyper parameters. 
 
 the SDMDL package works as follows:
 
-''model = sdmdl('path')
-model.prep()
-model.train()
-model.predict()''
+.. code:: python
+
+ model = sdmdl('path')
+ model.prep()
+ model.train()
+ model.predict()
 
 To create an sdmdl object and subsequently train deep learning models a few requirements need to be met.
 
 1. Several input files (simply obtainable by copying the git repo)
-2. A number of .tif files which will serve as the source of data for the deep learning process. This project distinguishes between two types of environmental layers:
-a. Scaled layers, that need to be scaled during the process of preparing the data. 
-b. Non-scaled layers, that are already normalized or are categorical (0 = not present while 1 = present).
+2. A number of .tif files which will serve as the source of data for the deep learning process. 
+   This project distinguishes between two types of environmental layers:
+   a. Scaled layers, that need to be scaled during the process of preparing the data. 
+   b. Non-scaled layers, that are already normalized or are categorical (0 = not present while 1 = present).
 3. A set of occurrences (.csv or .xls) that will serve as training examples of where the species currently occurs.
 
 Before running the tool a few important details should be taken into account:
