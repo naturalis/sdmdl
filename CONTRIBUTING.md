@@ -50,7 +50,6 @@ try to stick to the pep8 guidelines for Python (https://www.python.org/dev/peps/
 * Do comment your code where necessary
 * Do submit only a single example/feature per pull-request
 * Do include a description of what your example is expected to do
-* Do add details of your example to examples/README.md if it exists
 * Do add any additional imports to requirements.txt
 * Do strive for high test coverage
 
