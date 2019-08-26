@@ -4,9 +4,13 @@ import os
 
 class occurrence_handler():
     
+    '''occurrence_handler object that manages the occurrence species and files.'''
+    
     # root = config root of 'occurrences' folder.
     
     def __init__(self,root):
+        
+        '''occurrence_handler object initiation.'''
         
         self.root = root
         self.length = 0
@@ -17,6 +21,9 @@ class occurrence_handler():
         self.spec_dict = self.species_dictionary()
     
     def validate_occurrences(self):
+        
+        '''validate_occurrences function that validates the presence of any .csv or .xls files. Additionally collects some basic statistics on the occurrences.'''
+        
         for root, dirs, files in os.walk(self.root):
             for file in files:
                 file_ext = file.split('.')[-1]                
@@ -38,6 +45,9 @@ class occurrence_handler():
             raise IOError('no occurrences are present in the occurrences folder: %s.' % self.root)
         
     def species_dictionary(self):
+        
+        '''species_dictionary function that creates one dictionary containing all the found occurrence species.'''
+        
         species_occ_dict = {}
         for i in range(len(self.path)):
             file_ext = self.path[i].split('.')[-1]

@@ -2,9 +2,13 @@ import os
 
 class gis_handler():
     
+    '''gis_handler object for managing all gis related files and objects. Additionally keeps track of any output files created and their output paths'''
+    
     # root = config root of 'data' folder.
     
     def __init__(self,root):
+        
+        '''gis_handler object initiation. Recording relevant filepaths, statistics on included variables.'''
         
         self.root = root        
         self.world_locations_to_predict = ''
@@ -29,6 +33,8 @@ class gis_handler():
         
     def validate_gis(self):
         
+        '''validate_gis function that validates if certain required files and locations are present.'''
+        
         for root, dirs, files in os.walk(self.root):
             for d in dirs:
                 if 'scaled' == d:
@@ -49,7 +55,11 @@ class gis_handler():
             
     def validate_tif(self):
         
+        '''validate_tif function that validates the available .tif files'''
+        
         def variables_list (path):
+            
+            '''creates a list of filepaths and names of .tif files corresponding to a given path.'''
             
             f = []
             n = []
@@ -73,12 +83,16 @@ class gis_handler():
             
     def reload_tifs(self):
         
+        '''reload_tifs updates the instance variables: self.variables, self.names and self.scaled_len'''
+        
         self.variables = []
         self.names = []
         self.scaled_len = 0        
         self.validate_tif()        
     
     def define_output(self):
+        
+        '''define_output function sets a list of standard output locations for intermediate files.'''
         
         self.presence = self.non_scaled + '/presence'
         self.stack = self.gis + '/stack'

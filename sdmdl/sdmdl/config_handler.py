@@ -4,7 +4,11 @@ import os
 
 class config_handler():
     
+    '''config_handler object that manages the config file, containing information on the data, occurrences and result paths.'''
+    
     def __init__(self,root):
+        
+        '''config_handler object initiation.'''
         
         self.root = root
         
@@ -12,6 +16,8 @@ class config_handler():
         self.read_yaml()
         
     def search_config(self):
+        
+        '''search_config function that recursively find the location of the config.yml file.'''
         
         self.config = ''
         
@@ -27,6 +33,8 @@ class config_handler():
     
     def create_yaml(self,outpath):
         
+        '''create_yaml function that can be used for initialization of the package (creates a new config file upon running the first time).'''
+        
         yml = { '# config file'         :   ''                          ,
                 'data_path = '          :   'D:/sdmdl/data'             ,
                 'occurrence_path = '    :   'D:/sdmdl/data/occurrences' }
@@ -35,6 +43,8 @@ class config_handler():
             yaml.dump(yml, outfile, default_flow_style=False, allow_unicode=True)
         
     def read_yaml(self):
+        
+        '''read_yaml function that reads the config file at the previously found location and extracts all relavant information from it to set instance variables.'''
         
         self.data_path = ''
         self.occ_path = ''
