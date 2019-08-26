@@ -1,8 +1,0 @@
-# path of root
-path = ‘’
-
-# verbose mode option of: ‘INFO’, ‘WARNING’, ‘ERROR’ or ‘CRITICAL’
-verbose = ‘INFO’ 
-
-# settings
-# add settings options
