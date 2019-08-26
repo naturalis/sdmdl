@@ -29,8 +29,8 @@ The project builds on the previous results obtained by:
 - [README.md](README.md) - the README file, which you are now reading
 - [requirements.txt](requirements.txt) - prerequisites to install this package, used by pip
 - [setup.py](setup.py) - installer script
-- [data](data)/ - contains (some of) the data for the use cases
+- [data](data)/ - contains (some of) the data for the use cases - **marked for deletion**
 - [docs](docs)/ - contains project documentation files
-- [script](script)/ - contains utility scripts
+- [script](script)/ - contains utility scripts - **marked for deletion**
 - [sdmdl](sdmdl)/ - the library code itself
 - [tests](tests)/ - unit tests
