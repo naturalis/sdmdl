@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 with open('README.md') as f:
     readme = f.read()
 
-with open('LICENSE.txt') as f:
+with open('LICENSE') as f:
     license = f.read()
 
 setup(
@@ -26,5 +26,5 @@ setup(
     
     packages=find_packages(exclude=('tests', 'docs', 'data', 'script')),
                            
-    install_requires=['natsort','earthpy','pandas','rasterio','shapely','geopandas','numpy','pyproj','pycrs']
+    install_requires=['natsort','earthpy','pandas','rasterio','shapely','geopandas','numpy','pyproj','pycrs','gdal']
 )
