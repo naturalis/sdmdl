@@ -1,6 +1,6 @@
 from sdmdl.sdmdl.config_handler import config_handler
 import unittest
-
+import os
 
 class ConfigHandlerTestSuite(unittest.TestCase):
     
