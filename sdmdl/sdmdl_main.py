@@ -17,9 +17,9 @@ class sdmdl:
         '''sdmdl object initiation.'''
         
         self.root = root        
-        self.ch = config_handler(root)        
-        self.oh = occurrence_handler(self.ch.occ_path)        
-        self.gh = gis_handler(self.ch.data_path)
+        self.oh = occurrence_handler(self.root)        
+        self.gh = gis_handler(self.root)
+        self.ch = config_handler(self.oh,self.gh)
            
         # change this later when using log4py  
         self.verbose = True       

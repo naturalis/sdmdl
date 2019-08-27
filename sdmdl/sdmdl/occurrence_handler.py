@@ -27,9 +27,9 @@ class occurrence_handler():
         for root, dirs, files in os.walk(self.root):
             for file in files:
                 file_ext = file.split('.')[-1]                
-                if file_ext == 'csv':
+                if file_ext == 'csv' and 'world_locations_to_predict.csv' != file:
                     table = pd.read_csv(root + '/' + file)
-                elif file_ext == 'xlsx' or file_ext == 'xls':
+                elif (file_ext == 'xlsx' or file_ext == 'xls') and 'world_locations_to_predict.csv' != file:
                     table = pd.read_excel(root + '/' + file)
                 else:
                     # potentially add message that file has been ignored (due to incompatible file extension).
@@ -40,7 +40,7 @@ class occurrence_handler():
                     self.path += [root + '/' + file]
                     self.name += [file.replace('.%s' % file_ext,'')]
                 else:
-                    warnings.warn('file "%" is missing either the "decimalLatitude" or "decimalLongitude" column and was excluded.' % file)                    
+                    warnings.warn('file "%s" is missing either the "decimalLatitude" or "decimalLongitude" column and was excluded.' % file)                    
         if self.length == 0:
             raise IOError('no occurrences are present in the occurrences folder: %s.' % self.root)
         
