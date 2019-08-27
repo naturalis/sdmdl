@@ -1,5 +1,0 @@
-conda create -n DLSDM python=3.5
-pip install pygbif
-conda install numpy
-conda install matplotlib
-conda install -c r rpy2
