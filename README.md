@@ -25,6 +25,7 @@ The project builds on the previous results obtained by:
 
 ### Package layout
 
+- [config.yml](config.yml) - example config file **marked for deletion**
 - [CONTRIBUTING.md](CONTRIBUTING.md) - hints for how to contribute to this project
 - [LICENSE](LICENSE) - the MIT license, which applies to this package
 - [README.md](README.md) - the README file, which you are now reading
