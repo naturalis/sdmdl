@@ -7,14 +7,14 @@ class ConfigHandlerTestSuite(unittest.TestCase):
     """Test cases for Config Handler class."""
 
     def setUp(self):
-        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data'))
         self.config = config_handler(self.root)
         
     def test_instance_variables(self):
         self.assertEqual(self.config.root, self.root)
         self.assertEqual(self.config.config, self.root + '/config.yml')
-        self.assertEqual(self.config.data_path, self.root + '/data')
-        self.assertEqual(self.config.occ_path, self.root + '/data/occurrences')
+        self.assertEqual(self.config.data_path, self.root + './')
+        self.assertEqual(self.config.occ_path, self.root + '/occurrences')
         self.assertEqual(self.config.result_path, self.root + '/results')
         
     def test_search_config(self):

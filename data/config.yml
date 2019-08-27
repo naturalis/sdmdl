@@ -1,0 +1,4 @@
+# config file
+data_path: ./
+occurrence_path: occurrences
+result_path: results
