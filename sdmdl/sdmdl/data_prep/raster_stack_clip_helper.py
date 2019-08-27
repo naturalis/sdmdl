@@ -96,3 +96,4 @@ class raster_stack_clip_helper():
 
         with rasterio.open(self.out_tif, "w", **self.out_meta) as dest:
             dest.write(self.out_img)
+

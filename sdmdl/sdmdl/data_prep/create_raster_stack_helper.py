@@ -28,3 +28,4 @@ class create_raster_stack_helper():
         self.path_exists()
         es.stack(self.gh.variables, self.gh.stack + '/stacked_env_variables.tif')
         self.print_end()
+
