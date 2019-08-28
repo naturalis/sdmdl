@@ -1,35 +1,34 @@
 import pandas as pd
-import warnings
 import os
 
 
 class occurrence_handler():
-    """occurrence_handler object that manages the occurrence species and files."""
+    '''occurrence_handler object that manages the occurrence species and files.'''
 
     # root = config root of 'occurrences' folder.
 
     def __init__(self, root):
 
-        """occurrence_handler object initiation."""
+        '''occurrence_handler object initiation.'''
 
         self.root = root
+
         self.length = 0
         self.path = []
         self.name = []
 
-        self.validate_occurrences()
-        self.spec_dict = self.species_dictionary()
+        self.spec_dict = {}
 
     def validate_occurrences(self):
 
-        """validates .csv or .xls files. Additionally collects some basic statistics on the occurrences."""
+        '''validate_occurrences function that validates the presence of any .csv or .xls files. Additionally collects some basic statistics on the occurrences.'''
 
         for root, dirs, files in os.walk(self.root):
             for file in files:
                 file_ext = file.split('.')[-1]
-                if file_ext == 'csv':
+                if file_ext == 'csv' and 'world_locations_to_predict.csv' != file:
                     table = pd.read_csv(root + '/' + file)
-                elif file_ext == 'xlsx' or file_ext == 'xls':
+                elif (file_ext == 'xlsx' or file_ext == 'xls') and 'world_locations_to_predict.csv' != file:
                     table = pd.read_excel(root + '/' + file)
                 else:
                     # potentially add message that file has been ignored (due to incompatible file extension).
@@ -40,14 +39,14 @@ class occurrence_handler():
                     self.path += [root + '/' + file]
                     self.name += [file.replace('.%s' % file_ext, '')]
                 else:
-                    warnings.warn(
+                    Warning(
                         'file "%s" is missing either the "decimalLatitude" or "decimalLongitude" column and was excluded.' % file)
         if self.length == 0:
             raise IOError('no occurrences are present in the occurrences folder: %s.' % self.root)
 
     def species_dictionary(self):
 
-        """species_dictionary function that creates one dictionary containing all the found occurrence species."""
+        '''species_dictionary function that creates one dictionary containing all the found occurrence species.'''
 
         species_occ_dict = {}
         for i in range(len(self.path)):
@@ -60,5 +59,7 @@ class occurrence_handler():
             col_list[col_list.index('decimallongitude')] = 'dLon'
             col_list[col_list.index('decimallatitude')] = 'dLat'
             table.columns = col_list
+
             species_occ_dict["%s" % self.name[i]] = table
-        return (species_occ_dict)
+
+        self.spec_dict = species_occ_dict
