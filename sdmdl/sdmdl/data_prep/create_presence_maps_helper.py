@@ -36,8 +36,10 @@ class create_presence_maps_helper():
         return (presence_data, lon, lat)
 
     def convert_spatial_to_image(self, presence_data, src, lat, lon, new_band):
+        self.map_coords = []
         for i in range(0, len(presence_data)):
             row, col = src.index(lon[i], lat[i])
+            self.map_coords += [[row,col]]
             new_band[row, col] = 1
         return (new_band)
 
