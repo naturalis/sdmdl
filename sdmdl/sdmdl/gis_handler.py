@@ -10,7 +10,7 @@ class gis_handler():
 
         '''gis_handler object initiation. Recording relevant filepaths, statistics on included variables.'''
 
-        self.root = root
+        self.root = root.replace('\\','/')
 
         self.scaled = ''
         self.non_scaled = ''
@@ -18,7 +18,7 @@ class gis_handler():
         self.world_locations_to_predict = ''
         self.empty_map = ''
 
-        self.variables = []
+        self.vbles = []
         self.names = []
         self.length = 0
         self.scaled_len = 0
@@ -92,8 +92,8 @@ class gis_handler():
 
         '''define_output function sets a list of standard output locations for intermediate files.'''
 
-        self.presence = self.non_scaled + '/presence'
-        self.stack = self.gis + '/stack'
-        self.stack_clip = self.gis + '/stack_clip'
-        self.spec_ppa = self.root + '/spec_ppa'
-        self.spec_ppa_env = self.root + '/spec_ppa_env'
+        self.presence = (self.non_scaled + '/presence').replace('\\','/')
+        self.stack = (self.gis + '/stack').replace('\\','/')
+        self.stack_clip = (self.gis + '/stack_clip').replace('\\','/')
+        self.spec_ppa = (self.root + '/spec_ppa').replace('\\','/')
+        self.spec_ppa_env = (self.root + '/spec_ppa_env').replace('\\','/')

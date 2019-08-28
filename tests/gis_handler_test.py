@@ -8,7 +8,7 @@ class GisHandlerTestSuite(unittest.TestCase):
 
     def setUp(self):
 
-        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data/gis_handler'
+        self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data/gis_handler').replace('\\','/')
 
     def test__init__(self):
 
@@ -67,11 +67,11 @@ class GisHandlerTestSuite(unittest.TestCase):
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.assertEqual(self.gh.presence,self.gh.non_scaled + '/presence')
-        self.assertEqual(self.gh.stack, self.gh.gis + '/stack')
-        self.assertEqual(self.gh.stack_clip,self.gh.gis + '/stack_clip')
-        self.assertEqual(self.gh.spec_ppa, self.gh.root + '/spec_ppa')
-        self.assertEqual(self.gh.spec_ppa_env,self.gh.root + '/spec_ppa_env')
+        self.assertEqual(self.gh.presence,(self.gh.non_scaled + '/presence'))
+        self.assertEqual(self.gh.stack,(self.gh.gis + '/stack'))
+        self.assertEqual(self.gh.stack_clip,(self.gh.gis + '/stack_clip'))
+        self.assertEqual(self.gh.spec_ppa,(self.gh.root + '/spec_ppa'))
+        self.assertEqual(self.gh.spec_ppa_env,(self.gh.root + '/spec_ppa_env'))
 
 
 if __name__ == '__main__':
