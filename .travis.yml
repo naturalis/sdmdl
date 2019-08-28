@@ -5,6 +5,7 @@ python:
 install:
   - sudo add-apt-repository -y ppa:ubuntugis/ppa
   - sudo apt-get clean
+  - sudo rm -r /var/lib/apt/lists/*
   - sudo apt-get update
   - sudo apt install gdal-bin libgdal-dev
   - pip install -r requirements.txt
