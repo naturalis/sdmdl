@@ -18,7 +18,7 @@ class gis_handler():
         self.world_locations_to_predict = ''
         self.empty_map = ''
 
-        self.vbles = []
+        self.variables = []
         self.names = []
         self.length = 0
         self.scaled_len = 0
