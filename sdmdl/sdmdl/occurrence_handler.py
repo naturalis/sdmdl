@@ -11,7 +11,7 @@ class occurrence_handler():
 
         '''occurrence_handler object initiation.'''
 
-        self.root = root
+        self.root = root.replace('\\','/')
 
         self.length = 0
         self.path = []

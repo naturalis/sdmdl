@@ -8,7 +8,7 @@ class OccurrenceHandlerTestSuite(unittest.TestCase):
 
     def setUp(self):
         
-        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data/occurrence_handler'      
+        self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data/occurrence_handler').replace('\\','/')
         
     def test__init__(self):
 
