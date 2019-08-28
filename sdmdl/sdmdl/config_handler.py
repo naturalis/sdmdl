@@ -19,7 +19,7 @@ class config_handler():
         self.gh.validate_tif()
         self.gh.define_output()
 
-        self.root = root
+        self.root = root.replace('\\','/')
 
         self.config = ''
 

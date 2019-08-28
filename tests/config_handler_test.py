@@ -10,7 +10,7 @@ class ConfigHandlerTestSuite(unittest.TestCase):
 
     def setUp(self):
 
-        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data'
+        self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data').replace('\\','/')
         self.oh = occurrence_handler(self.root + '/occurrence_handler')
         self.gh = gis_handler(self.root + '/gis_handler')
 
