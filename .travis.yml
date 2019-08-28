@@ -4,9 +4,9 @@ python:
 # command to install dependencies
 install:
   - sudo add-apt-repository -y ppa:ubuntugis/ppa
-  - sudo apt-get clean
-  - sudo rm -rf /var/lib/apt/lists/*
-  - sudo apt-get update
+  - sudo -s
+  - echo "Acquire::By-Hash \"yes\"; ">/etc/apt/apt.conf.d/01byhash
+  - apt update
   - sudo apt install gdal-bin libgdal-dev
   - pip install -r requirements.txt
   - pip install pytest
