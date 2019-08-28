@@ -3,8 +3,7 @@ python:
   - "3.6"
 # command to install dependencies
 install:
-  - sudo add-apt-repository -y ppa:ubuntugis/ppa && sudo apt update && sudo apt install gdal-bin libgdal-dev
-  - curl -O -J -L https://github.com/OSGeo/gdal/releases/download/v3.0.1/gdal-3.0.1.tar.gz && tar xzvf gdal-3.0.1.tar.gz && cd gdal-3.0.1 && ./configure && sudo make install
+  - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable && sudo apt update && sudo apt install libgdal-dev python-gdal python3-gdal
   - pip install -r requirements.txt
   - pip install pytest
   - pip install pytest-cov
