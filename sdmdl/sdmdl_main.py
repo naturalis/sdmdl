@@ -28,7 +28,7 @@ class sdmdl:
         self.gh.validate_tif()
         self.gh.define_output()
 
-        self.ch = config_handler(self.root, self.oh, self.gh)
+        self.ch = config_handler(self.dat_root, self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
 
