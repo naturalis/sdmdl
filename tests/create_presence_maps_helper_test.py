@@ -14,8 +14,15 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data'
         self.oh = occurrence_handler(self.root + '/occurrence_handler')
+        self.oh.validate_occurrences()
+        self.oh.species_dictionary()
         self.gh = gis_handler(self.root + '/gis_handler')
+        self.gh.validate_gis()
+        self.gh.validate_tif()
+        self.gh.define_output()
         self.ch = config_handler(self.root + '/config_handler',self.oh,self.gh)
+        self.ch.search_config()
+        self.ch.read_yaml()
         self.verbose = False
 
     def test__init__(self):
