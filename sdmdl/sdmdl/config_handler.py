@@ -44,8 +44,14 @@ class config_handler():
         """create_yaml function that can be used for initialization of the package (creates a new config file upon
         running the first time). """
 
-        occ_dict = dict(zip(self.oh.name, self.oh.path)) if len(self.oh.name) > 1 else {self.oh.name:self.oh.path}
-        lay_dict = dict(zip(self.gh.names, self.gh.variables)) if len(self.gh.names) > 1 else {self.gh.names:self.gh.path}
+        if len(self.oh.name) > 1:
+            occ_dict = dict(zip(self.oh.name, self.oh.path))
+        else:
+            occ_dict = {self.oh.name[0]: self.oh.path[0]}
+        if len(self.gh.names) > 1:
+            lay_dict = dict(zip(self.gh.names, self.gh.variables))
+        else:
+            lay_dict = {self.gh.names[0]: self.gh.path[0]}
 
         yml = {'data_path': self.root,
                'occurrence_path': self.root + '/occurrences',
