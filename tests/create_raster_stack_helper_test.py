@@ -7,17 +7,26 @@ import unittest
 import rasterio
 import os
 
+
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data').replace('\\', '/')
         self.oh = occurrence_handler(self.root + '/occurrence_handler')
+        self.oh.validate_occurrences()
+        self.oh.species_dictionary()
         self.gh = gis_handler(self.root + '/gis_handler')
+        self.gh = self.gh.validate_gis()
+        self.gh = self.gh.validate_tif()
+        self.gh = self.gh.define_output()
         self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch.search_config()
+        self.ch.read_yaml()
         self.verbose = False
+        self.crs = create_raster_stack_helper(self.oh, self.gh, self.ch, self.verbose)
 
     def test__init__(self):
-        self.crs = create_raster_stack_helper(self.oh, self.gh, self.ch, self.verbose)
+
         self.assertEqual(self.crs.oh, self.oh)
         self.assertEqual(self.crs.gh, self.gh)
         self.assertEqual(self.crs.ch, self.ch)
@@ -48,6 +57,7 @@ class MyTestCase(unittest.TestCase):
         os.remove(self.gh.stack + '/stacked_env_variables.tif')
         os.rmdir(self.gh.stack)
         os.rmdir(self.gh.gis)
+
 
 if __name__ == '__main__':
     unittest.main()
