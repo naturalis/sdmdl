@@ -28,89 +28,25 @@ class data_prep_handler():
 
         """create_presence_maps function creates a set of presence maps from occurrence tables."""
 
-        from sdmdl.sdmdl.data_prep.create_presence_maps_helper import create_presence_maps_helper
-        cpmh = create_presence_maps_helper(self.oh, self.gh, self.ch, True)
-        cpmh.create_presence_maps()
+        from sdmdl.sdmdl.data_prep.createpresencemaphelper import CreatePresenceMapHelper
+        cpm = CreatePresenceMapHelper(self.oh, self.gh, self.ch, self.verbose)
+        cpm.create_presence_maps()
 
     def create_raster_stack(self):
 
         """create_raster_stack function that combines all present .tif layers into one file."""
 
         from sdmdl.sdmdl.data_prep.create_raster_stack_helper import create_raster_stack_helper
-        crsh = create_raster_stack_helper(self.oh, self.gh, self.ch, True)
-        crsh.create_raster_stack()
+        crs = create_raster_stack_helper(self.oh, self.gh, self.ch, self.verbose)
+        crs.create_raster_stack()
 
     def raster_stack_clip(self):
 
         """raster_stack_clip function that creates a unique (clipped) raster file for further parameter extraction."""
 
-        def buff_on_globe(points, radius):
-
-            """uses geoseries object and for each point creates geodesic buffer. aggregates buffers into final buffer
-            object """
-
-            geometry_list = [disk_on_globe(points.iloc[g], radius) for g in range(len(points))]
-            polygon_list = []
-            for geometry in geometry_list:
-                if isinstance(geometry, MultiPolygon):
-                    for polygon in geometry:
-                        polygon_list += [polygon]
-                elif isinstance(geometry, Polygon):
-                    polygon_list += [geometry]
-            return MultiPolygon(polygon_list)
-
-        def disk_on_globe(point, radius):
-
-            """disk_on_globe function used for creating geodesic buffers, taking into account coordinate
-            singularities. """
-
-            wgs84_globe = pyproj.Proj(proj='latlong', ellps='WGS84')
-            lon, lat = point.dLon, point.dLat
-            aeqd = pyproj.Proj(proj='aeqd', ellps='WGS84', datum='WGS84', lat_0=lat, lon_0=lon)
-            disk = transform(partial(pyproj.transform, aeqd, wgs84_globe), Point(0, 0).buffer(radius))
-            boundary = np.array(disk.boundary)
-            i = 0
-            while i < boundary.shape[0] - 1:
-                if abs(boundary[i + 1, 0] - boundary[i, 0]) > 180:
-                    assert (boundary[i, 1] > 0) == (boundary[i, 1] > 0)
-                    vsign = -1 if boundary[i, 1] < 0 else 1
-                    hsign = -1 if boundary[i, 0] < 0 else 1
-                    boundary = np.insert(boundary, i + 1, [[hsign * 180, boundary[i, 1]], [hsign * 180, vsign * 90],
-                                                           [-hsign * 180, vsign * 90],
-                                                           [-hsign * 180, boundary[i + 1, 1]]], axis=0)
-                    i += 5
-                else:
-                    i += 1
-            disk = Polygon(boundary)
-            disk = disk.buffer(0)
-            if not disk.intersects(Point(lon, lat)):
-                disk = box(-180, -90, 180, 90).difference(disk)
-            return disk
-
-        if not os.path.isdir(self.gh.stack_clip):
-            os.makedirs(self.gh.stack_clip, exist_ok=True)
-        for key in (
-        tqdm.tqdm(self.oh.spec_dict, desc='Creating raster clips' + (29 * ' ')) if self.verbose else self.oh.spec_dict):
-            data = self.oh.spec_dict[key]
-            spec = key
-            if os.path.isfile(self.gh.stack_clip + '/%s_raster_clip.tif' % spec):
-                continue
-            data['coordinates'] = list(zip(data["dLon"], data["dLat"]))
-            data['coordinates'] = data["coordinates"].apply(Point)
-            data["present/pseudo_absent"] = 1
-            geo_data = gpd.GeoDataFrame(data, geometry='coordinates', crs={'init': 'epsg:4326'})
-            buffer = buff_on_globe(geo_data, 1000000)
-            union_buffer = gpd.GeoSeries(unary_union(buffer)).iloc[0]
-            raster = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
-            out_tif = self.gh.stack_clip + '/%s_raster_clip.tif' % spec
-            out_img, out_transform = rasterio.mask.mask(dataset=raster, shapes=[union_buffer], crop=True)
-            out_meta = raster.meta.copy()
-            epsg_code = int(raster.crs.data['init'][5:])
-            out_meta.update(
-                {"driver": "GTiff", "height": out_img.shape[1], "width": out_img.shape[2], "transform": out_transform,
-                 "crs": pycrs.parse.from_epsg_code(epsg_code).to_proj4()})
-            with rasterio.open(out_tif, "w", **out_meta) as dest:
-                dest.write(out_img)
+        from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
+        rsc = raster_stack_clip_helper(self.oh, self.gh, self.ch, self.verbose)
+        rsc.raster_stack_clip()
 
     def create_presence_pseudo_absence(self):
 
@@ -189,7 +125,7 @@ class data_prep_handler():
             file.close()
         for i in (tqdm.tqdm(range(1, self.gh.scaled_len + 1),
                             desc='Computing band means and standard deviations' + (6 * ' ')) if self.verbose else range(
-                1, self.gh.scaled_len + 1)):
+            1, self.gh.scaled_len + 1)):
             profile.update(count=1)
             band = raster.read(i)
             band[band < -9999] = -9999

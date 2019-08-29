@@ -4,7 +4,7 @@ import tqdm
 import os
 
 
-class create_presence_maps_helper():
+class CreatePresenceMapHelper():
 
     def __init__(self, oh, gh, ch, verbose):
 
@@ -12,6 +12,7 @@ class create_presence_maps_helper():
         self.gh = gh
         self.ch = ch
         self.verbose = verbose
+        self.map_coords = []
 
     def open_band(self):
 
@@ -20,9 +21,9 @@ class create_presence_maps_helper():
         band = src.read(1)
         new_band = band.copy()
 
-        return (src, profile, new_band)
+        return src, profile, new_band
 
-    def confirm_existance(self):
+    def confirm_path(self):
         if not os.path.isdir(self.gh.presence):
             os.makedirs(self.gh.presence, exist_ok=True)
 
@@ -33,22 +34,21 @@ class create_presence_maps_helper():
         lati = presence_data["dLat"]
         lon = pd.Series.tolist(long)
         lat = pd.Series.tolist(lati)
-        return (presence_data, lon, lat)
+        return presence_data, lon, lat
 
     def convert_spatial_to_image(self, presence_data, src, lat, lon, new_band):
-        self.map_coords = []
         for i in range(0, len(presence_data)):
             row, col = src.index(lon[i], lat[i])
-            self.map_coords += [[row,col]]
+            self.map_coords += [[row, col]]
             new_band[row, col] = 1
-        return (new_band)
+        return new_band
 
     def create_presence_maps(self):
 
         src, profile, new_band = self.open_band()
-        self.confirm_existance()
+        self.confirm_path()
 
-        for key in tqdm.tqdm(self.oh.spec_dict):
+        for key in tqdm.tqdm(self.oh.spec_dict, desc='Creating presence maps' + (28 * ' ')):
             presence_data, lon, lat = self.extract_lat_lon(key)
             new_band = self.convert_spatial_to_image(presence_data, src, lat, lon, new_band)
 

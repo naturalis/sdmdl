@@ -33,9 +33,7 @@ class raster_stack_clip_helper():
                 assert (boundary[i, 1] > 0) == (boundary[i, 1] > 0)
                 vsign = -1 if boundary[i, 1] < 0 else 1
                 hsign = -1 if boundary[i, 0] < 0 else 1
-                boundary = np.insert(boundary, i + 1, [[hsign * 180, boundary[i, 1]], [hsign * 180, vsign * 90],
-                                                       [-hsign * 180, vsign * 90], [-hsign * 180, boundary[i + 1, 1]]],
-                                     axis=0)
+                boundary = np.insert(boundary, i + 1, [[hsign * 180, boundary[i, 1]], [hsign * 180, vsign * 90], [-hsign * 180, vsign * 90], [-hsign * 180, boundary[i + 1, 1]]], axis=0)
                 i += 5
             else:
                 i += 1
