@@ -23,6 +23,9 @@ class occurrence_handler():
 
         '''validate_occurrences function that validates the presence of any .csv or .xls files. Additionally collects some basic statistics on the occurrences.'''
 
+        path = []
+        name = []
+
         for root, dirs, files in os.walk(self.root):
             for file in files:
                 file_ext = file.split('.')[-1]
@@ -36,13 +39,16 @@ class occurrence_handler():
                 col_list = [col.lower() for col in list(table.columns)]
                 if 'decimallatitude' in col_list and 'decimallongitude' in col_list:
                     self.length += 1
-                    self.path += [root + '/' + file]
-                    self.name += [file.replace('.%s' % file_ext, '')]
+                    path += [root + '/' + file]
+                    name += [file.replace('.%s' % file_ext, '')]
                 else:
                     Warning(
                         'file "%s" is missing either the "decimalLatitude" or "decimalLongitude" column and was excluded.' % file)
         if self.length == 0:
             raise IOError('no occurrences are present in the occurrences folder: %s.' % self.root)
+
+        self.path = path
+        self.name = name
 
     def species_dictionary(self):
 
