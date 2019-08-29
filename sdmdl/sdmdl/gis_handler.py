@@ -68,7 +68,7 @@ class gis_handler():
                 if fx == 'tif' or fx == 'tiff':
                     f += [a.replace('\\', '/') + '/' + file]
                     n += [file.replace('.%s' % file_ext, '')]
-        return ([f, n])
+        return [f, n]
 
     def validate_tif(self):
 
