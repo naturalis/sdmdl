@@ -5,7 +5,7 @@ import yaml
 import unittest
 import os
 
-class ConfigHandlerTestSuite(unittest.TestCase):
+class ConfigTestCase(unittest.TestCase):
     """Test cases for Config Handler class."""
 
     def setUp(self):

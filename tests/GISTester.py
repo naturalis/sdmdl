@@ -3,7 +3,7 @@ import unittest
 import os
 
 
-class GisHandlerTestSuite(unittest.TestCase):
+class GISTesCase(unittest.TestCase):
     """Test cases for Config Handler class."""
 
     def setUp(self):

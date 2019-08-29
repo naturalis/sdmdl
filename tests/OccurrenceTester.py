@@ -2,7 +2,8 @@ from sdmdl.sdmdl.occurrence_handler import occurrence_handler
 import unittest
 import os
 
-class OccurrenceHandlerTestSuite(unittest.TestCase):
+
+class OccurrenceTestCase(unittest.TestCase):
     
     """Test cases for Config Handler class."""
 

@@ -8,7 +8,7 @@ import rasterio
 import os
 
 
-class MyTestCase(unittest.TestCase):
+class CreateRasterStackTestCase(unittest.TestCase):
 
     def setUp(self):
         self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data').replace('\\', '/')
