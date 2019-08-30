@@ -66,8 +66,8 @@ class RasterStackClipTestCase(unittest.TestCase):
                 for g in geo:
                     geom_list += [g]
         true_poly = MultiPolygon(geom_list)
-        ### SET TO FALSE TO PASS BUILD TEST FIX ASAP
-        self.assertFalse(multi_poly.equals(true_poly))
+        self.assertTrue(multi_poly.almost_equals(true_poly,0.0000001))
+        f.close()
 
     def test_path_exists(self):
         self.assertFalse(os.path.isdir(self.gh.stack_clip))
