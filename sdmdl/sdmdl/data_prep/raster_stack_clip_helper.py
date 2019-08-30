@@ -66,8 +66,6 @@ class raster_stack_clip_helper():
         self.data['coordinates'] = list(zip(self.data["dLon"], self.data["dLat"]))
         self.data['coordinates'] = self.data["coordinates"].apply(Point)
         self.data["present/pseudo_absent"] = 1
-
-    def spatial_to_point(self):
         self.geo_data = gpd.GeoDataFrame(self.data, geometry='coordinates', crs={'init': 'epsg:4326'})
 
     def output(self):
@@ -86,12 +84,11 @@ class raster_stack_clip_helper():
         tqdm.tqdm(self.oh.spec_dict, desc='Creating raster clips' + (29 * ' ')) if self.verbose else self.oh.spec_dict):
             self.data = self.oh.spec_dict[self.key]
             self.data_to_spatial()
-            self.spatial_to_point()
             buffer = self.buff_on_globe(self.geo_data, 1000000)
             self.union_buffer = gpd.GeoSeries(unary_union(buffer)).iloc[0]
             self.raster = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
             self.output()
 
-        with rasterio.open(self.out_tif, "w", **self.out_meta) as dest:
-            dest.write(self.out_img)
+            with rasterio.open(self.out_tif, "w", **self.out_meta) as dest:
+                dest.write(self.out_img)
 
