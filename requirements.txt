@@ -16,4 +16,3 @@ pygbif==0.3.0
 rasterio==1.0.26
 shapely==1.6.4.post2
 scikit-learn==0.21.3
-gdal
