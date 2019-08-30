@@ -4,7 +4,6 @@ from sdmdl.sdmdl.gis_handler import gis_handler
 from sdmdl.sdmdl.data_prep.create_presence_pseudo_absence_helper import create_presence_pseudo_absence_helper
 import unittest
 import pandas as pd
-import gdal
 import ast
 import os
 
