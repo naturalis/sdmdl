@@ -4,7 +4,6 @@ python:
 # command to install dependencies
 install:
   - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable && sudo apt update && sudo apt install libgdal-dev python-gdal python3-gdal libspatialindex-dev
-  - pip install gdal==`gdal-config --version`
   - pip install -r requirements.txt
   - pip install pytest
   - pip install pytest-cov
