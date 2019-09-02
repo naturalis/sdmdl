@@ -4,9 +4,14 @@ import rasterio
 import pandas as pd
 import os
 
-
+# Why is this not called PredictionData?
+# Why is this not documented?
 class PredictionDataHelper:
 
+    # This has the same constructor as all the other
+    # data_prep classes, it seems. They should all
+    # inherit from the same superclass so that this
+    # is only set once.
     def __init__(self, oh, gh, ch, verbose):
         self.oh = oh
         self.gh = gh
@@ -19,6 +24,8 @@ class PredictionDataHelper:
         df = pd.read_csv(self.gh.gis + '/world_locations_to_predict.csv')
         mean_std = pd.read_csv(self.gh.gis + '/env_bio_mean_std.txt', sep="\t")
         len_df = np.arange(len(df))
+        
+        # these should not be hardcoded here
         lon = df["decimal_longitude"].values
         lat = df["decimal_latitude"].values
         row = []
