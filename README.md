@@ -32,6 +32,5 @@ The project builds on the previous results obtained by:
 - [setup.py](setup.py) - installer script
 - [data](data)/ - contains (some of) the data for the use cases - **marked for deletion**
 - [docs](docs)/ - contains project documentation files
-- [script](script)/ - contains utility scripts - **marked for deletion**
 - [sdmdl](sdmdl)/ - the library code itself
 - [tests](tests)/ - unit tests
