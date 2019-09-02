@@ -2,12 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 [![Coverage Status](https://coveralls.io/repos/github/naturalis/sdmdl/badge.svg?branch=master)](https://coveralls.io/github/naturalis/sdmdl?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/sdmdl/badge/?version=latest)](https://sdmdl.readthedocs.io/en/latest/?badge=latest)
-<!--
-This bot is starting to become a pain, what with all the branches it makes and the builds it triggers.
-We will revisit this once our code is a bit more stable. This also means activating this thing again
-down the line by visiting https://pyup.io/repos/github/naturalis/sdmdl/
 [![Updates](https://pyup.io/repos/github/naturalis/sdmdl/shield.svg)](https://pyup.io/repos/github/naturalis/sdmdl/)
--->
 
 # sdmdl
 
