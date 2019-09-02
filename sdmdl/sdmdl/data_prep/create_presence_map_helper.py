@@ -5,7 +5,11 @@ import os
 
 
 class CreatePresenceMapHelper:
+    # What is this class? Why is it not called PresenceMap? Why is 
+    # this object called a verb, and not a noun?
 
+    # what are oh, gh, ch, verbose? When you make the constructor,
+    # you write then and there what the arguments are. Not afterwards.
     def __init__(self, oh, gh, ch, verbose):
         self.oh = oh
         self.gh = gh
@@ -25,6 +29,7 @@ class CreatePresenceMapHelper:
         if not os.path.isdir(self.gh.presence):
             os.makedirs(self.gh.presence, exist_ok=True)
 
+    # Why are dictionary keys hardcoded in here? What do they mean?
     def extract_lat_lon(self, key):
         presence_data = self.oh.spec_dict[key]
         presence_data["present/pseudo_absent"] = 1
