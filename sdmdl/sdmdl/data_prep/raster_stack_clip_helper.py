@@ -89,6 +89,8 @@ class raster_stack_clip_helper():
         tqdm.tqdm(self.oh.spec_dict, desc='Creating raster clips' + (29 * ' ')) if self.verbose else self.oh.spec_dict):
             self.data = self.oh.spec_dict[self.key]
             self.data_to_spatial()
+            
+            # This is a magic number that should be configurable
             buffer = self.buff_on_globe(self.geo_data, 1000000)
             self.union_buffer = gpd.GeoSeries(unary_union(buffer)).iloc[0]
             self.raster = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
