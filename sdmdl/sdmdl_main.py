@@ -1,13 +1,13 @@
 import os
 import logging
 
-from sdmdl.sdmdl.data_prep.createpresencemaphelper import CreatePresenceMapHelper
-from sdmdl.sdmdl.data_prep.create_raster_stack_helper import create_raster_stack_helper
+from sdmdl.sdmdl.data_prep.create_presence_map_helper import CreatePresenceMapHelper
+from sdmdl.sdmdl.data_prep.create_raster_stack_helper import CreateRasterStackHelper
 from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
-from sdmdl.sdmdl.data_prep.create_presence_pseudo_absence_helper import create_presence_pseudo_absence_helper
-from sdmdl.sdmdl.data_prep.calc_band_mean_and_stddev import CalcBandMeanAndStddev
-from sdmdl.sdmdl.data_prep.create_training_df import CreateTrainingDF
-from sdmdl.sdmdl.data_prep.create_prediction_df import CreatePredictionDF
+from sdmdl.sdmdl.data_prep.presence_pseudo_absence_helper import PresencePseudoAbsenceHelper
+from sdmdl.sdmdl.data_prep.band_statistics_helper import BandStatisticsHelper
+from sdmdl.sdmdl.data_prep.training_data_helper import CreateTrainingDF
+from sdmdl.sdmdl.data_prep.prediction_data_helper import PredictionDataHelper
 
 from sdmdl.sdmdl.config_handler import config_handler
 from sdmdl.sdmdl.occurrence_handler import occurrence_handler
@@ -58,29 +58,29 @@ class sdmdl:
 
         self.gh.validate_tif()
 
-        crs = create_raster_stack_helper(self.oh, self.gh, self.ch, self.verbose)
+        crs = CreateRasterStackHelper(self.oh, self.gh, self.ch, self.verbose)
         crs.create_raster_stack()
 
         rsc = raster_stack_clip_helper(self.oh, self.gh, self.ch, self.verbose)
         rsc.raster_stack_clip()
 
-        ppa = create_presence_pseudo_absence_helper(self.oh, self.gh, self.ch, self.verbose)
+        ppa = PresencePseudoAbsenceHelper(self.oh, self.gh, self.ch, self.verbose)
         ppa.create_presence_pseudo_absence()
 
-        cbm = CalcBandMeanAndStddev(self.oh, self.gh, self.ch, self.verbose)
+        cbm = BandStatisticsHelper(self.oh, self.gh, self.ch, self.verbose)
         cbm.calc_band_mean_and_stddev()
 
         ctd = CreateTrainingDF(self.oh, self.gh, self.ch, self.verbose)
         ctd.create_training_df()
 
-        cpd = CreatePredictionDF(self.oh, self.gh, self.ch, self.verbose)
+        cpd = PredictionDataHelper(self.oh, self.gh, self.ch, self.verbose)
         cpd.create_prediction_df()
 
     def train(self):
         '''train function that manages the process of model training.'''
 
         th = train_handler(self.oh, self.gh, self.ch, self.verbose)
-        th.train_model()
+        th.train()
 
     def plot_performance_metric(self):
         '''pass'''
