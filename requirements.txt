@@ -1,3 +1,4 @@
+shap
 pyproj==2.3.1
 imblearn==0.0
 keras==2.2.5
