@@ -33,12 +33,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.ctd.ch,self.ch)
         self.assertEqual(self.ctd.verbose,self.verbose)
 
-    def test_prep_prediction_df(self):
+    def test_prep_training_df(self):
         src = rasterio.open(self.root + '/raster_stack_clip/stacked_env_variables.tif')
         inRas = gdal.Open(self.root + '/raster_stack_clip/stacked_env_variables.tif')
         self.ctd.gh.spec_ppa = self.root + '/create_presence_pseudo_absence'
         self.ctd.gh.gis = self.root + '/calc_band_mean_and_stddev'
-        spec, ppa, long, lati, row, col, myarray, mean_std = self.ctd.prep_prediction_df(src,inRas,'testspecies1')
+        spec, ppa, long, lati, row, col, myarray, mean_std = self.ctd.prep_training_df(src,inRas,'testspecies1')
         ppa_truth = pd.read_csv(self.root + '/create_presence_pseudo_absence/testspecies1_ppa_dataframe.csv')
         self.assertEqual(spec,'testspecies1')
         self.assertEqual(ppa.to_numpy().tolist(),ppa_truth['present/pseudo_absent'].to_numpy().tolist())
@@ -55,13 +55,13 @@ class MyTestCase(unittest.TestCase):
         mean_std_truth = pd.read_csv(self.root + '/calc_band_mean_and_stddev/env_bio_mean_std.txt',delimiter='\t')
         self.assertEqual(mean_std.tolist(),mean_std_truth.to_numpy().tolist())
 
-    def test_create_prediction_df(self):
+    def test_create_training_df(self):
         self.ctd.oh.name = ['testspecies1']
         self.ctd.gh.spec_ppa = self.root + '/create_presence_pseudo_absence'
         self.ctd.gh.gis = self.root + '/calc_band_mean_and_stddev'
         self.ctd.gh.stack = self.root + '/raster_stack_clip'
         self.assertFalse(os.path.isfile(self.root + '/gis_handler/spec_ppa_env/testspecies1_env_dataframe.csv'))
-        self.ctd.create_prediction_df()
+        self.ctd.create_training_df()
         self.assertTrue(os.path.isfile(self.root + '/gis_handler/spec_ppa_env/testspecies1_env_dataframe.csv'))
         result = pd.read_csv(self.root + '/gis_handler/spec_ppa_env/testspecies1_env_dataframe.csv')
         truth = pd.read_csv(self.root + '/create_training_df/testspecies1_env_dataframe.csv')

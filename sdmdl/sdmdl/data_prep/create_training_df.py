@@ -13,7 +13,7 @@ class CreateTrainingDF:
         self.ch = ch
         self.verbose = verbose
 
-    def prep_prediction_df(self,src,inRas,i):
+    def prep_training_df(self,src,inRas,i):
         data = pd.read_csv(self.gh.spec_ppa + '/%s_ppa_dataframe.csv' % i)
         spec = data["taxon_name"][0]
         spec = spec.replace(" ", "_")
@@ -34,11 +34,11 @@ class CreateTrainingDF:
         mean_std = mean_std.to_numpy()
         return(spec,ppa,long,lati,row,col,myarray,mean_std)
 
-    def create_prediction_df(self):
+    def create_training_df(self):
         src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
         inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
         for i in self.oh.name:
-            spec, ppa, long, lati, row, col, myarray, mean_std = self.prep_prediction_df(src,inRas,i)
+            spec, ppa, long, lati, row, col, myarray, mean_std = self.prep_training_df(src,inRas,i)
             X = []
             species = ["%s" % spec] * int(len(row))
             for j in range(0, self.gh.length):
