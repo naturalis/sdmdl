@@ -9,9 +9,12 @@ import pycrs
 import tqdm
 import os
 
-
+# This should be called RasterStackClip, probably
+# It needs class level documentation
 class raster_stack_clip_helper():
 
+    # This class needs to inherit from a superclass so you
+    # don't repeat the same code 7(!) times
     def __init__(self, oh, gh, ch, verbose):
         self.oh = oh
         self.gh = gh
@@ -63,6 +66,8 @@ class raster_stack_clip_helper():
             os.makedirs(self.gh.stack_clip, exist_ok=True)
 
     def data_to_spatial(self):
+        
+        # These keys must not be hardcoded here
         self.data['coordinates'] = list(zip(self.data["dLon"], self.data["dLat"]))
         self.data['coordinates'] = self.data["coordinates"].apply(Point)
         self.data["present/pseudo_absent"] = 1
