@@ -1,10 +1,17 @@
 import os
 import logging
 
+from sdmdl.sdmdl.data_prep.createpresencemaphelper import CreatePresenceMapHelper
+from sdmdl.sdmdl.data_prep.create_raster_stack_helper import create_raster_stack_helper
+from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
+from sdmdl.sdmdl.data_prep.create_presence_pseudo_absence_helper import create_presence_pseudo_absence_helper
+from sdmdl.sdmdl.data_prep.calc_band_mean_and_stddev import CalcBandMeanAndStddev
+from sdmdl.sdmdl.data_prep.create_training_df import CreateTrainingDF
+from sdmdl.sdmdl.data_prep.create_prediction_df import CreatePredictionDF
+
 from sdmdl.sdmdl.config_handler import config_handler
 from sdmdl.sdmdl.occurrence_handler import occurrence_handler
 from sdmdl.sdmdl.gis_handler import gis_handler
-from sdmdl.sdmdl.data_prep_handler import data_prep_handler
 from sdmdl.sdmdl.train_handler import train_handler
 from sdmdl.sdmdl.predict_handler import predict_handler
 
@@ -46,15 +53,28 @@ class sdmdl:
     def prep(self):
         '''prep function that manages the process of data pre-processing.'''
 
-        dph = data_prep_handler(self.oh, self.gh, self.ch, self.verbose)
-        dph.create_presence_maps()
+        cpm = CreatePresenceMapHelper(self.oh, self.gh, self.ch, self.verbose)
+        cpm.create_presence_maps()
+
         self.gh.validate_tif()
-        dph.create_raster_stack()
-        dph.raster_stack_clip()
-        dph.create_presence_pseudo_absence()
-        dph.calc_band_mean_and_stddev()
-        dph.create_training_df()
-        dph.create_prediction_df()
+
+        crs = create_raster_stack_helper(self.oh, self.gh, self.ch, self.verbose)
+        crs.create_raster_stack()
+
+        rsc = raster_stack_clip_helper(self.oh, self.gh, self.ch, self.verbose)
+        rsc.raster_stack_clip()
+
+        ppa = create_presence_pseudo_absence_helper(self.oh, self.gh, self.ch, self.verbose)
+        ppa.create_presence_pseudo_absence()
+
+        cbm = CalcBandMeanAndStddev(self.oh, self.gh, self.ch, self.verbose)
+        cbm.calc_band_mean_and_stddev()
+
+        ctd = CreateTrainingDF(self.oh, self.gh, self.ch, self.verbose)
+        ctd.create_training_df()
+
+        cpd = CreatePredictionDF(self.oh, self.gh, self.ch, self.verbose)
+        cpd.create_prediction_df()
 
     def train(self):
         '''train function that manages the process of model training.'''
