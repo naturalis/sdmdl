@@ -6,9 +6,13 @@ import tqdm
 import os
 
 
-
+# Why is this not called PresencePseudoAbsence?
+# What does this class do? There should be documentation
 class PresencePseudoAbsenceHelper:
 
+    # This constructor should inherit from a superclass. It
+    # does the same thing as all the other data_prep classes,
+    # at least the first 4 lines.
     def __init__(self,oh,gh,ch,verbose):
 
         self.oh = oh
@@ -66,9 +70,12 @@ class PresencePseudoAbsenceHelper:
             latitude = item[1]
             lon.append(longitude)
             lat.append(latitude)
+        # these keys should not be hardcoded here
         new_data = pd.DataFrame(
             {"gbif_id": gbif, "taxon_name": taxon, "dLon": lon, "dLat": lat, "present/pseudo_absent": psa})
         data = pd.concat([self.presence_data, new_data], ignore_index=True, sort=True)
+        
+        # these keys should not be hardcoded here
         data = data[['taxon_name', 'gbif_id', 'dLon', 'dLat', 'present/pseudo_absent']]
         data["taxon_name"] = self.spec
         data["row_n"] = np.arange(len(data))
