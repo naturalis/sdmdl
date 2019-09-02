@@ -3,9 +3,11 @@ import rasterio
 import tqdm
 import os
 
-
+# Why is this not called BandStatisticsHelper?
 class BandStatisticsHelper:
 
+    # Why does this constructor look the same as that 
+    # of the CreatePresenceMapHelper? That's what inheritance is for.
     def __init__(self, oh, gh, ch, verbose):
         self.oh = oh
         self.gh = gh
