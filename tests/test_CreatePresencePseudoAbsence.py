@@ -74,8 +74,5 @@ class CreatePresencePseudoAbsenceTestCase(unittest.TestCase):
         os.remove(self.root + '/gis_handler/spec_ppa/testspecies2_ppa_dataframe.csv')
         os.rmdir(self.root + '/gis_handler/spec_ppa')
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
