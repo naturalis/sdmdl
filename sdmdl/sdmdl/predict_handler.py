@@ -9,10 +9,16 @@ import rasterio
 import tqdm
 import gdal
 
-
+# I want to be called Predictor and I need proper
+# class-level documentation
 class predict_handler():
     """predict_handler object that manages model predictions"""
 
+    # Now I finally know what oh, gh, and ch are. 
+    # 1. I have seen this same constructor now 9 times. This needs to be
+    #    be moved to a single base class
+    # 2. It is probably bad design that everyone holds a reference to 
+    #    everyone else (Law of Demeter)
     def __init__(self, occurrence_handler, gis_handler, config_handler, verbose):
 
         """predict_handler object initiation"""
@@ -30,6 +36,8 @@ class predict_handler():
         inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
         myarray = inRas.ReadAsArray()
         norm = matplotlib.colors.Normalize(0, 1)
+        
+        # Put me in a config file
         colors = [[norm(0), "0.95"], [norm(0.05), "steelblue"], [norm(0.1), "sienna"], [norm(0.3), "wheat"],
                   [norm(0.5), "cornsilk"], [norm(0.95), "yellowgreen"], [norm(1.0), "green"]]
         custom_cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", colors)
@@ -66,6 +74,8 @@ class predict_handler():
                 new_band_values.append(new_value)
             new_band_values = np.array(new_band_values)
             df = pd.read_csv(self.gh.gis + '/world_prediction_row_col.csv')
+            
+            # No hardcoded dictionary keys
             row = df["row"]
             row = row.values
             col = df["col"]
