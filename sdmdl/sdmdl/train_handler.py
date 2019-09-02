@@ -37,6 +37,9 @@ class train_handler():
         self.test_lci = []
         self.best_model_auc = [0]
 
+        self.occ_len = 0
+        self.abs_len = 0
+
         np_random = 42  # change later (e.g. self.ch.np_r)
         np.random.seed(np_random)
 
@@ -69,8 +72,8 @@ class train_handler():
             X.append(x)
         df = pd.DataFrame(data=X, columns=band_columns + ["presence"])
         df.to_csv(self.gh.root + '/filtered.csv', index=None)
-        occ_len = int(len(df[df["presence"] == 1]))
-        abs_len = int(len(df[df["presence"] == 0]))
+        self.occ_len = int(len(df[df["presence"] == 1]))
+        self.abs_len = int(len(df[df["presence"] == 0]))
         X = []
         y = []
         band_columns = [column for column in df.columns[:-1]]
@@ -117,7 +120,7 @@ class train_handler():
 
         training_generator, steps_per_epoch = balanced_batch_generator(X_train, y_train, sampler=NearMiss(),
                                                                        batch_size=self.btchs, random_state=42)
-        model.fit_generator(generator=training_generator, steps_per_epoch=steps_per_epoch, epochs=self.epch,
+        model.fit_generator(generator=training_generator, steps_per_epoch=steps_per_epoch, epochs=self.epoch,
                             verbose=0)
         score = model.evaluate(X_test, y_test, verbose=0)
         predictions = model.predict(X_test)
