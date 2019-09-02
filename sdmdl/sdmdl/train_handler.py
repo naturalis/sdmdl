@@ -12,10 +12,14 @@ import shap
 import tqdm
 import os
 
-
+# I want to be called Trainer and I need real documentation
 class train_handler():
     """train_handler object that manages model training. """
 
+    # These constructors must not be like this. They all look the same,
+    # with the same object fields. Clearly they must inherit from a
+    # base class. However, I really doubt they all must hold references
+    # to oh, gh, ch. 
     def __init__(self, oh, gh, ch, verbose):
 
         """train_handler object initiation"""
