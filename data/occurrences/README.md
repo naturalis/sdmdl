@@ -8,5 +8,5 @@ package, as we [exclude](https://github.com/naturalis/sdmdl/blob/e7d347a9b0ace43
 it from the package.
 
 We have 
-[marked](https://github.com/naturalis/sdmdl/blob/04c6e90faac2675aa89e2176d2eec7d8/README.md#L33)
+[marked](https://github.com/naturalis/sdmdl/blob/e95d908da3d9159f9b6e098f23dc9befd10fe863/README.md#L33)
 this folder structure for **deletion**, hence, it is likely to disappear soon.
