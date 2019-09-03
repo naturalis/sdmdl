@@ -153,7 +153,7 @@ class train_handler():
         ci_upper = sorted_scores[int(0.95 * len(sorted_scores))]
         self.test_lci.append(ci_lower)
         self.test_uci.append(ci_upper)
-        return AUC
+        return AUC, model
 
     def validate_model(self, model, AUC, X_train, X_test, shuffled_X_train, shuffled_X_test, test_set):
 
@@ -199,8 +199,9 @@ class train_handler():
         self.create_eval()
         for self.spec in tqdm.tqdm(self.oh.name, desc='training models' + (35 * ' ')) if self.verbose else self.oh.name:
             X, X_train, X_test, y_train, y_test, test_set, shuffled_X_train, shuffled_X_test = self.create_input_data()
+            self.best_model_auc = [0]
             for i in (tqdm.tqdm(range(1, 6), desc='%s' % self.spec + ((50 - len(self.spec)) * ' ')) if self.verbose else range(1, 6)):
                 model = self.create_model_architecture(X)
-                AUC = self.train_model(model, X_train, X_test, y_train, y_test)
+                AUC, model = self.train_model(model, X_train, X_test, y_train, y_test)
                 self.validate_model(model, AUC, X_train, X_test, shuffled_X_train, shuffled_X_test, test_set)
                 self.update_performance_metrics()
