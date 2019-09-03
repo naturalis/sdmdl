@@ -8,10 +8,8 @@ class BandStatisticsHelper:
 
     # Why does this constructor look the same as that 
     # of the CreatePresenceMapHelper? That's what inheritance is for.
-    def __init__(self, oh, gh, ch, verbose):
-        self.oh = oh
+    def __init__(self, gh, verbose):
         self.gh = gh
-        self.ch = ch
         self.verbose = verbose
 
     def calc_band_mean_and_stddev(self):
