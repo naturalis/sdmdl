@@ -9,7 +9,7 @@ from sdmdl.sdmdl.data_prep.band_statistics_helper import BandStatisticsHelper
 from sdmdl.sdmdl.data_prep.training_data_helper import CreateTrainingDF
 from sdmdl.sdmdl.data_prep.prediction_data_helper import PredictionDataHelper
 
-from sdmdl.sdmdl.config_handler import config_handler
+from sdmdl.sdmdl.config import Config
 from sdmdl.sdmdl.occurrence_handler import occurrence_handler
 from sdmdl.sdmdl.gis_handler import gis_handler
 from sdmdl.sdmdl.train_handler import train_handler
@@ -35,7 +35,7 @@ class sdmdl:
         self.gh.validate_tif()
         self.gh.define_output()
 
-        self.ch = config_handler(self.dat_root, self.oh, self.gh)
+        self.ch = Config(self.dat_root, self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
 

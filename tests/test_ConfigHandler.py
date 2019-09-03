@@ -1,4 +1,4 @@
-from sdmdl.sdmdl.config_handler import config_handler
+from sdmdl.sdmdl.config import Config
 from sdmdl.sdmdl.occurrence_handler import occurrence_handler
 from sdmdl.sdmdl.gis_handler import gis_handler
 import yaml
@@ -20,21 +20,21 @@ class ConfigTestCase(unittest.TestCase):
         self.gh.define_output()
 
     def test__init__(self):
-        self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
         self.assertEqual(self.ch.oh,self.oh)
         self.assertEqual(self.ch.gh,self.gh)
         self.assertEqual(self.ch.root, self.root + '/config_handler')
 
     def test_search_config(self):
-        self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
         self.ch.search_config()
         self.assertEqual(self.ch.config,self.root + '/config_handler/config.yml')
         with self.assertRaises(IOError):
-            self.ch = config_handler(self.root + '/no_config', self.oh, self.gh)
+            self.ch = Config(self.root + '/no_config', self.oh, self.gh)
             self.ch.search_config()
 
     def test_create_yaml(self):
-        self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
         self.ch.search_config()
         self.ch.create_yaml()
         with open(self.ch.config, 'r') as stream:
@@ -48,7 +48,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(yml[list(yml.keys())[4]],dict(zip(self.gh.names, self.gh.variables)))
 
     def test_read_yaml(self):
-        self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
         self.assertEqual(self.ch.data_path,self.root + '/config_handler')

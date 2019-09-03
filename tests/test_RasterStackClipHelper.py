@@ -1,4 +1,4 @@
-from sdmdl.sdmdl.config_handler import config_handler
+from sdmdl.sdmdl.config import Config
 from sdmdl.sdmdl.occurrence_handler import occurrence_handler
 from sdmdl.sdmdl.gis_handler import gis_handler
 from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
@@ -27,7 +27,7 @@ class RasterStackClipTestCase(unittest.TestCase):
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.ch = config_handler(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
         self.verbose = False
