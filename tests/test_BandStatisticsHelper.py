@@ -11,26 +11,18 @@ class CreateBandMeanAndStddevTestCase(unittest.TestCase):
 
     def setUp(self):
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data'
-        self.oh = occurrence_handler(self.root + '/occurrence_handler')
-        self.oh.validate_occurrences()
-        self.oh.species_dictionary()
         self.gh = gis_handler(self.root + '/gis_handler')
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
-        self.ch.search_config()
-        self.ch.read_yaml()
         self.verbose = False
 
         self.gh.stack = self.root + '/raster_stack_clip'
 
-        self.cbm = BandStatisticsHelper(self.oh, self.gh, self.ch, self.verbose)
+        self.cbm = BandStatisticsHelper(self.gh, self.verbose)
 
     def test__init__(self):
-        self.assertEqual(self.cbm.oh,self.oh)
         self.assertEqual(self.cbm.gh,self.gh)
-        self.assertEqual(self.cbm.ch,self.ch)
         self.assertEqual(self.cbm.verbose,self.verbose)
 
     def test_calc_band_mean_and_stddev(self):
