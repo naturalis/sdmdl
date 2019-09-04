@@ -12,8 +12,9 @@ import shap
 import tqdm
 import os
 
+
 # I want to be called Trainer and I need real documentation
-class train_handler():
+class Trainer:
     """train_handler object that manages model training. """
 
     # These constructors must not be like this. They all look the same,
@@ -44,8 +45,8 @@ class train_handler():
         self.occ_len = 0
         self.abs_len = 0
 
-        np_random = 42  # change later (e.g. self.ch.np_r)
-        np.random.seed(np_random)
+        self.np_random = 42  # change later (e.g. self.ch.np_r)
+        np.random.seed(self.np_random)
 
         self.btchs = 75  # change later (e.g. self.ch.batch)
 
