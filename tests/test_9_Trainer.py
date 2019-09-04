@@ -107,7 +107,7 @@ class TrainerTestCase(unittest.TestCase):
                     for lis in range(len(weights[list])):
                         np.testing.assert_almost_equal(weights[list][lis], weights_truth[list][lis])
 
-    def test_update_performance_metrics(self):
+    def notest_update_performance_metrics(self):
         self.t.spec = self.oh.name[0]
         X, X_train, X_test, y_train, y_test, _, _, _ = self.t.create_input_data()
         model = self.t.create_model_architecture(X)
