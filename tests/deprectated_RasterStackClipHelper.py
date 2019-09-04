@@ -1,6 +1,6 @@
 from sdmdl.sdmdl.config import Config
-from sdmdl.sdmdl.occurrence_handler import occurrence_handler
-from sdmdl.sdmdl.gis_handler import gis_handler
+from sdmdl.sdmdl.occurrences import Occurrences
+from sdmdl.sdmdl.gis import GIS
 from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
 import pandas as pd
 import unittest
@@ -20,14 +20,14 @@ class RasterStackClipTestCase(unittest.TestCase):
 
     def setUp(self):
         self.root = (os.path.abspath(os.path.join(os.path.dirname(__file__))) + '/test_data').replace('\\', '/')
-        self.oh = occurrence_handler(self.root + '/occurrence_handler')
+        self.oh = Occurrences(self.root + '/occurrence_handler')
         self.oh.validate_occurrences()
         self.oh.species_dictionary()
-        self.gh = gis_handler(self.root + '/gis_handler')
+        self.gh = GIS(self.root + '/gis_handler')
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.ch = Config(self.root + '/config_handler', self.oh, self.gh)
+        self.ch = Config(self.root + '/config', self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
         self.verbose = False
