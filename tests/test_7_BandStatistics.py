@@ -25,7 +25,7 @@ class BandStatisticsTestCase(unittest.TestCase):
     def test_calc_band_mean_and_stddev(self):
 
         os.remove(self.root + '/root/gis/env_bio_mean_std.txt')
-        self.assertFalse(os.path.isfile(self.root + '/gis_handler/gis/env_bio_mean_std.txt'))
+        self.assertFalse(os.path.isfile(self.root + '/root/gis/env_bio_mean_std.txt'))
         self.cbm.calc_band_mean_and_stddev()
         result = pd.read_csv(self.root + '/root/gis/env_bio_mean_std.txt', delimiter='\t')
         truth = pd.read_csv(self.root + '/band_statistics/env_bio_mean_std.txt', delimiter='\t')
