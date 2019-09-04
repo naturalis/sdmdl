@@ -61,7 +61,7 @@ class GIS:
 
         f = []
         n = []
-        for a, b, c in sorted(os.walk(root)):
+        for a, b, c in os.walk(root):
             for file in c:
                 file_ext = file.split('.')[-1]
                 fx = file_ext.lower()
