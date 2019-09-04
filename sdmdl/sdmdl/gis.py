@@ -81,8 +81,8 @@ class GIS:
 
         variables_s, names_s = self.variables_list(self.scaled)
         variables_ns, names_ns = self.variables_list(self.non_scaled)
-        self.variables = variables_s + variables_ns
-        self.names = names_s + names_ns
+        self.variables = sorted(variables_s) + sorted(variables_ns)
+        self.names = sorted(names_s) + sorted(names_ns)
         self.scaled_len = len(variables_s)
         self.length = len(self.variables)
         if len(self.variables) == 0 or len(self.names) == 0:
