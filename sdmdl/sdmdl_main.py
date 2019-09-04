@@ -12,7 +12,7 @@ from sdmdl.sdmdl.data_prep.band_statistics import BandStatistics
 from sdmdl.sdmdl.data_prep.training_data import TrainingData
 from sdmdl.sdmdl.data_prep.prediction_data import PredictionData
 
-from sdmdl.sdmdl.train_handler import train_handler
+from sdmdl.sdmdl.trainer import Trainer
 
 from sdmdl.sdmdl.predict_handler import predict_handler
 
@@ -77,7 +77,7 @@ class sdmdl:
     def train(self):
         '''train function that manages the process of model training.'''
 
-        th = train_handler(self.oh, self.gh, self.ch, self.verbose)
+        th = Trainer(self.oh, self.gh, self.ch, self.verbose)
         th.train()
 
     def plot_performance_metric(self):
