@@ -1,0 +1,2 @@
+Species	Test_loss	Test_acc	Test_tpr	Test_AUC	Test_LCI95%	Test_UCI95%	occ_samples	abs_samples
+arachis_duranensis	0.2739370826859628	0.9668874172185431	1.0	0.9930313588850174	0.9877192982456139	0.9982698961937716	100	1909
