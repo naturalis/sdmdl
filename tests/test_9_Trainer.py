@@ -123,7 +123,7 @@ class TrainerTestCase(unittest.TestCase):
         dnn_eval = pd.read_csv(self.root + '/root/results/_DNN_performance/DNN_eval.txt', delimiter='\t')
         dnn_eval_truth = pd.read_csv(self.root + '/trainer/update_performance_metrics.txt', delimiter='\t')
         self.assertEqual(dnn_eval.to_numpy()[0][0],dnn_eval_truth.to_numpy()[0][0])
-        np.testing.assert_almost_equal(dnn_eval.to_numpy()[0][1:], dnn_eval_truth.to_numpy()[0][1:])
+        np.testing.assert_almost_equal(dnn_eval.to_numpy()[0][1:], dnn_eval_truth.to_numpy()[0][1:],6)
 
 if __name__ == '__main__':
     unittest.main()
