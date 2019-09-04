@@ -1,18 +1,19 @@
 import os
 import logging
 
-from sdmdl.sdmdl.data_prep.create_presence_map_helper import CreatePresenceMapHelper
-from sdmdl.sdmdl.data_prep.create_raster_stack_helper import CreateRasterStackHelper
-from sdmdl.sdmdl.data_prep.raster_stack_clip_helper import raster_stack_clip_helper
-from sdmdl.sdmdl.data_prep.presence_pseudo_absence_helper import PresencePseudoAbsenceHelper
-from sdmdl.sdmdl.data_prep.band_statistics_helper import BandStatisticsHelper
-from sdmdl.sdmdl.data_prep.training_data_helper import CreateTrainingDF
-from sdmdl.sdmdl.data_prep.prediction_data_helper import PredictionDataHelper
-
 from sdmdl.sdmdl.config import Config
-from sdmdl.sdmdl.occurrence_handler import occurrence_handler
-from sdmdl.sdmdl.gis_handler import gis_handler
+from sdmdl.sdmdl.occurrences import Occurrences
+from sdmdl.sdmdl.gis import GIS
+
+from sdmdl.sdmdl.data_prep.presence_map import PresenceMap
+from sdmdl.sdmdl.data_prep.raster_stack import RasterStack
+from sdmdl.sdmdl.data_prep.presence_pseudo_absence import PresencePseudoAbsence
+from sdmdl.sdmdl.data_prep.band_statistics import BandStatistics
+from sdmdl.sdmdl.data_prep.training_data import TrainingData
+from sdmdl.sdmdl.data_prep.prediction_data import PredictionData
+
 from sdmdl.sdmdl.train_handler import train_handler
+
 from sdmdl.sdmdl.predict_handler import predict_handler
 
 
@@ -26,11 +27,11 @@ class sdmdl:
         self.occ_root = self.root + occ_root if occ_root == '/data/occurrences' else occ_root
         self.dat_root = self.root + dat_root if dat_root == '/data' else dat_root
 
-        self.oh = occurrence_handler(self.occ_root)
+        self.oh = Occurrences(self.occ_root)
         self.oh.validate_occurrences()
         self.oh.species_dictionary()
 
-        self.gh = gis_handler(self.dat_root)
+        self.gh = GIS(self.dat_root)
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
@@ -53,27 +54,24 @@ class sdmdl:
     def prep(self):
         '''prep function that manages the process of data pre-processing.'''
 
-        cpm = CreatePresenceMapHelper(self.oh, self.gh, self.ch, self.verbose)
-        cpm.create_presence_maps()
+        cpm = PresenceMap(self.oh, self.gh, self.verbose)
+        cpm.create_presence_map()
 
         self.gh.validate_tif()
 
-        crs = CreateRasterStackHelper(self.oh, self.gh, self.ch, self.verbose)
+        crs = RasterStack(self.gh, self.verbose)
         crs.create_raster_stack()
 
-        rsc = raster_stack_clip_helper(self.oh, self.gh, self.ch, self.verbose)
-        rsc.raster_stack_clip()
-
-        ppa = PresencePseudoAbsenceHelper(self.oh, self.gh, self.ch, self.verbose)
+        ppa = PresencePseudoAbsence(self.oh, self.gh, self.verbose)
         ppa.create_presence_pseudo_absence()
 
-        cbm = BandStatisticsHelper(self.oh, self.gh, self.ch, self.verbose)
+        cbm = BandStatistics(self.gh, self.verbose)
         cbm.calc_band_mean_and_stddev()
 
-        ctd = CreateTrainingDF(self.oh, self.gh, self.ch, self.verbose)
+        ctd = TrainingData(self.oh, self.gh, self.verbose)
         ctd.create_training_df()
 
-        cpd = PredictionDataHelper(self.oh, self.gh, self.ch, self.verbose)
+        cpd = PredictionData(self.gh, self.verbose)
         cpd.create_prediction_df()
 
     def train(self):
