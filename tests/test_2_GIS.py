@@ -44,24 +44,30 @@ class GISTesCase(unittest.TestCase):
     def test_validate_list(self):
         self.gh = GIS(self.root)
         self.gh.validate_gis()
-        f, n, = self.gh.variables_list(self.root + '/gis/layers/scaled')
-        self.assertEqual(f, [self.root + '/gis/layers/scaled/soil/' + x for x in
-                             ['BulkDensity_5min.tif', 'ClayPercentage_5min.tif', 'OrganicCarbon_5min.tif',
-                              'PhCaCL_5min.tif']])
-        self.assertEqual(n, ['BulkDensity_5min', 'ClayPercentage_5min', 'OrganicCarbon_5min', 'PhCaCL_5min'])
+        test_root = self.root + '/gis/layers/scaled'
+        f, n, = self.gh.variables_list(test_root)
+        f_truth = []
+        n_truth = []
+        for a, b, c in sorted(os.walk(test_root)):
+            for file in c:
+                file_ext = file.split('.')[-1]
+                fx = file_ext.lower()
+                if fx == 'tif' or fx == 'tiff':
+                    f_truth += [a.replace('\\', '/') + '/' + file]
+                    n_truth += [file.replace('.%s' % file_ext, '')]
+        self.assertEqual(f, f_truth)
+        self.assertEqual(n, n_truth)
 
     def test_validate_tif(self):
         self.gh = GIS(self.root)
         self.gh.validate_gis()
         self.gh.validate_tif()
-        self.assertEqual(self.gh.variables, [self.root + '/gis/layers' + x for x in
-                                             ['/scaled/soil/BulkDensity_5min.tif',
-                                              '/scaled/soil/ClayPercentage_5min.tif',
-                                              '/scaled/soil/OrganicCarbon_5min.tif', '/scaled/soil/PhCaCL_5min.tif',
-                                              '/non-scaled/presence/arachis_duranensis_presence_map.tif'
-                                                 , '/non-scaled/presence/solanum_bukasovii_presence_map.tif']])
-        self.assertEqual(self.gh.names, ['BulkDensity_5min', 'ClayPercentage_5min', 'OrganicCarbon_5min', 'PhCaCL_5min',
-                                         'arachis_duranensis_presence_map', 'solanum_bukasovii_presence_map'])
+        f1, n1 = self.gh.variables_list(self.root + '/gis/layers/scaled')
+        f2, n2 = self.gh.variables_list(self.root + '/gis/layers/non-scaled')
+        variables_truth = f1 + f2
+        names_truth = n1 + n2
+        self.assertEqual(self.gh.variables, variables_truth)
+        self.assertEqual(self.gh.names, names_truth)
         self.assertEqual(self.gh.length, 6)
         self.assertEqual(self.gh.scaled_len, 4)
 
