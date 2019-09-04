@@ -5,12 +5,11 @@ import os
 import rasterio
 
 
-class CreateTrainingDF:
+class TrainingData:
 
-    def __init__(self, oh, gh, ch, verbose):
+    def __init__(self, oh, gh, verbose):
         self.oh = oh
         self.gh = gh
-        self.ch = ch
         self.verbose = verbose
 
     def prep_training_df(self, src, inras, i):

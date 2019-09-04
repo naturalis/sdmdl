@@ -4,7 +4,7 @@ import tqdm
 import os
 
 # Why is this not called BandStatisticsHelper?
-class BandStatisticsHelper:
+class BandStatistics:
 
     # Why does this constructor look the same as that 
     # of the CreatePresenceMapHelper? That's what inheritance is for.

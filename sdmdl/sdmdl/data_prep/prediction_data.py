@@ -6,16 +6,14 @@ import os
 
 # Why is this not called PredictionData?
 # Why is this not documented?
-class PredictionDataHelper:
+class PredictionData:
 
     # This has the same constructor as all the other
     # data_prep classes, it seems. They should all
     # inherit from the same superclass so that this
     # is only set once.
-    def __init__(self, oh, gh, ch, verbose):
-        self.oh = oh
+    def __init__(self, gh, verbose):
         self.gh = gh
-        self.ch = ch
         self.verbose = verbose
 
     def prepare_prediction_df(self):

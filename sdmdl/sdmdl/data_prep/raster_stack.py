@@ -3,14 +3,12 @@ import os
 
 # Why is this not called RasterStack?
 # What does this class do?
-class CreateRasterStackHelper():
+class RasterStack():
 
     # Why does this again have the same constructor? 
     # This should use inheritance.
-    def __init__(self, oh, gh, ch, verbose):
-        self.oh = oh
+    def __init__(self, gh, verbose):
         self.gh = gh
-        self.ch = ch
         self.verbose = verbose
 
     def create_raster_stack(self):
