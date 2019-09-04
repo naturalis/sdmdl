@@ -105,7 +105,7 @@ class TrainerTestCase(unittest.TestCase):
             for list in range(len(weights)):
                 if len(weights[list]) == len(weights_truth[list]):
                     for lis in range(len(weights[list])):
-                        np.testing.assert_almost_equal(weights[list][lis], weights_truth[list][lis])
+                        np.testing.assert_almost_equal(weights[list][lis], weights_truth[list][lis], 6)
 
     def notest_update_performance_metrics(self):
         self.t.spec = self.oh.name[0]
