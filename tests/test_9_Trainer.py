@@ -97,7 +97,7 @@ class TrainerTestCase(unittest.TestCase):
         AUC_truth = 0.9930313588850174
         model_truth = keras.models.load_model(self.root + '/trainer/model_trained.h5')
         print(model.get_config())
-        self.assertEqual(AUC, AUC_truth)
+        self.assertAlmostEqual(AUC, AUC_truth)
         #self.assertEqual(model.get_config(), model_truth.get_config()) ## look into this (it crashes when running the whole test suite but passes when only running this test)
         weights = [x.tolist() for x in model.get_weights()]
         weights_truth = [x.tolist() for x in model_truth.get_weights()]
