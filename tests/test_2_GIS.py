@@ -64,8 +64,8 @@ class GISTesCase(unittest.TestCase):
         self.gh.validate_tif()
         f1, n1 = self.gh.variables_list(self.root + '/gis/layers/scaled')
         f2, n2 = self.gh.variables_list(self.root + '/gis/layers/non-scaled')
-        variables_truth = f1 + f2
-        names_truth = n1 + n2
+        variables_truth = sorted(f1) + sorted(f2)
+        names_truth = sorted(n1) + sorted(n2)
         self.assertEqual(self.gh.variables, variables_truth)
         self.assertEqual(self.gh.names, names_truth)
         self.assertEqual(self.gh.length, 6)
