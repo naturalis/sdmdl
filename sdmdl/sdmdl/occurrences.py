@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 
-class occurrence_handler():
+class Occurrences:
     '''occurrence_handler object that manages the occurrence species and files.'''
 
     # root = config root of 'occurrences' folder.
@@ -11,7 +11,7 @@ class occurrence_handler():
 
         '''occurrence_handler object initiation.'''
 
-        self.root = root.replace('\\','/')
+        self.root = root
 
         self.length = 0
         self.path = []
@@ -39,7 +39,7 @@ class occurrence_handler():
                 col_list = [col.lower() for col in list(table.columns)]
                 if 'decimallatitude' in col_list and 'decimallongitude' in col_list:
                     self.length += 1
-                    path += [root + '/' + file]
+                    path += [(root + '/' + file).replace('\\', '/')]
                     name += [file.replace('.%s' % file_ext, '')]
                 else:
                     Warning(

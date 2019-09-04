@@ -29,9 +29,9 @@ class train_handler():
         self.ch = ch
         self.verbose = verbose
 
-        self.variables = self.gh.names.copy()
-
         self.spec = ''
+
+        self.variables = []
 
         self.test_loss = []
         self.test_acc = []
@@ -62,6 +62,7 @@ class train_handler():
 
     def create_input_data(self):
 
+        self.variables = self.gh.names.copy()
         self.variables.remove("%s_presence_map" % self.spec)
         table = pd.read_csv(self.gh.spec_ppa_env + '/%s_env_dataframe.csv' % self.spec)
         table = table.drop('%s_presence_map' % self.spec, axis=1)

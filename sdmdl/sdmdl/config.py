@@ -5,12 +5,12 @@ import os
 
 # This needs class-level documentation
 class Config:
-    """config_handler object that manages the config file, containing information on the data, occurrences and result
+    """config object that manages the config file, containing information on the data, occurrences and result
     paths. """
 
     def __init__(self, root, oh, gh):
 
-        """config_handler object initiation."""
+        """config object initiation."""
 
         self.root = root.replace('\\', '/')
         self.oh = oh
@@ -75,12 +75,18 @@ class Config:
             with open(self.config, 'r') as stream:
                 self.yml = yaml.safe_load(stream)
         except:
-            raise IOError('Config file found in root "%s" is corrupted, please repair the dictionary structure or '
-                          'save the file with no content and create a new sdmdl object.' % self.root)
+            raise IOError(
+                'Config file found in root "%s" is corrupted and could not be read, please save the file with '
+                'no content and create a new sdmdl object to reset it.' % self.root)
 
         if self.yml is None:
             self.create_yaml()
             self.read_yaml()
+
+        if not isinstance(self.yml, dict):
+            raise IOError(
+                'Config file found in root "%s" is not a dictionary, please save the file with '
+                'no content and create a new sdmdl object to reset it.' % self.root)
 
         for k in self.yml.keys():
             if self.yml_names[0] == k and not k.startswith('#'):

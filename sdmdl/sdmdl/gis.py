@@ -1,7 +1,7 @@
 import os
 
 
-class gis_handler():
+class GIS:
     '''gis_handler object for managing all gis related files and objects. Additionally keeps track of any output files created and their output paths'''
 
     # root = config root of 'data' folder.
@@ -10,7 +10,7 @@ class gis_handler():
 
         '''gis_handler object initiation. Recording relevant filepaths, statistics on included variables.'''
 
-        self.root = root.replace('\\','/')
+        self.root = root
 
         self.scaled = ''
         self.non_scaled = ''
@@ -36,24 +36,24 @@ class gis_handler():
         for root, dirs, files in os.walk(self.root):
             for d in dirs:
                 if 'gis' == d:
-                    self.gis = root + '/' + d
+                    self.gis = (root + '/' + d).replace('\\','/')
                 elif 'scaled' == d:
-                    self.scaled = root + '/' + d
+                    self.scaled = (root + '/' + d).replace('\\','/')
                 elif 'non-scaled' == d:
-                    self.non_scaled = root + '/' + d
+                    self.non_scaled = (root + '/' + d).replace('\\','/')
             for f in files:
                 if 'world_locations_to_predict.csv' == f:
-                    self.world_locations_to_predict = root + '/' + f
+                    self.world_locations_to_predict = (root + '/' + f).replace('\\','/')
                 elif 'empty_land_map.tif' == f:
-                    self.empty_map = root + '/' + f
+                    self.empty_map = (root + '/' + f).replace('\\','/')
 
         if self.world_locations_to_predict == '' or self.empty_map == '':
             raise IOError(
                 'The two required files, world_locations_to_predict.csv and/or empty_land_map.tif files are not present in the data folder.')
 
-        self.gis = self.root + '/gis' if self.gis == '' else self.gis
-        self.scaled = self.gis + '/scaled' if self.scaled == '' else self.scaled
-        self.non_scaled = self.gis + '/non-scaled' if self.non_scaled == '' else self.non_scaled
+        self.gis = (self.root + '/gis').replace('\\','/') if self.gis == '' else self.gis.replace('\\', '/')
+        self.scaled = (self.gis + '/scaled').replace('\\','/') if self.scaled == '' else self.scaled.replace('\\', '/')
+        self.non_scaled = (self.gis + '/non-scaled').replace('\\','/') if self.non_scaled == '' else self.non_scaled.replace('\\', '/')
 
     def variables_list(self, root):
 
