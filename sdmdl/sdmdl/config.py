@@ -17,14 +17,16 @@ class Config:
         self.gh = gh
 
         self.config = []
-        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed']
+        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed', 'pseudo_freq']
 
         # Why can't we pass these as **kwargs?
         self.data_path = None
         self.occ_path = None
         self.result_path = None
         self.yml = None
+
         self.random_seed = 0
+        self.pseudo_freq = 0
 
     # Why can we not pass the config file to the constructor?
     # This is destined to bump into another .travis.yml or
@@ -63,7 +65,8 @@ class Config:
                self.yml_names[2]: self.root + '/results',
                self.yml_names[3]: occ_dict,
                self.yml_names[4]: lay_dict,
-               self.yml_names[5]: 42}
+               self.yml_names[5]: 42,
+               self.yml_names[6]: 2000}
 
         with io.open(self.config, 'w', encoding='utf8') as outfile:
             yaml.dump(yml, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False)
@@ -105,5 +108,7 @@ class Config:
                 self.gh.variables = list(self.yml[k].values())
             elif self.yml_names[5] == k and not k.startswith('#'):
                 self.random_seed = self.yml[k]
+            elif self.yml_names[6] == k and not k.startswith('#'):
+                self.pseudo_freq = self.yml[k]
         if self.data_path == '' or self.occ_path == '':
             raise IOError('The yaml file found does not contain a path for the data and/or occurrences.')

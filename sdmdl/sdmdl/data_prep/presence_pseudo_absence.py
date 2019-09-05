@@ -19,7 +19,7 @@ class PresencePseudoAbsence:
         self.gh = gh
         self.ch = ch
         self.verbose = verbose
-        self.random_sample_size = 2000
+        self.random_sample_size = self.ch.pseudo_freq
         self.random_seed = self.ch.random_seed
 
     def draw_random_absence(self, key):

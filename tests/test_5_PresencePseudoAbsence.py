@@ -34,7 +34,7 @@ class PresencePseudoAbsenceTestCase(unittest.TestCase):
         self.assertEqual(self.ppa.gh, self.gh)
         self.assertEqual(self.ppa.ch, self.ch)
         self.assertEqual(self.ppa.verbose, self.verbose)
-        self.assertEqual(self.ppa.random_sample_size, 2000)
+        self.assertEqual(self.ppa.random_sample_size, self.ch.pseudo_freq)
         self.assertEqual(self.ppa.random_seed, self.ch.random_seed)
 
     def test_draw_random_absence(self):
