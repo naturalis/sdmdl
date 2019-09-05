@@ -1,0 +1,15 @@
+data_path: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root
+occurrence_path: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/occurrences
+result_path: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/results
+occurrences:
+  arachis_duranensis: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/occurrences/arachis_duranensis.csv
+  solanum_bukasovii: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/occurrences/solanum_bukasovii.csv
+layers:
+  BulkDensity_5min: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/scaled/soil/BulkDensity_5min.tif
+  ClayPercentage_5min: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/scaled/soil/ClayPercentage_5min.tif
+  OrganicCarbon_5min: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/scaled/soil/OrganicCarbon_5min.tif
+  PhCaCL_5min: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/scaled/soil/PhCaCL_5min.tif
+  arachis_duranensis_presence_map: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif
+  solanum_bukasovii_presence_map: C:/Users/winan/PycharmProjects/sdmdl/tests/test_data/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif
+random_seed: 42
+pseudo_freq: 2000
