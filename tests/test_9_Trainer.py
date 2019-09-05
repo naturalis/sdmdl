@@ -44,8 +44,8 @@ class TrainerTestCase(unittest.TestCase):
         self.assertEqual(self.t.occ_len, 0)
         self.assertEqual(self.t.abs_len, 0)
         self.assertEqual(self.t.random_seed, self.ch.random_seed)
-        self.assertEqual(self.t.btchs, 75)
-        self.assertEqual(self.t.epoch, 150)
+        self.assertEqual(self.t.batch, self.ch.batchsize)
+        self.assertEqual(self.t.epoch, self.ch.epoch)
 
     def test_create_eval(self):
         os.remove(self.root + '/root/results/_DNN_performance/DNN_eval.txt')

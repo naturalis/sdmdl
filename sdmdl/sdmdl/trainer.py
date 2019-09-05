@@ -47,9 +47,8 @@ class Trainer:
 
         self.random_seed = self.ch.random_seed  # change later (e.g. self.ch.np_r)
 
-        self.btchs = 75  # change later (e.g. self.ch.batch)
-
-        self.epoch = 150  # change later (e.g. self.ch.epoch)
+        self.batch = self.ch.batchsize  # change later (e.g. self.ch.batch)
+        self.epoch = self.ch.epoch  # change later (e.g. self.ch.epoch)
 
     def create_eval(self):
 
@@ -88,7 +87,7 @@ class Trainer:
             y.append([1 - row["presence"], row["presence"]])
         X = np.vstack(X)
         y = np.vstack(y)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, stratify=y, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, stratify=y, random_state=self.random_seed)
         test_set = pd.DataFrame(X_test)
         test_set.rename(columns=dict(zip(test_set.columns[0:len(self.gh.names) - 1], self.variables)), inplace=True)
         shuffled_X_train = X_train.copy()
@@ -125,7 +124,7 @@ class Trainer:
     def train_model(self, model, X_train, X_test, y_train, y_test):
 
         training_generator, steps_per_epoch = balanced_batch_generator(X_train, y_train, sampler=NearMiss(),
-                                                                       batch_size=self.btchs, random_state=42)
+                                                                       batch_size=self.batch, random_state=self.random_seed)
         model.fit_generator(generator=training_generator, steps_per_epoch=steps_per_epoch, epochs=self.epoch,
                             verbose=0)
         score = model.evaluate(X_test, y_test, verbose=0)
