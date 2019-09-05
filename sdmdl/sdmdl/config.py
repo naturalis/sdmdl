@@ -17,7 +17,7 @@ class Config:
         self.gh = gh
 
         self.config = []
-        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed', 'pseudo_freq']
+        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed', 'pseudo_freq', 'batchsize', 'epoch', 'model_layers', 'model_dropout']
 
         # Why can't we pass these as **kwargs?
         self.data_path = None
@@ -27,6 +27,10 @@ class Config:
 
         self.random_seed = 0
         self.pseudo_freq = 0
+        self.batchsize = 0
+        self.epoch = 0
+        self.model_layers = []
+        self.model_dropout = []
 
     # Why can we not pass the config file to the constructor?
     # This is destined to bump into another .travis.yml or
@@ -66,7 +70,11 @@ class Config:
                self.yml_names[3]: occ_dict,
                self.yml_names[4]: lay_dict,
                self.yml_names[5]: 42,
-               self.yml_names[6]: 2000}
+               self.yml_names[6]: 2000,
+               self.yml_names[7]: 75,
+               self.yml_names[8]: 150,
+               self.yml_names[9]: [250, 200, 150, 100],
+               self.yml_names[10]: [0.3, 0.5, 0.3, 0.5]}
 
         with io.open(self.config, 'w', encoding='utf8') as outfile:
             yaml.dump(yml, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False)
@@ -110,5 +118,13 @@ class Config:
                 self.random_seed = self.yml[k]
             elif self.yml_names[6] == k and not k.startswith('#'):
                 self.pseudo_freq = self.yml[k]
+            elif self.yml_names[7] == k and not k.startswith('#'):
+                self.batchsize = self.yml[k]
+            elif self.yml_names[8] == k and not k.startswith('#'):
+                self.epoch = self.yml[k]
+            elif self.yml_names[9] == k and not k.startswith('#'):
+                self.model_layers = self.yml[k]
+            elif self.yml_names[10] == k and not k.startswith('#'):
+                self.model_dropout = self.yml[k]
         if self.data_path == '' or self.occ_path == '':
             raise IOError('The yaml file found does not contain a path for the data and/or occurrences.')
