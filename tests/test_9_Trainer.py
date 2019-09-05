@@ -43,7 +43,7 @@ class TrainerTestCase(unittest.TestCase):
         self.assertEqual(self.t.best_model_auc, [0])
         self.assertEqual(self.t.occ_len, 0)
         self.assertEqual(self.t.abs_len, 0)
-        self.assertEqual(self.t.np_random, 42)
+        self.assertEqual(self.t.random_seed, self.ch.random_seed)
         self.assertEqual(self.t.btchs, 75)
         self.assertEqual(self.t.epoch, 150)
 

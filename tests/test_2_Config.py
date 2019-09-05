@@ -26,11 +26,12 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(self.ch.gh, self.gh)
         self.assertEqual(self.ch.root, self.root + '/root')
         self.assertEqual(self.ch.config, [])
-        self.assertEqual(self.ch.yml_names, ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers'])
+        self.assertEqual(self.ch.yml_names, ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed'])
         self.assertEqual(self.ch.data_path, None)
         self.assertEqual(self.ch.occ_path, None)
         self.assertEqual(self.ch.result_path, None)
         self.assertEqual(self.ch.yml, None)
+        self.assertEqual(self.ch.random_seed, 0)
 
     def test_search_config(self):
         self.ch.search_config()
@@ -50,6 +51,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(yml[list(yml.keys())[2]], self.root + '/root/results')
         self.assertEqual(yml[list(yml.keys())[3]], dict(zip(self.oh.name, self.oh.path)))
         self.assertEqual(yml[list(yml.keys())[4]], dict(zip(self.gh.names, self.gh.variables)))
+        self.assertEqual(yml[list(yml.keys())[5]], 42)
         os.remove(self.root + '/root/test_config.yml')
 
     def test_read_yaml(self):
@@ -62,6 +64,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(self.ch.oh.path, list(dict(zip(self.oh.name, self.oh.path)).values()))
         self.assertEqual(self.ch.gh.names, list(dict(zip(self.gh.names, self.gh.variables)).keys()))
         self.assertEqual(self.ch.gh.variables, list(dict(zip(self.gh.names, self.gh.variables)).values()))
+        self.assertEqual(self.ch.random_seed, 42)
 
 
 if __name__ == '__main__':

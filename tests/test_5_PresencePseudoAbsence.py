@@ -20,19 +20,25 @@ class PresencePseudoAbsenceTestCase(unittest.TestCase):
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
+        self.ch = Config(self.root, self.oh, self.gh)
+        self.ch.search_config()
+        self.ch.read_yaml()
+        self.ch.random_seed = 1
         self.verbose = False
 
-        self.ppa = PresencePseudoAbsence(self.oh, self.gh, self.verbose)
+        self.ppa = PresencePseudoAbsence(self.oh, self.gh, self.ch, self.verbose)
 
     def test__init__(self):
 
         self.assertEqual(self.ppa.oh, self.oh)
         self.assertEqual(self.ppa.gh, self.gh)
+        self.assertEqual(self.ppa.ch, self.ch)
         self.assertEqual(self.ppa.verbose, self.verbose)
         self.assertEqual(self.ppa.random_sample_size, 2000)
+        self.assertEqual(self.ppa.random_seed, self.ch.random_seed)
 
     def test_draw_random_absence(self):
-        key = 'arachis_duranensis'
+        key = self.oh.name[0]
         presence_data, outer_random_sample_lon_lats = self.ppa.draw_random_absence(key)
         presence_truth = np.load(self.root + '/presence_pseudo_absence/presence_data.npy',allow_pickle=True)
         outer_random_sample_lon_lats_truth = np.load(self.root + '/presence_pseudo_absence/outer_random_sample.npy')

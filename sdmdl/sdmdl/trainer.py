@@ -45,8 +45,7 @@ class Trainer:
         self.occ_len = 0
         self.abs_len = 0
 
-        self.np_random = 42  # change later (e.g. self.ch.np_r)
-        np.random.seed(self.np_random)
+        self.random_seed = self.ch.random_seed  # change later (e.g. self.ch.np_r)
 
         self.btchs = 75  # change later (e.g. self.ch.batch)
 
@@ -63,6 +62,7 @@ class Trainer:
 
     def create_input_data(self):
 
+        np.random.seed(self.random_seed)
         self.variables = self.gh.names.copy()
         self.variables.remove("%s_presence_map" % self.spec)
         table = pd.read_csv(self.gh.spec_ppa_env + '/%s_env_dataframe.csv' % self.spec)
@@ -140,9 +140,8 @@ class Trainer:
         n_bootstraps = 1000
         y_pred = predictions[:, 1]
         y_true = y_test[:, 1]
-        rng_seed = 42
         bootstrapped_scores = []
-        rng = np.random.RandomState(rng_seed)
+        rng = np.random.RandomState(self.random_seed)
         for i in range(n_bootstraps):
             indices = rng.randint(0, len(y_pred) - 1, len(y_pred))
             if len(np.unique(y_true[indices])) < 2:

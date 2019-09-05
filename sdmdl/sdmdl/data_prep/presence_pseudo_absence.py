@@ -13,17 +13,18 @@ class PresencePseudoAbsence:
     # This constructor should inherit from a superclass. It
     # does the same thing as all the other data_prep classes,
     # at least the first 4 lines.
-    def __init__(self, oh, gh, verbose):
+    def __init__(self, oh, gh, ch, verbose):
 
         self.oh = oh
         self.gh = gh
+        self.ch = ch
         self.verbose = verbose
-
         self.random_sample_size = 2000
+        self.random_seed = self.ch.random_seed
 
     def draw_random_absence(self, key):
 
-        np.random.seed(1)
+        np.random.seed(self.random_seed)
         r = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
         presence_data = self.oh.spec_dict[key]
         presence_data["present/pseudo_absent"] = 1
