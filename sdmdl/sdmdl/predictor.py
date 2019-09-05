@@ -11,7 +11,7 @@ import gdal
 
 # I want to be called Predictor and I need proper
 # class-level documentation
-class predict_handler():
+class Predictor:
     """predict_handler object that manages model predictions"""
 
     # Now I finally know what oh, gh, and ch are. 
@@ -28,15 +28,8 @@ class predict_handler():
         self.ch = config_handler
         self.verbose = verbose
 
-    def predict_model(self):
-
-        """performs global predictions and saves the resulting images (.png & .tif) to file"""
-
-        np.random.seed(42)
-        inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
-        myarray = inRas.ReadAsArray()
+    def prep_color_scheme(self):
         norm = matplotlib.colors.Normalize(0, 1)
-        
         # Put me in a config file
         colors = [[norm(0), "0.95"], [norm(0.05), "steelblue"], [norm(0.1), "sienna"], [norm(0.3), "wheat"],
                   [norm(0.5), "cornsilk"], [norm(0.95), "yellowgreen"], [norm(1.0), "green"]]
@@ -47,42 +40,58 @@ class predict_handler():
         y = np.linspace(-1, 1, 10)
         sc = ax.scatter(x, y, c=y, norm=norm, cmap=custom_cmap)
         fig.colorbar(sc, orientation="horizontal")
+        return custom_cmap
+
+    def prep_prediction_data(self):
+        inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
+        myarray = inRas.ReadAsArray()
         src = rasterio.open(self.gh.empty_map)
         b = src.read(1)
         minb = np.min(b)
         index_minb1 = np.where(b == minb)
+        return myarray, index_minb1
+
+    def predict_distribution(self,species,myarray,index_minb1):
+        spec = species
+        spec_index = self.gh.names.index("%s_presence_map" % spec)
+        input_X = np.load(self.gh.gis + '/world_prediction_array.npy')  # %spec)
+        np.shape(input_X)
+        input_X = np.delete(input_X, [spec_index], 1)
+        np.shape(input_X)
+        new_band = myarray[1].copy()
+        new_band.shape
+        json_file = open(self.ch.result_path + '/{}/{}_model.json'.format(spec, spec), 'r')
+        loaded_model_json = json_file.read()
+        json_file.close()
+        loaded_model = model_from_json(loaded_model_json)
+        loaded_model.load_weights(self.ch.result_path + '/{}/{}_model.h5'.format(spec, spec))
+        loaded_model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
+        new_values = loaded_model.predict(x=input_X, batch_size=75, verbose=0)
+        new_band_values = []
+        for i in new_values:
+            new_value = i[1]
+            new_band_values.append(new_value)
+        new_band_values = np.array(new_band_values)
+        df = pd.read_csv(self.gh.gis + '/world_prediction_row_col.csv')
+
+        # No hardcoded dictionary keys
+        row = df["row"]
+        row = row.values
+        col = df["col"]
+        col = col.values
+        for i in range(0, len(row)):
+            new_band[int(row[i]), int(col[i])] = new_band_values[i]
+        new_band[index_minb1] = np.nan
+        return new_band
+
+    def predict_model(self):
+
+        """performs global predictions and saves the resulting images (.png & .tif) to file"""
+        custom_cmap = self.p.prep_color_scheme()
+        myarray, index_minb1 = self.prep_prediction_data()
         for species in tqdm.tqdm(self.oh.name,
                                  desc='Predicting globally' + (31 * ' ')) if self.verbose else self.oh.name:
-            spec = species
-            spec_index = self.gh.names.index("%s_presence_map" % spec)
-            input_X = np.load(self.gh.gis + '/world_prediction_array.npy')  # %spec)
-            np.shape(input_X)
-            input_X = np.delete(input_X, [spec_index], 1)
-            np.shape(input_X)
-            new_band = myarray[1].copy()
-            new_band.shape
-            json_file = open(self.ch.result_path + '/{}/{}_model.json'.format(spec, spec), 'r')
-            loaded_model_json = json_file.read()
-            json_file.close()
-            loaded_model = model_from_json(loaded_model_json)
-            loaded_model.load_weights(self.ch.result_path + '/{}/{}_model.h5'.format(spec, spec))
-            loaded_model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
-            new_values = loaded_model.predict(x=input_X, batch_size=75, verbose=0)
-            new_band_values = []
-            for i in new_values:
-                new_value = i[1]
-                new_band_values.append(new_value)
-            new_band_values = np.array(new_band_values)
-            df = pd.read_csv(self.gh.gis + '/world_prediction_row_col.csv')
-            
-            # No hardcoded dictionary keys
-            row = df["row"]
-            row = row.values
-            col = df["col"]
-            col = col.values
-            for i in range(0, len(row)):
-                new_band[int(row[i]), int(col[i])] = new_band_values[i]
-            new_band[index_minb1] = np.nan
+            new_band = self.predict_distribution(species, myarray, index_minb1)
             src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
             profile = src.profile
             profile.update(count=1)

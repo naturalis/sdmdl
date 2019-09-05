@@ -14,7 +14,7 @@ from sdmdl.sdmdl.data_prep.prediction_data import PredictionData
 
 from sdmdl.sdmdl.trainer import Trainer
 
-from sdmdl.sdmdl.predict_handler import predict_handler
+from sdmdl.sdmdl.predictor import Predictor
 
 
 class sdmdl:
@@ -88,7 +88,7 @@ class sdmdl:
     def predict(self):
         '''predict function that manages the process of model prediction.'''
 
-        ph = predict_handler(self.oh, self.gh, self.ch, self.verbose)
+        ph = Predictor(self.oh, self.gh, self.ch, self.verbose)
         ph.predict_model()
 
     def clean(self):
