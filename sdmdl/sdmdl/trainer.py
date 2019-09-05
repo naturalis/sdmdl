@@ -50,6 +50,9 @@ class Trainer:
         self.batch = self.ch.batchsize  # change later (e.g. self.ch.batch)
         self.epoch = self.ch.epoch  # change later (e.g. self.ch.epoch)
 
+        self.model_layers = self.ch.model_layers
+        self.model_dropout = self.ch.model_dropout
+
     def create_eval(self):
 
         if not os.path.isdir(self.ch.result_path + '/_DNN_performance'):
@@ -103,18 +106,12 @@ class Trainer:
         num_classes = 2
         num_inputs = X.shape[1]
         model = Sequential()
-        layer_1 = Dense(250, activation='relu', input_shape=(num_inputs,))
-        layer_2 = Dense(200, activation='relu', input_shape=(num_inputs,))
-        layer_3 = Dense(150, activation='relu', input_shape=(num_inputs,))
-        layer_4 = Dense(100, activation='relu', input_shape=(num_inputs,))  # kernel_regularizer
-        model.add(layer_1)
-        model.add(Dropout(0.3))
-        model.add(layer_2)
-        model.add(Dropout(0.5))
-        model.add(layer_3)
-        model.add(Dropout(0.3))
-        model.add(layer_4)
-        model.add(Dropout(0.5))
+        if len(self.model_layers) == len(self.model_dropout):
+            for l in range(len(self.model_layers)):
+                layer = Dense(self.model_layers[l], activation='relu', input_shape=(num_inputs,))
+                model.add(layer)
+                model.add(Dropout(self.model_dropout[l]))
+
         out_layer = Dense(num_classes, activation=None)
         model.add(out_layer)
         model.add(Activation("softmax"))
