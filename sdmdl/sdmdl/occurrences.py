@@ -34,7 +34,6 @@ class Occurrences:
                 elif (file_ext == 'xlsx' or file_ext == 'xls') and 'world_locations_to_predict.csv' != file:
                     table = pd.read_excel(root + '/' + file)
                 else:
-                    # potentially add message that file has been ignored (due to incompatible file extension).
                     continue
                 col_list = [col.lower() for col in list(table.columns)]
                 if 'decimallatitude' in col_list and 'decimallongitude' in col_list:
@@ -65,7 +64,7 @@ class Occurrences:
             col_list[col_list.index('decimallongitude')] = 'dLon'
             col_list[col_list.index('decimallatitude')] = 'dLat'
             table.columns = col_list
-
+            table = table[['dLon', 'dLat']]
             species_occ_dict["%s" % self.name[i]] = table
 
         self.spec_dict = species_occ_dict

@@ -14,7 +14,7 @@ class TrainingData:
 
     def prep_training_df(self, src, inras, i):
         data = pd.read_csv(self.gh.spec_ppa + '/%s_ppa_dataframe.csv' % i)
-        spec = data["taxon_name"][0]
+        spec = i
         spec = spec.replace(" ", "_")
         len_pd = np.arange(len(data))
         long = data["dLon"]
@@ -39,7 +39,6 @@ class TrainingData:
         for i in self.oh.name:
             spec, ppa, long, lati, row, col, myarray, mean_std = self.prep_training_df(src, inRas, i)
             X = []
-            species = ["%s" % spec] * int(len(row))
             for j in range(0, self.gh.length):
                 band = myarray[j]
                 x = []
@@ -49,7 +48,7 @@ class TrainingData:
                         if value < -1000:
                             value = np.nan
                         else:
-                            value = ((value - mean_std.item((j, 1))) / mean_std.item((j, 2)))  # scale values
+                            value = ((value - mean_std.item((j, 1))) / mean_std.item((j, 2)))
                         x.append(value)
                     if j >= self.gh.scaled_len:
                         if value < -1000:
@@ -61,10 +60,8 @@ class TrainingData:
             X = np.array([np.array(xi) for xi in X])
             df = pd.DataFrame(X)
             df = df.T
-            df["present/pseudo_absent"] = ppa
             df["dLat"] = lati
             df["dLon"] = long
-            df["taxon_name"] = species
             df["present/pseudo_absent"] = ppa
             df["row_n"] = row
             df.rename(columns=dict(zip(df.columns[0:self.gh.length], self.gh.names)), inplace=True)

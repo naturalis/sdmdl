@@ -39,11 +39,12 @@ class PresencePseudoAbsenceTestCase(unittest.TestCase):
 
     def test_draw_random_absence(self):
         key = self.oh.name[0]
-        presence_data, outer_random_sample_lon_lats = self.ppa.draw_random_absence(key)
+        presence_data, outer_random_sample_lon_lats, sample_size = self.ppa.draw_random_absence(key)
         presence_truth = np.load(self.root + '/presence_pseudo_absence/presence_data.npy',allow_pickle=True)
         outer_random_sample_lon_lats_truth = np.load(self.root + '/presence_pseudo_absence/outer_random_sample.npy')
         self.assertEqual(presence_data.to_numpy().tolist(), presence_truth.tolist())
         self.assertEqual(outer_random_sample_lon_lats.tolist(), outer_random_sample_lon_lats_truth.tolist())
+        self.assertEqual(sample_size, self.ch.pseudo_freq)
 
     def test_create_presence_pseudo_absence(self):
         os.remove(self.root + '/root/spec_ppa/arachis_duranensis_ppa_dataframe.csv')

@@ -62,7 +62,7 @@ class sdmdl:
         crs = RasterStack(self.gh, self.verbose)
         crs.create_raster_stack()
 
-        ppa = PresencePseudoAbsence(self.oh, self.gh, self.verbose)
+        ppa = PresencePseudoAbsence(self.oh, self.gh, self.ch, self.verbose)
         ppa.create_presence_pseudo_absence()
 
         cbm = BandStatistics(self.gh, self.verbose)

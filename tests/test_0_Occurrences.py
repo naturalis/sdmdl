@@ -34,9 +34,9 @@ class OccurrencesTestCase(unittest.TestCase):
         self.assertIsInstance(self.oh.spec_dict, dict)
         self.assertEqual(list(self.oh.spec_dict.keys()), ['arachis_duranensis', 'solanum_bukasovii'])
         self.assertEqual(list(self.oh.spec_dict['arachis_duranensis']),
-                         ['unnamed: 0', 'x', 'gbifid', 'dLat', 'dLon', 'acceptedscientificname'])
-        spec_dict_truth = pd.read_csv(self.root + '/occurrences/solanum_bukasovii.csv').to_numpy().tolist()
-        self.assertEqual(self.oh.spec_dict['solanum_bukasovii'].values.tolist(), spec_dict_truth)
+                         ['dLon','dLat'])
+        spec_dict_truth = pd.read_csv(self.root + '/occurrences/solanum_bukasovii.csv')[['decimalLongitude', 'decimalLatitude']]
+        self.assertEqual(self.oh.spec_dict['solanum_bukasovii'].values.tolist(), spec_dict_truth.to_numpy().tolist())
 
 
 if __name__ == '__main__':
