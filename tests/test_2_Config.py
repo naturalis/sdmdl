@@ -27,7 +27,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(self.ch.root, self.root + '/root')
         self.assertEqual(self.ch.config, [])
         self.assertEqual(self.ch.yml_names, ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers',
-                                             'random_seed', 'pseudo_freq', 'batchsize', 'epoch'])
+                                             'random_seed', 'pseudo_freq', 'batchsize', 'epoch', 'model_layers', 'model_dropout'])
         self.assertEqual(self.ch.data_path, None)
         self.assertEqual(self.ch.occ_path, None)
         self.assertEqual(self.ch.result_path, None)
@@ -36,6 +36,8 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(self.ch.pseudo_freq, 0)
         self.assertEqual(self.ch.batchsize, 0)
         self.assertEqual(self.ch.epoch, 0)
+        self.assertEqual(self.ch.model_layers, [])
+        self.assertEqual(self.ch.model_dropout, [])
 
     def test_search_config(self):
         self.ch.search_config()
@@ -59,6 +61,8 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(yml[list(yml.keys())[6]], 2000)
         self.assertEqual(yml[list(yml.keys())[7]], 75)
         self.assertEqual(yml[list(yml.keys())[8]], 150)
+        self.assertEqual(yml[list(yml.keys())[9]], [250, 200, 150, 100])
+        self.assertEqual(yml[list(yml.keys())[10]], [0.3, 0.5, 0.3, 0.5])
         os.remove(self.root + '/root/test_config.yml')
 
     def test_read_yaml(self):
@@ -75,7 +79,8 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(self.ch.pseudo_freq, 2000)
         self.assertEqual(self.ch.batchsize, 75)
         self.assertEqual(self.ch.epoch, 150)
-
+        self.assertEqual(self.ch.model_layers, [250, 200, 150, 100])
+        self.assertEqual(self.ch.model_dropout, [0.3, 0.5, 0.3, 0.5])
 
 if __name__ == '__main__':
     unittest.main()
