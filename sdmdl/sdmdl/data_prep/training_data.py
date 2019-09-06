@@ -3,6 +3,7 @@ import gdal
 import numpy as np
 import os
 import rasterio
+import tqdm
 
 
 class TrainingData:
@@ -36,7 +37,7 @@ class TrainingData:
     def create_training_df(self):
         src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
         inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
-        for i in self.oh.name:
+        for i in tqdm.tqdm(self.oh.name, desc='Creating training data' + (28 * ' '), leave=True) if self.verbose else self.oh.name:
             spec, ppa, long, lati, row, col, myarray, mean_std = self.prep_training_df(src, inRas, i)
             X = []
             for j in range(0, self.gh.length):

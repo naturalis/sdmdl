@@ -90,7 +90,7 @@ class Predictor:
         custom_cmap = self.prep_color_scheme()
         myarray, index_minb1 = self.prep_prediction_data()
         for species in tqdm.tqdm(self.oh.name,
-                                 desc='Predicting globally' + (31 * ' ')) if self.verbose else self.oh.name:
+                                 desc='Predicting globally' + (31 * ' '), leave=True) if self.verbose else self.oh.name:
             spec = species
             new_band = self.predict_distribution(species, myarray, index_minb1)
             src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')

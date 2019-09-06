@@ -20,7 +20,7 @@ class PredictorTestCase(unittest.TestCase):
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.ch = Config(self.root, self.oh, self.gh)
+        self.ch = Config(self.root + '/root', self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
         self.verbose = False

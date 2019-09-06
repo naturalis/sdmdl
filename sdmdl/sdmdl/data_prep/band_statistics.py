@@ -26,7 +26,7 @@ class BandStatistics:
         tqdm_txt = 'Computing band means and standard deviations' + (6 * ' ')
         sl = self.gh.scaled_len + 1
 
-        for i in (tqdm.tqdm(range(1, sl), desc=tqdm_txt) if self.verbose else range(1, sl)):
+        for i in (tqdm.tqdm(range(1, sl), desc=tqdm_txt, leave=True) if self.verbose else range(1, sl)):
             profile.update(count=1)
             band = raster.read(i)
             band[band < -9999] = -9999

@@ -52,7 +52,7 @@ class PresencePseudoAbsence:
 
     def create_presence_pseudo_absence(self):
 
-        for key in (tqdm.tqdm(self.oh.spec_dict, desc='Sampling pseudo absence' + (27 * ' ')) if self.verbose else self.oh.spec_dict):
+        for key in (tqdm.tqdm(self.oh.spec_dict, desc='Sampling pseudo absence' + (27 * ' '),leave=True) if self.verbose else self.oh.spec_dict):
             presence_data, outer_random_sample_lon_lats, sample_size = self.draw_random_absence(key)
             presence_data['present/pseudo_absent'] = 1
             lon = []

@@ -3,6 +3,7 @@ import numpy as np
 import rasterio
 import pandas as pd
 import os
+import tqdm
 
 # Why is this not called PredictionData?
 # Why is this not documented?
@@ -38,43 +39,45 @@ class PredictionData:
         return lon, lat, row, col, array, mean_std
 
     def create_prediction_df(self):
-        lon, lat, row, col, array, mean_std = self.prepare_prediction_df()
-        X = []
 
-        for j in range(0, self.gh.length):
-            band = array[j]
-            x = []
+        for once in tqdm.tqdm([0], desc='Computing prediction data' + (25 * ' '), leave=True) if self.verbose else [0]:
+            lon, lat, row, col, array, mean_std = self.prepare_prediction_df()
+            X = []
 
-            for i in range(0, len(row)):
-                if j < self.gh.scaled_len:
-                    value = band[row[i], col[i]]
-                    value = ((value - mean_std.item((j, 1))) / mean_std.item((j, 2)))
-                    x.append(value)
-                if j >= self.gh.scaled_len:
-                    value = band[row[i], col[i]]
-                    x.append(value)
+            for j in range(0, self.gh.length):
+                band = array[j]
+                x = []
 
-            X.append(x)
+                for i in range(0, len(row)):
+                    if j < self.gh.scaled_len:
+                        value = band[row[i], col[i]]
+                        value = ((value - mean_std.item((j, 1))) / mean_std.item((j, 2)))
+                        x.append(value)
+                    if j >= self.gh.scaled_len:
+                        value = band[row[i], col[i]]
+                        x.append(value)
 
-        X.append(row)
-        X.append(col)
-        X = np.array([np.array(xi) for xi in X])
-        df = pd.DataFrame(X)
-        df = df.T
-        df.rename(columns=dict(zip(df.columns[0:self.gh.length], self.gh.names)), inplace=True)
-        df = df.dropna(axis=0, how='any')
-        df.head()
-        input_X = df.iloc[:, 0:self.gh.length]
-        np.shape(input_X)
-        row = df[self.gh.length]
-        col = df[self.gh.length + 1]
-        row_col = pd.DataFrame({"row": row, "col": col})
-        input_X = input_X.values
-        row = row.values
-        col = col.values
+                X.append(x)
 
-        if not os.path.isdir(self.gh.gis):
-            os.mkdir(self.gh.gis)
+            X.append(row)
+            X.append(col)
+            X = np.array([np.array(xi) for xi in X])
+            df = pd.DataFrame(X)
+            df = df.T
+            df.rename(columns=dict(zip(df.columns[0:self.gh.length], self.gh.names)), inplace=True)
+            df = df.dropna(axis=0, how='any')
+            df.head()
+            input_X = df.iloc[:, 0:self.gh.length]
+            np.shape(input_X)
+            row = df[self.gh.length]
+            col = df[self.gh.length + 1]
+            row_col = pd.DataFrame({"row": row, "col": col})
+            input_X = input_X.values
+            row = row.values
+            col = col.values
 
-        np.save(self.gh.gis + '/world_prediction_array.npy', input_X)
-        row_col.to_csv(self.gh.gis + '/world_prediction_row_col.csv')
+            if not os.path.isdir(self.gh.gis):
+                os.mkdir(self.gh.gis)
+
+            np.save(self.gh.gis + '/world_prediction_array.npy', input_X)
+            row_col.to_csv(self.gh.gis + '/world_prediction_row_col.csv')

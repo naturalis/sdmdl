@@ -21,7 +21,7 @@ class TrainerTestCase(unittest.TestCase):
         self.gh.validate_gis()
         self.gh.validate_tif()
         self.gh.define_output()
-        self.ch = Config(self.root, self.oh, self.gh)
+        self.ch = Config(self.root + '/root', self.oh, self.gh)
         self.ch.search_config()
         self.ch.read_yaml()
         self.verbose = False
@@ -52,6 +52,7 @@ class TrainerTestCase(unittest.TestCase):
     def test_create_eval(self):
         os.remove(self.root + '/root/results/_DNN_performance/DNN_eval.txt')
         self.assertFalse(os.path.isfile(self.root + '/root/results/_DNN_performance/DNN_eval.txt'))
+        print(self.root)
         self.t.create_eval()
         self.assertTrue(os.path.isfile(self.root + '/root/results/_DNN_performance/DNN_eval.txt'))
         dnn_eval = pd.read_csv(self.root + '/root/results/_DNN_performance/DNN_eval.txt', delimiter='\t')

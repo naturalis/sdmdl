@@ -194,11 +194,17 @@ class Trainer:
 
     def train(self):
         self.create_eval()
-        for self.spec in tqdm.tqdm(self.oh.name, desc='training models' + (35 * ' ')) if self.verbose else self.oh.name:
+        for self.spec in tqdm.tqdm(self.oh.name, desc='training models' + (35 * ' '), leave=True) if self.verbose else self.oh.name:
             X, X_train, X_test, y_train, y_test, test_set, shuffled_X_train, shuffled_X_test = self.create_input_data()
+            self.test_loss = []
+            self.test_acc = []
+            self.test_AUC = []
+            self.test_tpr = []
+            self.test_lci = []
+            self.test_uci = []
             self.best_model_auc = [0]
-            for i in (tqdm.tqdm(range(1, 6), desc='%s' % self.spec + ((50 - len(self.spec)) * ' ')) if self.verbose else range(1, 6)):
+            for i in (tqdm.tqdm(range(1, 6), desc='%s' % self.spec + ((50 - len(self.spec)) * ' '),leave=True) if self.verbose else range(1, 6)):
                 model = self.create_model_architecture(X)
                 AUC, model = self.train_model(model, X_train, X_test, y_train, y_test)
                 self.validate_model(model, AUC, X_train, X_test, shuffled_X_train, shuffled_X_test, test_set)
-                self.update_performance_metrics()
+            self.update_performance_metrics()
