@@ -38,9 +38,9 @@ Config.yml is created the first time an sdmdl object is created. And holds any r
 1. The detected environmental layers 
 2. the detected occurrence files
 3. Important hyperparameters for running the deep learning model are:
-    i. Epoch or the number of training itterations.
-    ii. Random seed to make random processes repeatable.
-    iii. Model nodes & Model dropout, that allow the architecture of the model to be changed.
+    a. Epoch or the number of training itterations.
+    b. Random seed to make random processes repeatable.
+    c. Model nodes & Model dropout, that allow the architecture of the model to be changed.
 Note: changes to the config file are not updated automatically (yet!) so for these changes to take effect a new sdmdl objects needs to be created.
 
 Once these steps are completed the model is ready for analysis:
