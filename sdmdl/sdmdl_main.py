@@ -94,5 +94,32 @@ class sdmdl:
     def clean(self):
         '''pass.'''
 
-        pass
-        # create a function to remove all created files
+        def listdir_if_exists(path):
+            if os.path.isdir(path):
+                return os.listdir(path)
+            else:
+                return []
+
+        def rm_if_exists(path):
+            if os.path.isfile(path):
+                os.remove(path)
+
+        def rmdir_if_exists(path):
+            if os.path.isdir(path):
+                os.rmdir(path)
+
+        for f in listdir_if_exists(self.gh.non_scaled + '/presence'):
+            rm_if_exists(self.gh.non_scaled + '/presence/' + f)
+        rmdir_if_exists(self.gh.non_scaled + '/presence')
+        rm_if_exists(self.gh.stack + '/stacked_env_variables.tif')
+        rmdir_if_exists(self.gh.stack)
+        for f in listdir_if_exists(self.gh.spec_ppa):
+            rm_if_exists(self.gh.spec_ppa + '/' + f)
+        rmdir_if_exists(self.gh.spec_ppa)
+        rm_if_exists(self.gh.gis + '/env_bio_mean_std.txt')
+        for f in listdir_if_exists(self.gh.spec_ppa_env):
+            rm_if_exists(self.gh.spec_ppa_env + '/' + f)
+        rmdir_if_exists(self.gh.spec_ppa_env)
+        rm_if_exists(self.gh.gis + '/world_prediction_array.npy')
+        rm_if_exists(self.gh.gis + '/world_prediction_row_col.csv')
+        rm_if_exists(self.gh.root + '/filtered.csv')
