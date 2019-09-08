@@ -13,17 +13,24 @@ import tqdm
 import os
 
 
-# I want to be called Trainer and I need real documentation
 class Trainer:
-    """train_handler object that manages model training. """
 
-    # These constructors must not be like this. They all look the same,
-    # with the same object fields. Clearly they must inherit from a
-    # base class. However, I really doubt they all must hold references
-    # to oh, gh, ch. 
+    """Manages the training of deep neural networks. For each species five models are trained, and the model which has
+    scored the highest AUC value on the testing dataset is subsequently saved to file. Using a random subset of the
+    test set the impact of the environmental layers is estimated and saved to an image file. The class also creates an
+    evaluation file containing various (average) performance metrics per species like accuracy, loss, AUC, etc.
+
+    :param oh: an Occurrence object: holds occurrence files and tables
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param ch: a Config object: holds instance variables that determines the random seed, batch size, number of epochs,
+    number of nodes in each model layers and dropout for each model layer.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to train five models, and save the one with the highest AUC score to file.
+    Performed by calling class method train on Trainer object.
+    """
+
     def __init__(self, oh, gh, ch, verbose):
-
-        """train_handler object initiation"""
 
         self.oh = oh
         self.gh = gh
@@ -45,15 +52,20 @@ class Trainer:
         self.occ_len = 0
         self.abs_len = 0
 
-        self.random_seed = self.ch.random_seed  # change later (e.g. self.ch.np_r)
+        self.random_seed = self.ch.random_seed
 
-        self.batch = self.ch.batchsize  # change later (e.g. self.ch.batch)
-        self.epoch = self.ch.epoch  # change later (e.g. self.ch.epoch)
+        self.batch = self.ch.batchsize
+        self.epoch = self.ch.epoch
 
         self.model_layers = self.ch.model_layers
         self.model_dropout = self.ch.model_dropout
 
     def create_eval(self):
+
+        """Creates a new eval file containing a basic column layout.
+
+        :return: None. Writes column layout to evaluation file. Overwrites previous evaluation file if present.
+        """
 
         if not os.path.isdir(self.ch.result_path + '/_DNN_performance'):
             os.makedirs(self.ch.result_path + '/_DNN_performance')
@@ -63,6 +75,21 @@ class Trainer:
             file.close()
 
     def create_input_data(self):
+
+        """Loads data from file and performs final data preparations before training. Returns all input data for
+        training the model and determining variable importance.
+
+        :return: Tuple. Containing:
+        array 'X' an array containing all occurrences for a certain species;
+        array 'X_train' an array containing all training data for a certain species;
+        array 'X_test' an array containing all testing data for a certain species;
+        array 'y_train' an array holding all the labels (ground truth, in this case absent=0 / present=1) for the
+        training set;
+        array 'y_test' an array holding all the labels for the test set;
+        table 'test_set' pandas dataframe containing a copy of array 'X_test';
+        array 'shuffled_X_train' an array containing a random subset of the X_train data;
+        array 'shuffled_X_test' an array containing a random subset of the X_test data.
+        """
 
         np.random.seed(self.random_seed)
         self.variables = self.gh.names.copy()
@@ -103,6 +130,13 @@ class Trainer:
 
     def create_model_architecture(self, X):
 
+        """Creates a model architecture based on instance variables 'model_layers' and 'models_dropout'. Default is a
+        model with 4 layers [250, 200, 150 and 100 nodes per layer] with dropout [0.5, 0.3, 0.5, 0.3 per layer]
+
+        :param X: Array. used to define the input dimensions (number of nodes in the first layer) of the model.
+        :return: Keras Model Object. Initialized model with a specific architecture ready for training.
+        """
+
         num_classes = 2
         num_inputs = X.shape[1]
         model = Sequential()
@@ -119,6 +153,21 @@ class Trainer:
         return model
 
     def train_model(self, model, X_train, X_test, y_train, y_test):
+
+        """Training a model to predict the presence or absence of a species. Various instance variables are used to
+        define how the model trains, like: batch size, random seed and number of epochs.
+
+        :param model: Keras Model Object. Initialized model ready for training.
+        :param X_train: Array. Contains training data.
+        :param X_test: Array. Contains testing data.
+        :param y_train: Array. Contains training (ground truth) labels.
+        :param y_test: Array. Contains testing (ground truth) labels.
+
+        :return: Tuple. Containing:
+        float 'AUC' performance metric between 0 and 1 (0 = 100% wrong, 1 = 100% right);
+        keras model 'model' a keras model with an identical architecture to the input variable 'model' but with trained
+        weights.
+        """
 
         training_generator, steps_per_epoch = balanced_batch_generator(X_train, y_train, sampler=NearMiss(),
                                                                        batch_size=self.batch, random_state=self.random_seed)
@@ -154,6 +203,22 @@ class Trainer:
 
     def validate_model(self, model, AUC, X_train, X_test, shuffled_X_train, shuffled_X_test, test_set):
 
+        """Validate the model based on the AUC score. If the current models AUC is higher then previous version(s) of
+        the model is saved to file, and the feature importance for the current model is calculated, and subsequently
+        saved to image.
+
+        :param model: Keras Model. Model object trained using the class method train_model.
+        :param AUC: Float. Performance metric with a score between 0 and 1 (0 = 100% wrong, 1 = 100% right).
+        :param X_train: Array. Contains training data.
+        :param X_test: Array. Contains testing data.
+        :param shuffled_X_train: an array containing a random subset of the X_train data;
+        :param shuffled_X_test:an array containing a random subset of the X_test data;
+        :param test_set: pandas dataframe containing a copy of array 'X_test';
+
+        :return: None. Does not return value or object, instead saves a model to file if the AUC score is higher than
+        previous versions. If a model is saved to file the feature importance is tested and also saved to an image file.
+        """
+
         if AUC > self.best_model_auc[0]:
             if not os.path.isdir(self.ch.result_path + '/%s' % self.spec):
                 os.makedirs(self.ch.result_path + '/%s' % self.spec, exist_ok=True)
@@ -181,6 +246,16 @@ class Trainer:
                 plt.close()
 
     def update_performance_metrics(self):
+
+        """Updates the evaluation file created at the start of the training process. For each species adds one new line
+        to the evaluation document. For each species a number of average performance metrics are computed, such as:
+        testing loss, testing accuracy, AUC score, True positive rate, lower confidence interval and upper
+        confidence interval.
+
+        :return: None. Does not return value or object, instead appends one line of performance metrics for each species
+        to the initially created evaluation file.
+        """
+
         avg_loss = sum(self.test_loss) / len(self.test_loss)
         avg_acc = sum(self.test_acc) / len(self.test_acc)
         avg_AUC = sum(self.test_AUC) / len(self.test_AUC)
@@ -193,6 +268,15 @@ class Trainer:
                 self.abs_len) + "\n")
 
     def train(self):
+
+        """Training manager that performs the entire training procedure from start to finish. Responsible for:
+        Creating an evaluation file, obtaining the data, creating models, training models and validating their
+        performance, saving models to file and updating the performance metrics.
+
+        :return: None. Does not return value or object, instead writes the resulting models to files, writes performance
+        metrics to file and computing the feature importance of the input variables.
+        """
+
         self.create_eval()
         for self.spec in tqdm.tqdm(self.oh.name, desc='training models' + (35 * ' '), leave=True) if self.verbose else self.oh.name:
             X, X_train, X_test, y_train, y_test, test_set, shuffled_X_train, shuffled_X_test = self.create_input_data()

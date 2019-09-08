@@ -3,13 +3,22 @@ import os
 
 
 class Occurrences:
-    '''occurrence_handler object that manages the occurrence species and files.'''
+    """Manages all occurrence related path and file names. Additionally manages a species dictionary containing one
+    occurrence table per species.
+    Take note that any tables provided need to be in either .csv or .xls format. Furthermore
+    the table needs to have two required columns labeled 'decimalLatitude/decimallatitude' and
+    'decimalLongitude/decimalLongitude' that contain coordinates in the WGS84 coordinate system.
+    WARNING: the Occurrence class currently does not filter out any incorrect data. This entails that
+    loading tables with incorrect data types (strings or other categorical data) or invalid coordinates
+    (outside the extent of the provided raster images) may lead to errors and crashes.
 
-    # root = config root of 'occurrences' folder.
+    :param root: a string representation of the root of the occurrence folder ('root/data/occurrences') which should
+    contain occurrence tables.
+
+    :return: Object. Used to manage occurrence data.
+    """
 
     def __init__(self, root):
-
-        '''occurrence_handler object initiation.'''
 
         self.root = root
 
@@ -21,7 +30,13 @@ class Occurrences:
 
     def validate_occurrences(self):
 
-        '''validate_occurrences function that validates the presence of any .csv or .xls files. Additionally collects some basic statistics on the occurrences.'''
+        """Validates the presence of any .csv or .xls files recursively. Additionally collects some basic statistics on
+        the occurrences.
+
+         :return: None. Sets path and name instance variables to a list of file names and species names that have been
+         recursively found in self.root, also sets length instance variable to the number of species/files that have
+         been found. If no files can be found returns error.
+         """
 
         path = []
         name = []
@@ -51,7 +66,11 @@ class Occurrences:
 
     def species_dictionary(self):
 
-        '''species_dictionary function that creates one dictionary containing all the found occurrence species.'''
+        """Creates one dictionary containing one table per occurrence file found in the previous class method
+
+        :return: None. Sets spec_dict instance variable to a species dictionary, where each key in the dictionary is a
+        species name and the corresponding value is its occurrence table.
+        """
 
         species_occ_dict = {}
         for i in range(len(self.path)):

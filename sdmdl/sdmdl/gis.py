@@ -2,13 +2,17 @@ import os
 
 
 class GIS:
-    '''gis_handler object for managing all gis related files and objects. Additionally keeps track of any output files created and their output paths'''
 
-    # root = config root of 'data' folder.
+    """Manages all GIS related path and file names required for permutation of gis data. Additionally manages the paths
+    for any output files the package creates.
+
+    :param root: a string representation of the root of the data folder ('root/data') which should contain:
+    world_locations_to_predict.csv and empty_land_map.tif
+
+    :return: Object. Used to manage tif layers and created files.
+    """
 
     def __init__(self, root):
-
-        '''gis_handler object initiation. Recording relevant filepaths, statistics on included variables.'''
 
         self.root = root
 
@@ -31,7 +35,11 @@ class GIS:
 
     def validate_gis(self):
 
-        '''validate_gis function that validates if certain required files and locations are present.'''
+        """Validates if certain required files and locations are present.
+
+        :return: None. Set instance variables equal to the required file and directory paths.
+        If one of the required files is not found return error.
+        """
 
         for root, dirs, files in os.walk(self.root):
             for d in dirs:
@@ -49,7 +57,8 @@ class GIS:
 
         if self.world_locations_to_predict == '' or self.empty_map == '':
             raise IOError(
-                'The two required files, world_locations_to_predict.csv and/or empty_land_map.tif files are not present in the data folder.')
+                'The two required files, world_locations_to_predict.csv and/or empty_land_map.tif files are not '
+                'present in the data folder.')
 
         self.gis = (self.root + '/gis').replace('\\','/') if self.gis == '' else self.gis.replace('\\', '/')
         self.scaled = (self.gis + '/scaled').replace('\\','/') if self.scaled == '' else self.scaled.replace('\\', '/')
@@ -57,7 +66,15 @@ class GIS:
 
     def variables_list(self, root):
 
-        '''creates a list of filepaths and names of .tif files corresponding to a given path.'''
+        """Creates a list of file paths (f) and names (n) of raster (.tif) files that are found recursively in a given
+         path.
+
+        :param root: string representation of a file path
+
+        :return: List. Containing:
+        list 'f' containing a number of string file paths, one for each raster file found in the root;
+        list 'n' containing a number of string names corresponding to the name of the raster file.
+        """
 
         f = []
         n = []
@@ -72,7 +89,17 @@ class GIS:
 
     def validate_tif(self):
 
-        '''validate_tif function that validates the available .tif files'''
+        """Validation of raster (.tif) files present in the scaled and non-scaled directory.
+        WARNING: this step currently does not verify if the input layers are compatible for the raster stack computation
+        To succesfully stack the rasters make sure all tif layers (including the empty land map) have an identical
+        affine projection and coordinate system.
+
+        :return: None. Set 4 instance variables:
+        1. Set variables to a list of path names corresponding to all the raster layers found.
+        2. Set names to a list of file names corresponding to all the raster layers found.
+        3. Set scaled_len to the number of layers in the scaled folder.
+        4. Set length to the total number of layers.
+        """
 
         self.variables = []
         self.names = []
@@ -90,7 +117,11 @@ class GIS:
 
     def define_output(self):
 
-        '''define_output function sets a list of standard output locations for intermediate files.'''
+        """Set a list of standard output locations for intermediate files.
+
+        :return: None. Set the locations of the presence, stack, stack_clip, spec_ppa and spec_ppa_env folders to
+        instance variable.
+        """
 
         self.presence = (self.non_scaled + '/presence').replace('\\','/')
         self.stack = (self.gis + '/stack').replace('\\','/')

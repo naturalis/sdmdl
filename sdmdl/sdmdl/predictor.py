@@ -9,26 +9,42 @@ import rasterio
 import tqdm
 import gdal
 
-# I want to be called Predictor and I need proper
-# class-level documentation
-class Predictor:
-    """predict_handler object that manages model predictions"""
 
-    # Now I finally know what oh, gh, and ch are. 
+class Predictor:
+    """Manages all aspects of the prediction process. E.g. loading the prediction dataset, performing predictions,
+    creating visuals and saving the resulting distribution map as a raster layer.
+
+    :param oh: an Occurrence object: holds occurrence files and tables
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param ch: a Config object: holds instance variable for result path.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to create species distribution maps, these maps are saved in two formats:
+    1. A raster (.tif) file that can be easily used in other analyses
+    2. A visualization (.png) file with a simple title, prediction map and legend.
+    Performed by calling class method predict_model on Predictor object.
+    """
+
+    # Now I finally know what oh, gh, and ch are.
     # 1. I have seen this same constructor now 9 times. This needs to be
     #    be moved to a single base class
     # 2. It is probably bad design that everyone holds a reference to 
     #    everyone else (Law of Demeter)
-    def __init__(self, occurrence_handler, gis_handler, config_handler, verbose):
 
-        """predict_handler object initiation"""
+    def __init__(self, oh, gh, ch, verbose):
 
-        self.oh = occurrence_handler
-        self.gh = gis_handler
-        self.ch = config_handler
+        self.oh = oh
+        self.gh = gh
+        self.ch = ch
         self.verbose = verbose
 
     def prep_color_scheme(self):
+
+        """Setup plot colors and settings
+
+        :return: LinearSegmentedColormap. Object that manages the colors of the legend in the visualized map output.
+        """
+
         norm = matplotlib.colors.Normalize(0, 1)
         # Put me in a config file
         colors = [[norm(0), "0.95"], [norm(0.05), "steelblue"], [norm(0.1), "sienna"], [norm(0.3), "wheat"],
@@ -43,6 +59,15 @@ class Predictor:
         return custom_cmap
 
     def prep_prediction_data(self):
+
+        """Loads raster stack and empty map
+
+        :return: Tuple. Containing:
+        matrix 'myarray' a multi-dimensional matrix representation of the raster stack;
+        matrix 'index_minb1' an array of x, y coordinates masking the locations of NoData (or non-terrestrial) values in
+        the empty land map
+        """
+
         inRas = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
         myarray = inRas.ReadAsArray()
         src = rasterio.open(self.gh.empty_map)
@@ -51,10 +76,23 @@ class Predictor:
         index_minb1 = np.where(b == minb)
         return myarray, index_minb1
 
-    def predict_distribution(self,species,myarray,index_minb1):
+    def predict_distribution(self, species, myarray, index_minb1):
+
+        """Predicts the presence or absence of a species globally, using the world_prediction_array.npy as input to the
+        model.
+
+        :param species: String representation of species name
+        :param myarray: a multi-dimensional matrix representation of the raster stack
+        :param index_minb1: an array of x, y coordinates masking the locations of NoData (or non-terrestrial) values in
+        the empty land map
+
+        :return: Tuple. Containing:
+        matrix 'new_band' is a two dimensional matrix holding the values predicted by the model for each (x, y) location
+        """
+
         spec = species
         spec_index = self.gh.names.index("%s_presence_map" % spec)
-        input_X = np.load(self.gh.gis + '/world_prediction_array.npy')  # %spec)
+        input_X = np.load(self.gh.gis + '/world_prediction_array.npy')
         np.shape(input_X)
         input_X = np.delete(input_X, [spec_index], 1)
         np.shape(input_X)
@@ -73,8 +111,6 @@ class Predictor:
             new_band_values.append(new_value)
         new_band_values = np.array(new_band_values)
         df = pd.read_csv(self.gh.gis + '/world_prediction_row_col.csv')
-
-        # No hardcoded dictionary keys
         row = df["row"]
         row = row.values
         col = df["col"]
@@ -86,7 +122,13 @@ class Predictor:
 
     def predict_model(self):
 
-        """performs global predictions and saves the resulting images (.png & .tif) to file"""
+        """Manages the entire prediction process from beginning to end by calling class methods. Finishes with
+        plotting a map visualization with a title and legend.
+
+        :return: None. Does not return value or object, instead plots one map per species using matplotlib and saves the
+        prediction data to a raster file.
+        """
+
         custom_cmap = self.prep_color_scheme()
         myarray, index_minb1 = self.prep_prediction_data()
         for species in tqdm.tqdm(self.oh.name,

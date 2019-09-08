@@ -3,21 +3,39 @@ import io
 import os
 
 
-# This needs class-level documentation
 class Config:
-    """config object that manages the config file, containing information on the data, occurrences and result
-    paths. """
+
+    """config object that manages the input from and output to the config file which contains settings for:
+    (gis)data path,
+    occurrence path,
+    result path,
+    occurrences (species),
+    (environmental) layers,
+    random seed,
+    number of sampled absences,
+    number of epochs,
+    number of layers in model,
+    nodes per layer and
+    dropout per layer.
+    Note: to overwrite config.yml with defaults, please open the file, delete its contents and save it under the same
+    name.
+
+    :param root: a string representation of the root of the data folder ('root/data') as it contains the config.yml
+    :param oh: an Occurrence object: holds occurrence files and tables
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+
+    :return: Object. Used to manage config.yml and the settings within it.
+     """
 
     def __init__(self, root, oh, gh):
-
-        """config object initiation."""
 
         self.root = root.replace('\\', '/')
         self.oh = oh
         self.gh = gh
 
         self.config = []
-        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed', 'pseudo_freq', 'batchsize', 'epoch', 'model_layers', 'model_dropout']
+        self.yml_names = ['data_path', 'occurrence_path', 'result_path', 'occurrences', 'layers', 'random_seed',
+                          'pseudo_freq', 'batchsize', 'epoch', 'model_layers', 'model_dropout']
 
         # Why can't we pass these as **kwargs?
         self.data_path = None
@@ -37,7 +55,12 @@ class Config:
     # whatever in the future.
     def search_config(self):
 
-        """search_config function that recursively find the location of the config.yml file."""
+        """Recursively find the location of config.yml in self.root.
+
+        :return: None. Sets self.config equal to the file path.
+        If no config is found returns error, if multiple files containing the word 'config' are found
+        returns error.
+        """
 
         for root, dirs, files in os.walk(self.root):
             for file in files:
@@ -52,8 +75,11 @@ class Config:
 
     def create_yaml(self):
 
-        """create_yaml function that can be used for initialization of the package (creates a new config file upon
-        running the first time). """
+        """initialization of the config file with default values (if an empty yaml file is detected while trying to
+        read config.yml).
+
+        :return: None. Overwrites empty config.yml with default values for each setting.
+        """
 
         if len(self.oh.name) > 1:
             occ_dict = dict(zip(self.oh.name, self.oh.path))
@@ -81,8 +107,13 @@ class Config:
 
     def read_yaml(self):
 
-        """read_yaml function that reads the config file at the previously found location and extracts all relavant
-        information from it to set instance variables. """
+        """read the config file at the previously found location and extracts all relevant
+        information from it to instance variables.
+
+        :return: None. Sets all instance variables to the values found within the config (dictionary) file.
+        If config.yml can not be read return error, if config.yml is not a dictionary return error
+
+        """
 
         try:
             with open(self.config, 'r') as stream:
