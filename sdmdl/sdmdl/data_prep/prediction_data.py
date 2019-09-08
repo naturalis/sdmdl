@@ -5,26 +5,45 @@ import pandas as pd
 import os
 import tqdm
 
-# Why is this not called PredictionData?
-# Why is this not documented?
 class PredictionData:
 
-    # This has the same constructor as all the other
-    # data_prep classes, it seems. They should all
-    # inherit from the same superclass so that this
-    # is only set once.
+    """Prepares (global) prediction dataset using a raster stack, a set of predefined points and a set of
+    band means and standard deviations.
+
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to create a numpy (.npy) file containing the input data to the predictor. Performed
+    by calling class method create_prediction_df on PredictionData object.
+    """
+
     def __init__(self, gh, verbose):
         self.gh = gh
         self.verbose = verbose
 
     def prepare_prediction_df(self):
+
+        """Loads raster stack, prediction locations and band statistics.
+
+        :return: Tuple. containing:
+        lists 'lon' and 'lat' contain the values of the longitude and latitude columns in
+        'world_locations_to_predict.csv';
+        lists 'row' and 'col' contain the values from the previous 'lon' and 'lat' columns converted from WGS84 to
+        image coordinates;
+        matrix 'array' is an multi-dimensional array representation of the raster stack;
+        table 'mean_std' is an table containing the mean and standard deviation for each of the scaled raster layers
+        """
+
         array = gdal.Open(self.gh.stack + '/stacked_env_variables.tif').ReadAsArray()
         src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
+        # world_locations_to_predict.csv is currently still included in the data folder (on the sdmdl github).
+        # Due to this predictions can only be given globaly.
         df = pd.read_csv(self.gh.gis + '/world_locations_to_predict.csv')
         mean_std = pd.read_csv(self.gh.gis + '/env_bio_mean_std.txt', sep="\t")
         len_df = np.arange(len(df))
         
-        # these should not be hardcoded here
+        # these are hard coded because for now these values come from the world_locations_to_predict.csv
+        # which is included in the repository (for now).
         lon = df["decimal_longitude"].values
         lat = df["decimal_latitude"].values
         row = []
@@ -40,7 +59,16 @@ class PredictionData:
 
     def create_prediction_df(self):
 
-        for once in tqdm.tqdm([0], desc='Computing prediction data' + (25 * ' '), leave=True) if self.verbose else [0]:
+        """Creates (global) prediction dataset by extracting all environmental variables at each occurrence combination
+        in the 'world_locations_to_predict.csv' file.
+
+        :param self: a class instance of PredictionData
+
+        :return: None. Does not return value or object, instead writes the computed prediction dataset to
+        'world_prediction_array.npy' file
+        """
+
+        for _ in tqdm.tqdm([0], desc='Computing prediction data' + (25 * ' '), leave=True) if self.verbose else [0]:
             lon, lat, row, col, array, mean_std = self.prepare_prediction_df()
             X = []
 
@@ -73,8 +101,6 @@ class PredictionData:
             col = df[self.gh.length + 1]
             row_col = pd.DataFrame({"row": row, "col": col})
             input_X = input_X.values
-            row = row.values
-            col = col.values
 
             if not os.path.isdir(self.gh.gis):
                 os.mkdir(self.gh.gis)

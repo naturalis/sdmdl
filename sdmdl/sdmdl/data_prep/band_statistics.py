@@ -3,16 +3,32 @@ import rasterio
 import tqdm
 import os
 
-# Why is this not called BandStatisticsHelper?
+
 class BandStatistics:
 
-    # Why does this constructor look the same as that 
-    # of the CreatePresenceMapHelper? That's what inheritance is for.
+    """Calculates the mean and standard deviation of all scaled environmental raster layers in a raster stack (.tif)
+    file.
+
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to create a text (.txt) file containing the mean and standard deviation for each layer in a
+    raster stack. Performed by calling class method calc_band_mean_and_stddev on BandStatistics object.
+    """
+
     def __init__(self, gh, verbose):
         self.gh = gh
         self.verbose = verbose
 
     def calc_band_mean_and_stddev(self):
+
+        """Opens a raster stack and computes the mean and standard deviation for each scaled environmental layer in the
+         stack.
+
+        :return: None. Does not return value or object, instead writes the band mean and standard deviation of each band
+        to a text (.txt) file.
+        """
+
         raster = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
         profile = raster.profile
 

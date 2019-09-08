@@ -5,17 +5,39 @@ import os
 
 
 class PresenceMap:
-    # What is this class? Why is it not called PresenceMap? Why is 
-    # this object called a verb, and not a noun?
 
-    # what are oh, gh, ch, verbose? When you make the constructor,
-    # you write then and there what the arguments are. Not afterwards.
+    """Creates a presence map (.tif) for each species in the occurrence object (oh)
+    by using an empty land map raster layer and changing the value of any occurrence locations to 1.
+    Note: the empty land map (found in 'root/data/gis/layers') needs to have the same affine projection and coordinate
+    system as all other raster layers used during the data preparation process, if this is not the case this will lead
+    to problems when creating the raster stack (see raster_stack.py).
+
+    :param oh: an Occurrence object: holds occurrence files and tables
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to create presence maps raster (.tif) files containing presence maps for each occurrence
+    species. Performed by calling class method create_presence_map on PresenceMap object.
+    """
+
     def __init__(self, oh, gh, verbose):
         self.oh = oh
         self.gh = gh
         self.verbose = verbose
 
     def create_presence_map(self):
+
+        """Loads a copy of the empty land map for each species and sets the locations of occurrences to 1,
+        saves one presence map per species detected by the Occurrence (oh) object.
+
+        :param self: a class instance of PresenceMap
+
+        :return: None. Does not return value or object, instead writes one raster file .tif for each species detected
+        by Occurrences. The created maps contain three distinct values: No data for any pixels representing
+        non-terrestrial locations, 0 for any pixels representing terrestrial locations with no occurrence(s) and 1
+        representing pixels with an occurrence.
+        """
+
         src = rasterio.open(self.gh.empty_map)
         profile = src.profile
         band = src.read(1)

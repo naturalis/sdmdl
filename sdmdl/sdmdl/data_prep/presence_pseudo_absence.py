@@ -6,13 +6,21 @@ import tqdm
 import os
 
 
-# Why is this not called PresencePseudoAbsence?
-# What does this class do? There should be documentation
 class PresencePseudoAbsence:
 
-    # This constructor should inherit from a superclass. It
-    # does the same thing as all the other data_prep classes,
-    # at least the first 4 lines.
+    """Samples a random selection of 'latitude' and 'longitude' coordinates that are included in the training dataset as
+    absence locations. For each species in the Occurrence object (oh) creates a random sample (size of the sample can
+    be set from the config.yml)
+
+    :param oh: an Occurrence object: holds occurrence files and tables
+    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param ch: a Config object: holds instance variables that determine the size of the random sample or random seed.
+    :param verbose: a boolean: prints a progress bar if True, silent if False
+
+    :return: Object. Used to randomly sample absence locations that are subsequently written to (.csv) file.
+    Performed by calling class method create_presence_pseudo_absence on PresencePseudoAbsence object.
+    """
+
     def __init__(self, oh, gh, ch, verbose):
 
         self.oh = oh
@@ -23,6 +31,17 @@ class PresencePseudoAbsence:
         self.random_seed = self.ch.random_seed
 
     def draw_random_absence(self, key):
+
+        """Draw a random sample of absences from terrestrial locations where no occurrences have been observed.
+
+        :param self: a class instance of PresencePseudoAbsence
+        :param key: string dictionary key (species name, e.g. Zea_mays_l) used to obtain the occurrences table.
+        :return: Tuple. Containing:
+        table 'presence_data' is a copy of the occurrence table held by the Occurrence object (oh) for
+        species = key;
+        matrix 'outer_random_sample_lon_lats' containing a random sample of absence locations;
+        int 'sample_size' indicating the size of the drawn sample.
+        """
 
         np.random.seed(self.random_seed)
         r = gdal.Open(self.gh.stack + '/stacked_env_variables.tif')
@@ -51,6 +70,14 @@ class PresencePseudoAbsence:
         return presence_data, outer_random_sample_lon_lats, sample_size
 
     def create_presence_pseudo_absence(self):
+
+        """Selects a random sample of absence locations for each species in the Occurrence object (oh).
+
+        :param self: a class instance of PresencePseudoAbsence
+
+        :return: None. Does not return value or object, instead combines the presence and absence datasets and writes
+        the output to file for each species.
+        """
 
         for key in (tqdm.tqdm(self.oh.spec_dict, desc='Sampling pseudo absence' + (27 * ' '),leave=True) if self.verbose else self.oh.spec_dict):
             presence_data, outer_random_sample_lon_lats, sample_size = self.draw_random_absence(key)
