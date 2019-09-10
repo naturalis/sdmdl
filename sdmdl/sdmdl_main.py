@@ -40,9 +40,8 @@ class sdmdl:
         self.ch.search_config()
         self.ch.read_yaml()
 
-        # change this later when using log4py
-        self.verbose = True
-        if self.verbose:
+        self.verbose = self.ch.verbose
+        if not self.verbose:
             os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
             logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
