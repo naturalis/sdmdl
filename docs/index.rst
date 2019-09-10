@@ -24,12 +24,11 @@ To create an sdmdl object and subsequently train deep learning models a few requ
    ii. Non-scaled layers, that are already normalized or are categorical (0 = not present while 1 = present).
 
    **Note:**
-   all environmental layers need to have the same affine transformation and resolution to be usable for analysis.
-   This includes the file 'empty_land_map.tif' that is included in the git repo. This entails that the spatial extent
-   and resolution of 'empty_land_map.tif' need to be copied, or that this file must be edited to match spatial extent
-   and resolution of the other raster files.
+   all environmental layers need to have the same affine transformation and resolution to be usable for data preparations.
+   This includes the file 'empty_land_map.tif' that is included in the git repo. This entails that the affine transformation
+   and resolution of the input rasters needs to match the affine transformation and resolution of 'empty_land_map.tif'.
 
-3. `A set of occurrences <https://link.to.rasters/>`_ (.csv or .xls) that will serve as training examples of where the species currently occurs.
+3. `A set of occurrences <https://link.to.occurrences/>`_ (.csv or .xls) that will serve as training examples of where the species currently occurs.
    To be detectable as occurrence files, these tables need to have two required columns:
 
    i. 'decimalLatitude' or 'decimallatitude' holding the latitude for each occurrence.
@@ -51,7 +50,8 @@ Config.yml is initiated the first time an sdmdl object is created. And holds any
 
 1. Detected raster files.
 2. Detected occurrence files
-3. Parameters for running the deep learning model are:
+3. Model parameters:
+
     a. **integer** random_seed, makes random processes repeatable.
     b. **integer** pseudo_freq: number of sampled (pseudo) absences.
     c. **integer** batchsize: number of data points given to the model during training at once.
@@ -63,7 +63,7 @@ Config.yml is initiated the first time an sdmdl object is created. And holds any
 **Note:** changes to the config file are not updated automatically
 so any changes are not detected by the sdmdl object, for changes to take effect a new sdmdl objects needs to be created.
 
-Once these steps are completed the model is ready for analysis:
+Once these steps are completed the model is ready for use:
 
 **Step 1:** create a sdmdl object:
 
