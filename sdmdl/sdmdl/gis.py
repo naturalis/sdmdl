@@ -1,9 +1,13 @@
 import os
 
 
+# This class should include functionality for validating if the files can be properly imported, checking if the affine
+# transformations and resolutions are compatible for stacking, so potential problems can be detected before the raster
+# are imported during the data preparation.
+
 class GIS:
 
-    """Manages all GIS related path and file names required for permutation of gis data. Additionally manages the paths
+    """Manages all GIS related path and file names required for computation of gis data. Additionally manages the paths
     for any output files the package creates.
 
     :param root: a string representation of the root of the data folder ('root/data') which should contain:
@@ -92,7 +96,7 @@ class GIS:
         """Validation of raster (.tif) files present in the scaled and non-scaled directory.
         WARNING: this step currently does not verify if the input layers are compatible for the raster stack computation
         To succesfully stack the rasters make sure all tif layers (including the empty land map) have an identical
-        affine projection and coordinate system.
+        affine transformation and resolution.
 
         :return: None. Set 4 instance variables:
         1. Set variables to a list of path names corresponding to all the raster layers found.

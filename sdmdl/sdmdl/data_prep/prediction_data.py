@@ -10,7 +10,7 @@ class PredictionData:
     """Prepares (global) prediction dataset using a raster stack, a set of predefined points and a set of
     band means and standard deviations.
 
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param verbose: a boolean: prints a progress bar if True, silent if False
 
     :return: Object. Used to create a numpy (.npy) file containing the input data to the predictor. Performed
@@ -36,8 +36,9 @@ class PredictionData:
 
         array = gdal.Open(self.gh.stack + '/stacked_env_variables.tif').ReadAsArray()
         src = rasterio.open(self.gh.stack + '/stacked_env_variables.tif')
+
         # world_locations_to_predict.csv is currently still included in the data folder (on the sdmdl github).
-        # Due to this predictions can only be given globaly.
+        # Due to this predictions can only be given globally.
         df = pd.read_csv(self.gh.gis + '/world_locations_to_predict.csv')
         mean_std = pd.read_csv(self.gh.gis + '/env_bio_mean_std.txt', sep="\t")
         len_df = np.arange(len(df))
@@ -99,6 +100,8 @@ class PredictionData:
             np.shape(input_X)
             row = df[self.gh.length]
             col = df[self.gh.length + 1]
+
+            # dictionary keys written to file and not used to query user input.
             row_col = pd.DataFrame({"row": row, "col": col})
             input_X = input_X.values
 

@@ -3,26 +3,27 @@ import io
 import os
 
 
+# To improve this class the config file should not include the occurrences and raster layers.
+# This has the potential to cause problems. e.g.
+# The first time a sdmdl object is initiated using a newly initiated copy of the github repository a new config file is
+# created that will contain all the files that are detected at the time by the methods in the GIS and Occurrences
+# classes. Once the config file is created it can cause issues when a raster layer or occurrence table file is deleted.
+# The next time an sdmdl object is created using the same root the Config class overwrites the automatically detected
+# filepaths meaning that it will cause an error since it tries to load a file that no longer exists.
+
 class Config:
 
     """config object that manages the input from and output to the config file which contains settings for:
-    (gis)data path,
-    occurrence path,
-    result path,
-    occurrences (species),
-    (environmental) layers,
-    random seed,
-    number of sampled absences,
-    number of epochs,
-    number of layers in model,
-    nodes per layer and
+    (gis)data path, occurrence path, result path, occurrences (species), (environmental) layers, random seed,
+    number of sampled absences, number of epochs, number of layers in model, nodes per layer and
     dropout per layer.
+
     Note: to overwrite config.yml with defaults, please open the file, delete its contents and save it under the same
     name.
 
     :param root: a string representation of the root of the data folder ('root/data') as it contains the config.yml
     :param oh: an Occurrence object: holds occurrence files and tables
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
 
     :return: Object. Used to manage config.yml and the settings within it.
      """
@@ -52,9 +53,12 @@ class Config:
 
         self.verbose = None
 
-    # Why can we not pass the config file to the constructor?
-    # This is destined to bump into another .travis.yml or
+    # Why can we not pass the config file to the constructor? This is destined to bump into another .travis.yml or
     # whatever in the future.
+
+    # Because the root of the config file is the data folder now, additionally the if statement on line 77 checks if the
+    # filename includes the string 'config'
+
     def search_config(self):
 
         """Recursively find the location of config.yml in self.root.
@@ -107,6 +111,8 @@ class Config:
 
         with io.open(self.config, 'w', encoding='utf8') as outfile:
             yaml.dump(yml, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False)
+
+    # class method read_yaml is getting a bit long so maybe find another solution to read the variables.
 
     def read_yaml(self):
 

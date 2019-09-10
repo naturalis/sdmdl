@@ -1,13 +1,18 @@
 import pandas as pd
 import os
 
+# This class currently does not check the data in the imported files. This means that if the decimalLatitude and
+# decimalLongitude columns include any data type other then numerical it has the potential to crash, and similarly
+# if any values are out of bounds of for the raster layer these do currently not get filtered. This means that filtering
+# the input data to the model is a requirement.
+
 
 class Occurrences:
     """Manages all occurrence related path and file names. Additionally manages a species dictionary containing one
     occurrence table per species.
     Take note that any tables provided need to be in either .csv or .xls format. Furthermore
     the table needs to have two required columns labeled 'decimalLatitude/decimallatitude' and
-    'decimalLongitude/decimalLongitude' that contain coordinates in the WGS84 coordinate system.
+    'decimalLongitude/decimallongitude' that contain coordinates in the WGS84 coordinate system.
     WARNING: the Occurrence class currently does not filter out any incorrect data. This entails that
     loading tables with incorrect data types (strings or other categorical data) or invalid coordinates
     (outside the extent of the provided raster images) may lead to errors and crashes.

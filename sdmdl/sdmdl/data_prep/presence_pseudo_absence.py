@@ -13,7 +13,7 @@ class PresencePseudoAbsence:
     be set from the config.yml)
 
     :param oh: an Occurrence object: holds occurrence files and tables
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param ch: a Config object: holds instance variables that determine the size of the random sample or random seed.
     :param verbose: a boolean: prints a progress bar if True, silent if False
 
@@ -79,7 +79,7 @@ class PresencePseudoAbsence:
         the output to file for each species.
         """
 
-        for key in (tqdm.tqdm(self.oh.spec_dict, desc='Sampling pseudo absence' + (27 * ' '),leave=True) if self.verbose else self.oh.spec_dict):
+        for key in (tqdm.tqdm(self.oh.spec_dict, desc='Sampling pseudo absence' + (27 * ' '), leave=True) if self.verbose else self.oh.spec_dict):
             presence_data, outer_random_sample_lon_lats, sample_size = self.draw_random_absence(key)
             presence_data['present/pseudo_absent'] = 1
             lon = []
@@ -91,12 +91,13 @@ class PresencePseudoAbsence:
                 lon.append(longitude)
                 lat.append(latitude)
 
-            # these keys should not be hardcoded here
+            # these are hard coded because the table is written to file and are not involved in user input
+            # occurrences or raster layers
             new_data = pd.DataFrame(
                 {"dLon": lon, "dLat": lat, "present/pseudo_absent": psa})
             data = pd.concat([presence_data, new_data], ignore_index=True, sort=True)
 
-            # these keys should not be hardcoded here
+            # once again these are columns of a data frame that is written to file.
             data = data[['dLon', 'dLat', 'present/pseudo_absent']]
             data["row_n"] = np.arange(len(data))
             if not os.path.isdir(self.gh.spec_ppa):

@@ -4,16 +4,20 @@ import tqdm
 import os
 
 
+# PresenceMap could include functionality on creating the empty map from scratch.
+# This would require parameters in the config file for resolution and affine projection / spatial extent
+# The empty land map raster can be generated from a simple shapefile.
+
 class PresenceMap:
 
     """Creates a presence map (.tif) for each species in the occurrence object (oh)
     by using an empty land map raster layer and changing the value of any occurrence locations to 1.
-    Note: the empty land map (found in 'root/data/gis/layers') needs to have the same affine projection and coordinate
-    system as all other raster layers used during the data preparation process, if this is not the case this will lead
-    to problems when creating the raster stack (see raster_stack.py).
+    Note: the empty land map (found in 'root/data/gis/layers') needs to have the same affine transformation and
+    resolution as all other raster layers used during the data preparation process, if this is not the case this will
+    lead to problems when creating the raster stack (see raster_stack.py).
 
     :param oh: an Occurrence object: holds occurrence files and tables
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param verbose: a boolean: prints a progress bar if True, silent if False
 
     :return: Object. Used to create presence maps raster (.tif) files containing presence maps for each occurrence
@@ -46,6 +50,9 @@ class PresenceMap:
         for key in tqdm.tqdm(self.oh.spec_dict, desc='Creating presence maps' + (28 * ' '), leave=True) if self.verbose else self.oh.spec_dict:
             new_band = band.copy()
             presence_data = self.oh.spec_dict[key]
+
+            # dictionary keys used for querying tables from spec_dict. the columns of these tables are set by the
+            # occurrence class so are not define by the user.
             presence_data["present/pseudo_absent"] = 1
             long = presence_data["dLon"]
             lati = presence_data["dLat"]

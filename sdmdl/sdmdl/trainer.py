@@ -21,7 +21,7 @@ class Trainer:
     evaluation file containing various (average) performance metrics per species like accuracy, loss, AUC, etc.
 
     :param oh: an Occurrence object: holds occurrence files and tables
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param ch: a Config object: holds instance variables that determines the random seed, batch size, number of epochs,
     number of nodes in each model layers and dropout for each model layer.
     :param verbose: a boolean: prints a progress bar if True, silent if False

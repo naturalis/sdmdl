@@ -9,13 +9,14 @@ import rasterio
 import tqdm
 import gdal
 
+# Give more options to control predictor class, e.g. options to only output one file type (raster layer or image)
 
 class Predictor:
     """Manages all aspects of the prediction process. E.g. loading the prediction dataset, performing predictions,
     creating visuals and saving the resulting distribution map as a raster layer.
 
     :param oh: an Occurrence object: holds occurrence files and tables
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param ch: a Config object: holds instance variable for result path.
     :param verbose: a boolean: prints a progress bar if True, silent if False
 
@@ -24,12 +25,6 @@ class Predictor:
     2. A visualization (.png) file with a simple title, prediction map and legend.
     Performed by calling class method predict_model on Predictor object.
     """
-
-    # Now I finally know what oh, gh, and ch are.
-    # 1. I have seen this same constructor now 9 times. This needs to be
-    #    be moved to a single base class
-    # 2. It is probably bad design that everyone holds a reference to 
-    #    everyone else (Law of Demeter)
 
     def __init__(self, oh, gh, ch, verbose):
 
@@ -46,9 +41,11 @@ class Predictor:
         """
 
         norm = matplotlib.colors.Normalize(0, 1)
-        # Put me in a config file
+
+        # To Do: integrate color scheme (potentially as a list [col1, col2, col3, coln]) into the config file.
         colors = [[norm(0), "0.95"], [norm(0.05), "steelblue"], [norm(0.1), "sienna"], [norm(0.3), "wheat"],
                   [norm(0.5), "cornsilk"], [norm(0.95), "yellowgreen"], [norm(1.0), "green"]]
+
         custom_cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", colors)
         custom_cmap.set_bad(color="white")
         fig, ax = plt.subplots()

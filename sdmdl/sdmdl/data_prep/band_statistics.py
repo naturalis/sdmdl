@@ -9,7 +9,7 @@ class BandStatistics:
     """Calculates the mean and standard deviation of all scaled environmental raster layers in a raster stack (.tif)
     file.
 
-    :param gh: a GIS object: holds path and file names required for permutation of gis data.
+    :param gh: a GIS object: holds path and file names required for computation of gis data.
     :param verbose: a boolean: prints a progress bar if True, silent if False
 
     :return: Object. Used to create a text (.txt) file containing the mean and standard deviation for each layer in a
