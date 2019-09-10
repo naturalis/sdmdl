@@ -52,12 +52,12 @@ Config.yml is initiated the first time an sdmdl object is created. And holds any
 1. Detected raster files.
 2. Detected occurrence files
 3. Parameters for running the deep learning model are:
-    a. **integer** random_seed, to make random processes repeatable.
+    a. **integer** random_seed, makes random processes repeatable.
     b. **integer** pseudo_freq: number of sampled (pseudo) absences.
     c. **integer** batchsize: number of data points given to the model during training at once.
     d. **integer** epoch: number of (training) iterations over the whole data set.
     e. **integer** model_layers: number of nodes per layer. Adding extra items to the list makes the model deeper.
-    f. **integer** model_dropout: dropout deactivates a percentage of nodes during training (0 = no nodes are turned off and 1 = all nodes are turned off)
+    f. **float** model_dropout: dropout deactivates a percentage of nodes during training (0 = no nodes are turned off and 1 = all nodes are turned off)
     g. **boolean** Verbose: if True prints progress bars
 
 **Note:** changes to the config file are not updated automatically
