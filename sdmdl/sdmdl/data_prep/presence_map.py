@@ -41,10 +41,10 @@ class PresenceMap:
         src = rasterio.open(self.gh.empty_map)
         profile = src.profile
         band = src.read(1)
-        new_band = band.copy()
         if not os.path.isdir(self.gh.presence):
             os.makedirs(self.gh.presence, exist_ok=True)
         for key in tqdm.tqdm(self.oh.spec_dict, desc='Creating presence maps' + (28 * ' '), leave=True) if self.verbose else self.oh.spec_dict:
+            new_band = band.copy()
             presence_data = self.oh.spec_dict[key]
             presence_data["present/pseudo_absent"] = 1
             long = presence_data["dLon"]

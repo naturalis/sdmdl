@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import unittest
 import rasterio
+import shutil
 import random
 import os
 
@@ -31,8 +32,8 @@ class PresenceMapTestCase(unittest.TestCase):
         self.assertEqual(self.cpm.verbose, self.verbose)
 
     def test_create_presence_map(self):
-        os.remove(self.root + '/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif')
-        os.remove(self.root + '/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif')
+        shutil.move(self.root + '/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif', self.root + '/root/gis/layers/non-scaled/presence/true_arachis_duranensis_presence_map.tif')
+        shutil.move(self.root + '/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif', self.root + '/root/gis/layers/non-scaled/presence/true_solanum_bukasovii_presence_map.tif')
         self.assertFalse(os.path.isfile(self.root + '/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif'))
         self.assertFalse(os.path.isfile(self.root + '/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif'))
         self.cpm.create_presence_map()
@@ -45,8 +46,10 @@ class PresenceMapTestCase(unittest.TestCase):
         self.assertEqual(result_a.read(1).tolist(), truth_a.read(1).tolist())
         self.assertEqual(result_b.read(1).tolist(), truth_b.read(1).tolist())
         [raster.close() for raster in [result_a, result_b, truth_a, truth_b]]
-
-
+        os.remove(self.root + '/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif')
+        os.remove(self.root + '/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif')
+        shutil.move(self.root + '/root/gis/layers/non-scaled/presence/true_arachis_duranensis_presence_map.tif', self.root + '/root/gis/layers/non-scaled/presence/arachis_duranensis_presence_map.tif')
+        shutil.move(self.root + '/root/gis/layers/non-scaled/presence/true_solanum_bukasovii_presence_map.tif', self.root + '/root/gis/layers/non-scaled/presence/solanum_bukasovii_presence_map.tif')
 
 if __name__ == '__main__':
     unittest.main()
