@@ -1,4 +1,4 @@
-shap==0.30.0
+shap==0.30.2
 pyproj==2.3.1
 imblearn==0.0
 keras==2.2.5
