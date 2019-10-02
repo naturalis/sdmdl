@@ -36,7 +36,7 @@ class Occurrences:
     def validate_occurrences(self):
 
         """Validates the presence of any .csv or .xls files recursively. Additionally collects some basic statistics on
-        the occurrences.
+        the species.
 
          :return: None. Sets path and name instance variables to a list of file names and species names that have been
          recursively found in self.root, also sets length instance variable to the number of species/files that have

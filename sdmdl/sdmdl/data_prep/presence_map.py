@@ -6,7 +6,8 @@ import os
 
 # PresenceMap could include functionality on creating the empty map from scratch.
 # This would require parameters in the config file for resolution and affine projection / spatial extent
-# The empty land map raster can be generated from a simple shapefile.
+# The empty land map raster can be generated from a simple shapefile (which could potentially be obtained from a remote
+# location, so it will not have to be included in the data folder).
 
 class PresenceMap:
 

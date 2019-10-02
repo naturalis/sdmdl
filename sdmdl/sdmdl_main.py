@@ -18,10 +18,25 @@ from sdmdl.sdmdl.predictor import Predictor
 
 
 class sdmdl:
-    '''sdmdl object with one parameter: root of the repository, that is holding all occurrences and environmental layers.'''
+
+    """sdmdl object with one required parameter: root of the repository, that is holding all occurrences and
+    environmental layers. And two additional parameters: dat_root (data root of raster layers) and occ_root (root of
+    occurrence files.
+
+    Note: the root of the raster layers and occurrence data can be changed. Be aware that directories provided by the
+    user need to contain required files that are present on the GitHub repository.
+
+    :param root: a string representation of the root of the cloned or copied GitHub repository.
+    :param dat_root: a string representation of the data directory within the repository. Any files that are present
+    in the repositories data folder also need to be present in the directory provided by the user.
+    :param occ_root: a string representation of the occurrence directory within the data directory of repository.
+    :return: Object. Used to manage all phases of model creation. Handling data preparations, model training and
+    prediction.
+    """
 
     def __init__(self, root, dat_root='/data', occ_root='/data/occurrences'):
-        '''sdmdl object initiation.'''
+
+        """sdmdl object initiation."""
 
         self.root = root
         self.occ_root = self.root + occ_root if occ_root == '/data/occurrences' else occ_root
@@ -42,19 +57,29 @@ class sdmdl:
 
         self.verbose = self.ch.verbose
         if not self.verbose:
+            # used to silence tensorflow backend deprecation warnings.
             os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
             logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
     def reload_config(self):
-        '''pass.'''
+        """unimplemented, required later for changes to the config file to be automatically detected."""
 
         pass
 
     def prep(self):
-        '''prep function that manages the process of data pre-processing.'''
+        """prep function that manages the process of data pre-processing."""
 
         cpm = PresenceMap(self.oh, self.gh, self.verbose)
         cpm.create_presence_map()
+
+        # currently the raster layers need to be validated again to detect the new presence maps created in the previous
+        # step. Adding these presence maps to the list of raster layers could be integrated into the create_presence_map
+        # method of the PresenceMap class.
+
+        # Note: This currently leads to unwanted behaviour when:
+        # A new sdmdl object is created, the data is already preprocessed, and the user executes the method train
+        # without first executing the method prep. This would not be a problem if raster layers were automatically
+        # detected but is caused by the creation of the config.yml file that does not including the presence maps.
 
         self.gh.validate_tif()
 
@@ -74,24 +99,19 @@ class sdmdl:
         cpd.create_prediction_df()
 
     def train(self):
-        '''train function that manages the process of model training.'''
+        """train function that manages the process of model training."""
 
         th = Trainer(self.oh, self.gh, self.ch, self.verbose)
         th.train()
 
-    def plot_performance_metric(self):
-        '''pass'''
-
-        pass
-
     def predict(self):
-        '''predict function that manages the process of model prediction.'''
+        """predict function that manages the process of model prediction."""
 
         ph = Predictor(self.oh, self.gh, self.ch, self.verbose)
         ph.predict_model()
 
     def clean(self):
-        '''pass.'''
+        """pass."""
 
         def listdir_if_exists(path):
             if os.path.isdir(path):

@@ -41,7 +41,7 @@ class RasterStack:
             # resolutions are detected and used by the model, THIS ALSO INCLUDES THE FILE 'empty_land_map.tif'. This
             # means that the input raster files should match the spatial extent (Longitude_max = 180, Longitude_
             # min = -180, Latitude_max = 90, Latitude_min = -60) of the already existing 'empty_land_map.tif' included
-            # in the repository. Alternatively the included 'empty_land_map.tif' can be edited to match the spatial
-            # extent of the users raster files.
+            # in the repository. Alternatively the included 'empty_land_map.tif' can be edited to match the affine
+            # transformation of the users raster files.
 
             es.stack(self.gh.variables, self.gh.stack + '/stacked_env_variables.tif')

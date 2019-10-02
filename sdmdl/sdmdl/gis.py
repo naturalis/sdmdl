@@ -39,7 +39,7 @@ class GIS:
 
     def validate_gis(self):
 
-        """Validates if certain required files and locations are present.
+        """Validates if certain required files and directories are present.
 
         :return: None. Set instance variables equal to the required file and directory paths.
         If one of the required files is not found return error.

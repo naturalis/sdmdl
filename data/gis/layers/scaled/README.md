@@ -1,3 +1,3 @@
-# Scaled layers.
+# scaled folder.
 
-Any layers that need to be scaled (values not normalized) can be drag and dropped into this folder.
+Any raster layers (with the .tif file extension) that need to be scaled can be dragged and dropped into this folder.

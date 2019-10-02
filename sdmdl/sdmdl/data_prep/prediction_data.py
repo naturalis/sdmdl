@@ -60,8 +60,8 @@ class PredictionData:
 
     def create_prediction_df(self):
 
-        """Creates (global) prediction dataset by extracting all environmental variables at each occurrence combination
-        in the 'world_locations_to_predict.csv' file.
+        """Creates (global) prediction dataset by extracting all environmental variables at each terrestrial location
+        dictated by the 'world_locations_to_predict.csv' file.
 
         :param self: a class instance of PredictionData
 

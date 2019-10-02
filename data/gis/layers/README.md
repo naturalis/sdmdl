@@ -1,3 +1,3 @@
-# Layers folder that contains two subfolders and one empty map.
+# layers folder.
 
-The empty map is used during the data preperations.
+Contains an empty map raster layer that is used during the data preparations.

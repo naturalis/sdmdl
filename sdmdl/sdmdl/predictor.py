@@ -9,7 +9,8 @@ import rasterio
 import tqdm
 import gdal
 
-# Give more options to control predictor class, e.g. options to only output one file type (raster layer or image)
+# Give more options to control predictor class, e.g. options to only output one file type (raster layer or image),
+# predict distributions locally (change spatial extent and resolution), etc.
 
 class Predictor:
     """Manages all aspects of the prediction process. E.g. loading the prediction dataset, performing predictions,
@@ -37,7 +38,8 @@ class Predictor:
 
         """Setup plot colors and settings
 
-        :return: LinearSegmentedColormap. Object that manages the colors of the legend in the visualized map output.
+        :return: LinearSegmentedColormap. Object that manages the colors of the visualized map output and corresponding
+        legend.
         """
 
         norm = matplotlib.colors.Normalize(0, 1)
