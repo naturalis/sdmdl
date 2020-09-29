@@ -12,7 +12,7 @@ natsort==6.0.0
 numpy==1.17.2
 pandas==0.25.1
 pycrs==1.0.1
-pygbif==0.3.0
+pygbif==0.5.0
 rasterio==1.0.27
 shapely==1.6.4.post2
 scikit-learn==0.21.3
