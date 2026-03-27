@@ -26,7 +26,10 @@ jobs:
           sudo apt-get install -y libgdal-dev libspatialindex-dev gdal-bin
 
       - name: Install GDAL Python bindings
-        run: pip install GDAL==$(gdal-config --version) --global-option=build_ext --global-option="-I/usr/include/gdal"
+        run: pip install GDAL==$(gdal-config --version)
+        env:
+          CPLUS_INCLUDE_PATH: /usr/include/gdal
+          C_INCLUDE_PATH: /usr/include/gdal
 
       - name: Install Python dependencies
         run: |
