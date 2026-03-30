@@ -7,7 +7,7 @@ PyYAML==5.4
 fiona==1.8.6
 earthpy==0.9.4
 geopandas==0.5.1
-matplotlib==3.1.1
+matplotlib==3.10.8
 natsort==6.0.0
 numpy==1.22.0
 pandas==0.25.1
