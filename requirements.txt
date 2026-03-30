@@ -1,7 +1,7 @@
 shap==0.30.0
 pyproj==3.7.2
 imblearn==0.0
-keras==2.2.5
+keras==3.13.2
 tqdm==4.35.0
 PyYAML==5.4
 fiona==1.8.6
