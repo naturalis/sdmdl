@@ -6,7 +6,7 @@ tqdm==4.66.3
 PyYAML==5.4
 fiona==1.10b2
 earthpy==0.9.4
-geopandas==0.5.1
+geopandas==1.1.2
 matplotlib==3.10.8
 natsort==6.0.0
 numpy==2.4.4
