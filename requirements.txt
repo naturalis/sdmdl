@@ -9,7 +9,7 @@ earthpy==0.9.4
 geopandas==0.5.1
 matplotlib==3.10.8
 natsort==6.0.0
-numpy==1.22.0
+numpy==2.4.4
 pandas==0.25.1
 pycrs==1.0.2
 pygbif==0.3.0
