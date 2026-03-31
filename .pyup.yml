@@ -1,3 +1,0 @@
-dependencies:
-  - name: setuptools
-    ignore: true
