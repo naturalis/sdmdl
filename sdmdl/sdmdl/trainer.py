@@ -1,4 +1,4 @@
-from sklearn.metrics.ranking import roc_auc_score, roc_curve
+from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import train_test_split
 from keras.layers import Dense, Dropout, Activation
 from imblearn.keras import balanced_batch_generator

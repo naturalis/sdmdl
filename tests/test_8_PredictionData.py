@@ -5,7 +5,7 @@ from sdmdl.sdmdl.data_prep.prediction_data import PredictionData
 import unittest
 import pandas as pd
 import rasterio
-import gdal
+from osgeo import gdal
 import numpy as np
 import os
 

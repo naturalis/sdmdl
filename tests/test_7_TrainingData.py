@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import os
 import rasterio
-import gdal
+from osgeo import gdal
 
 
 class TrainingDataTestCase(unittest.TestCase):
