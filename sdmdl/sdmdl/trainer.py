@@ -1,4 +1,4 @@
-from sklearn.metrics.ranking import roc_auc_score, roc_curve
+from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import train_test_split
 from keras.layers import Dense, Dropout, Activation
 from imblearn.keras import balanced_batch_generator
@@ -149,7 +149,7 @@ class Trainer:
         out_layer = Dense(num_classes, activation=None)
         model.add(out_layer)
         model.add(Activation("softmax"))
-        model.compile(loss="categorical_crossentropy", optimizer=Adam(lr=0.001), metrics=['accuracy'])
+        model.compile(loss="categorical_crossentropy", optimizer=Adam(learning_rate=0.001), metrics=['accuracy'])
         return model
 
     def train_model(self, model, X_train, X_test, y_train, y_test):

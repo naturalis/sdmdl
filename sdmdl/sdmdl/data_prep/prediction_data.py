@@ -1,4 +1,4 @@
-import gdal
+from osgeo import gdal
 import numpy as np
 import rasterio
 import pandas as pd

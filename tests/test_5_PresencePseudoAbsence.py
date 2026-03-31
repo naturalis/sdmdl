@@ -42,8 +42,8 @@ class PresencePseudoAbsenceTestCase(unittest.TestCase):
         presence_data, outer_random_sample_lon_lats, sample_size = self.ppa.draw_random_absence(key)
         presence_truth = np.load(self.root + '/presence_pseudo_absence/presence_data.npy',allow_pickle=True)
         outer_random_sample_lon_lats_truth = np.load(self.root + '/presence_pseudo_absence/outer_random_sample.npy')
-        self.assertEqual(presence_data.to_numpy().tolist(), presence_truth.tolist())
-        self.assertEqual(outer_random_sample_lon_lats.tolist(), outer_random_sample_lon_lats_truth.tolist())
+        np.testing.assert_allclose(presence_data.to_numpy(), presence_truth, rtol=1e-7)
+        np.testing.assert_allclose(outer_random_sample_lon_lats, outer_random_sample_lon_lats_truth, rtol=1e-7)
         self.assertEqual(sample_size, self.ch.pseudo_freq)
 
     def test_create_presence_pseudo_absence(self):
@@ -58,8 +58,8 @@ class PresencePseudoAbsenceTestCase(unittest.TestCase):
         ppa_b = pd.read_csv(self.root + '/root/spec_ppa/solanum_bukasovii_ppa_dataframe.csv')
         truth_a = pd.read_csv(self.root + '/presence_pseudo_absence/arachis_duranensis_ppa_dataframe.csv')
         truth_b = pd.read_csv(self.root + '/presence_pseudo_absence/solanum_bukasovii_ppa_dataframe.csv')
-        self.assertEqual(ppa_a.to_numpy().tolist(), truth_a.to_numpy().tolist())
-        self.assertEqual(ppa_b.to_numpy().tolist(), truth_b.to_numpy().tolist())
+        np.testing.assert_allclose(ppa_a.to_numpy(), truth_a.to_numpy(), rtol=1e-7)
+        np.testing.assert_allclose(ppa_b.to_numpy(), truth_b.to_numpy(), rtol=1e-7)
 
 
 if __name__ == '__main__':

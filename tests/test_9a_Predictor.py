@@ -5,7 +5,7 @@ from sdmdl.sdmdl.predictor import Predictor
 import unittest
 import numpy as np
 import rasterio
-import gdal
+from osgeo import gdal
 import os
 
 
@@ -39,7 +39,7 @@ class PredictorTestCase(unittest.TestCase):
         empty_map = empty_map.read(1)
         min_empty_map = np.min(empty_map)
         index_minb1_truth = np.where(empty_map == min_empty_map)
-        self.assertEqual(myarray.tolist(), myarray_truth.tolist())
+        np.testing.assert_array_equal(myarray, myarray_truth)
         index_minb1 = [x.tolist() for x in index_minb1]
         index_minb1_truth = [x.tolist() for x in index_minb1_truth]
         self.assertEqual(index_minb1, index_minb1_truth)

@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import rasterio
 import tqdm
-import gdal
+from osgeo import gdal
 
 # Give more options to control predictor class, e.g. options to only output one file type (raster layer or image),
 # predict distributions locally (change spatial extent and resolution), etc.
