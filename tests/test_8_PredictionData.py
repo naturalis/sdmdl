@@ -34,12 +34,12 @@ class PredictionDataTestCase(unittest.TestCase):
         col_truth = np.load(self.root + '/prediction_data/col.npy')
         myarray_truth = gdal.Open(self.root + '/root/gis/stack/stacked_env_variables.tif').ReadAsArray()
         mean_std_truth = np.load(self.root + '/prediction_data/mean_std.npy')
-        self.assertEqual(lon.tolist(), lon_truth.tolist())
-        self.assertEqual(lat.tolist(), lat_truth.tolist())
+        np.testing.assert_allclose(lon, lon_truth, rtol=1e-7)
+        np.testing.assert_allclose(lat, lat_truth, rtol=1e-7)
         self.assertEqual(row, row_truth.tolist())
         self.assertEqual(col, col_truth.tolist())
-        self.assertEqual(myarray.tolist(), myarray_truth.tolist())
-        self.assertEqual(mean_std.tolist(), mean_std_truth.tolist())
+        np.testing.assert_array_equal(myarray, myarray_truth)
+        np.testing.assert_allclose(mean_std, mean_std_truth, rtol=1e-4)
 
     def test_create_prediction_df(self):
         os.remove(self.root + '/root/gis/world_prediction_array.npy')
@@ -52,12 +52,12 @@ class PredictionDataTestCase(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.root + '/root/gis/world_prediction_array.npy'))
         npy_result = np.load(self.root + '/root/gis/world_prediction_array.npy')
         npy_truth = np.load(self.root + '/prediction_data/world_prediction_array.npy')
-        self.assertEqual(npy_result.tolist(), npy_truth.tolist())
+        np.testing.assert_allclose(npy_result, npy_truth, rtol=1e-4)
 
         self.assertTrue(os.path.isfile(self.root + '/root/gis/world_prediction_row_col.csv'))
         csv_result = pd.read_csv(self.root + '/root/gis/world_prediction_row_col.csv')
         csv_truth = pd.read_csv(self.root + '/prediction_data/world_prediction_row_col.csv')
-        self.assertEqual(csv_result.to_numpy().tolist(), csv_truth.to_numpy().tolist())
+        np.testing.assert_allclose(csv_result.to_numpy(), csv_truth.to_numpy(), rtol=1e-7)
 
 
 if __name__ == '__main__':

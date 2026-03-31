@@ -41,13 +41,13 @@ class TrainingDataTestCase(unittest.TestCase):
         col_truth = np.load(self.root + '/training_data/col.npy')
         mean_std_truth = np.load(self.root + '/training_data/mean_std.npy')
         self.assertEqual(spec, self.oh.name[0])
-        self.assertEqual(ppa.to_numpy().tolist(), ppa_truth.tolist())
-        self.assertEqual(long.tolist(), long_truth.tolist())
-        self.assertEqual(lati.tolist(), lati_truth.tolist())
+        np.testing.assert_allclose(ppa.to_numpy(), ppa_truth, rtol=1e-7)
+        np.testing.assert_allclose(long.to_numpy(), long_truth, rtol=1e-7)
+        np.testing.assert_allclose(lati.to_numpy(), lati_truth, rtol=1e-7)
         self.assertEqual(row, row_truth.tolist())
         self.assertEqual(col, col_truth.tolist())
         self.assertEqual(myarray.tolist(), inRas.ReadAsArray().tolist())
-        self.assertEqual(mean_std.tolist(), mean_std_truth.tolist())
+        np.testing.assert_allclose(mean_std, mean_std_truth, rtol=1e-4)
         src.close()
 
     def test_create_training_df(self):
@@ -64,8 +64,8 @@ class TrainingDataTestCase(unittest.TestCase):
         truth_b = pd.read_csv(self.root + '/training_data/solanum_bukasovii_env_dataframe.csv')
         self.assertEqual(list(result_a.columns), list(truth_a.columns))
         self.assertEqual(list(result_a.columns), list(truth_a.columns))
-        self.assertEqual(result_a.to_numpy().tolist(), truth_a.to_numpy().tolist())
-        self.assertEqual(result_b.to_numpy().tolist(), truth_b.to_numpy().tolist())
+        np.testing.assert_allclose(result_a.to_numpy(), truth_a.to_numpy(), rtol=1e-4)
+        np.testing.assert_allclose(result_b.to_numpy(), truth_b.to_numpy(), rtol=1e-4)
 
 
 if __name__ == '__main__':

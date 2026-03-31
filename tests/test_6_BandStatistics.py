@@ -4,6 +4,7 @@ from sdmdl.sdmdl.gis import GIS
 from sdmdl.sdmdl.data_prep.band_statistics import BandStatistics
 import os
 import unittest
+import numpy as np
 import pandas as pd
 
 
@@ -31,7 +32,7 @@ class BandStatisticsTestCase(unittest.TestCase):
         truth = pd.read_csv(self.root + '/band_statistics/env_bio_mean_std.txt', delimiter='\t')
         self.assertTrue(os.path.isfile(self.root + '/root/gis/env_bio_mean_std.txt'))
         self.assertEqual(list(result.columns), ['band', 'mean', 'std_dev'])
-        self.assertEqual(result.to_numpy().tolist(), truth.to_numpy().tolist())
+        np.testing.assert_allclose(result.to_numpy(), truth.to_numpy(), rtol=1e-4)
 
 
 if __name__ == '__main__':

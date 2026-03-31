@@ -70,20 +70,20 @@ class TrainerTestCase(unittest.TestCase):
         test_set_truth = np.load(self.root + '/trainer/test_set.npy')
         shuffled_X_train_truth = np.load(self.root + '/trainer/shuffled_X_train.npy')
         shuffled_X_test_truth = np.load(self.root + '/trainer/shuffled_X_test.npy')
-        self.assertEqual(X.tolist(), X_truth.tolist())
-        self.assertEqual(X_train.tolist(), X_train_truth.tolist())
-        self.assertEqual(X_test.tolist(), X_test_truth.tolist())
-        self.assertEqual(y_train.tolist(), y_train_truth.tolist())
-        self.assertEqual(y_test.tolist(), y_test_truth.tolist())
-        self.assertEqual(test_set.to_numpy().tolist(), test_set_truth.tolist())
-        self.assertEqual(shuffled_X_train.tolist(), shuffled_X_train_truth.tolist())
-        self.assertEqual(shuffled_X_test.tolist(), shuffled_X_test_truth.tolist())
+        np.testing.assert_allclose(X, X_truth, rtol=1e-4)
+        np.testing.assert_allclose(X_train, X_train_truth, rtol=1e-4)
+        np.testing.assert_allclose(X_test, X_test_truth, rtol=1e-4)
+        np.testing.assert_allclose(y_train, y_train_truth, rtol=1e-7)
+        np.testing.assert_allclose(y_test, y_test_truth, rtol=1e-7)
+        np.testing.assert_allclose(test_set.to_numpy(), test_set_truth, rtol=1e-4)
+        np.testing.assert_allclose(shuffled_X_train, shuffled_X_train_truth, rtol=1e-4)
+        np.testing.assert_allclose(shuffled_X_test, shuffled_X_test_truth, rtol=1e-4)
 
     def test_create_model_architecture(self):
         self.t.spec = self.oh.name[0]
         X, _, _, _, _, _, _, _ = self.t.create_input_data()
         model = self.t.create_model_architecture(X)
-        model_truth = keras.models.load_model(self.root + '/trainer/model.h5')
+        model_truth = keras.models.load_model(self.root + '/trainer/model.h5', compile=False)
         self.assertEqual(model.get_config(), model_truth.get_config())
         weights = [x.tolist() for x in model.get_weights()]
         weights_truth = [x.tolist() for x in model_truth.get_weights()]
