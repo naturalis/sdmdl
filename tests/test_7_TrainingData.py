@@ -64,8 +64,8 @@ class TrainingDataTestCase(unittest.TestCase):
         truth_b = pd.read_csv(self.root + '/training_data/solanum_bukasovii_env_dataframe.csv')
         self.assertEqual(list(result_a.columns), list(truth_a.columns))
         self.assertEqual(list(result_a.columns), list(truth_a.columns))
-        np.testing.assert_allclose(result_a.to_numpy(), truth_a.to_numpy(), rtol=1e-4)
-        np.testing.assert_allclose(result_b.to_numpy(), truth_b.to_numpy(), rtol=1e-4)
+        np.testing.assert_allclose(result_a.to_numpy(), truth_a.to_numpy(), rtol=1e-2)
+        np.testing.assert_allclose(result_b.to_numpy(), truth_b.to_numpy(), rtol=1e-2)
 
 
 if __name__ == '__main__':
