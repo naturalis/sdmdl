@@ -36,7 +36,14 @@ class sdmdl:
 
     def __init__(self, root, dat_root='/data', occ_root='/data/occurrences'):
 
-        """sdmdl object initiation."""
+        """Initialise the sdmdl object by validating inputs and loading configuration.
+
+        :param root: path to the root of the cloned or copied GitHub repository.
+        :param dat_root: relative or absolute path to the data directory. Defaults to ``/data``
+            (relative to *root*).
+        :param occ_root: relative or absolute path to the occurrence directory. Defaults to
+            ``/data/occurrences`` (relative to *root*).
+        """
 
         self.root = root
         self.occ_root = self.root + occ_root if occ_root == '/data/occurrences' else occ_root
@@ -62,12 +69,22 @@ class sdmdl:
             logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
     def reload_config(self):
-        """unimplemented, required later for changes to the config file to be automatically detected."""
+        """Reload ``config.yml`` so that external changes take effect.
+
+        .. note:: Not yet implemented. Currently a new ``sdmdl`` object must be created instead.
+        """
 
         pass
 
     def prep(self):
-        """prep function that manages the process of data pre-processing."""
+        """Run the full data-preparation pipeline.
+
+        Creates presence maps, a raster stack, pseudo-absence samples, band statistics, and
+        training and prediction datasets. Intermediate files are written to the directories
+        managed by the :class:`~sdmdl.sdmdl.gis.GIS` object.
+
+        :return: None
+        """
 
         cpm = PresenceMap(self.oh, self.gh, self.verbose)
         cpm.create_presence_map()
@@ -99,19 +116,39 @@ class sdmdl:
         cpd.create_prediction_df()
 
     def train(self):
-        """train function that manages the process of model training."""
+        """Train deep neural network models for every detected species.
+
+        For each species, five models are trained and the one with the highest AUC is retained.
+        Results (model files, performance metrics, feature-importance plots) are written to the
+        results directory.
+
+        :return: None
+        """
 
         th = Trainer(self.oh, self.gh, self.ch, self.verbose)
         th.train()
 
     def predict(self):
-        """predict function that manages the process of model prediction."""
+        """Predict global species distributions using the trained models.
+
+        For each species, generates a GeoTIFF raster and a colour-mapped PNG visualisation of the
+        predicted probability of presence. Output files are written to the results directory.
+
+        :return: None
+        """
 
         ph = Predictor(self.oh, self.gh, self.ch, self.verbose)
         ph.predict_model()
 
     def clean(self):
-        """pass."""
+        """Remove temporary intermediate files created during data preparation.
+
+        Deletes presence maps, the raster stack, pseudo-absence CSVs, band statistics,
+        training/prediction data files, and the filtered CSV. Does not remove trained models or
+        result outputs.
+
+        :return: None
+        """
 
         def listdir_if_exists(path):
             if os.path.isdir(path):
