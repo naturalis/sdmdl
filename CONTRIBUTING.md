@@ -16,31 +16,32 @@ to write it yourself. Don't forget to share ;)
 When suggesting a feature, make sure to:
 
 * Check the code on GitHub to make sure it's not already hiding in an unreleased version ;)
-* Considered if it's necessary in the library, or is an advanced technique that could be separately explained in an
-  example
+* Consider whether it belongs in the core library or could be implemented as an external extension
 * Check existing issues, open and closed, to make sure it hasn't already been suggested
 
 ## Filing a bug report
 
-If you're having trouble with our code/libraries/products please raise an Issue to let us know. Be as detailed as
-possible, and be ready to answer questions when we get back to you. Make sure you:
+If you're having trouble with the package, please raise an Issue to let us know. Be as detailed as
+possible, and be ready to answer questions when we get back to you. Make sure you include:
 
-* List the steps you've taken so far,
-* and any solutions you've tried
-* And a paste/picture of the complete output from the failing script/library might help, too!
+* The steps you've taken so far
+* Any solutions you've tried
+* The complete output or traceback from the failing operation
+* Your Python version and operating system
+* The versions of key dependencies (GDAL, keras, tensorflow)
 
 ## Submitting a pull request
 
 If you've decided to fix a bug, even something as small as a single-letter typo then great! Anything that improves the
-code/documentation for all future users is warmly welcomed.
+code or documentation for all future users is warmly welcomed.
 
 If you decide to work on a requested feature it's best to let us (and everyone else) know what you're working on to
 avoid any duplication of effort. You can do this by replying to the original Issue for the request.
 
-If you want to contribute an example; go for it! We might not always be able to accept your code, but there's a lot to
-be learned from trying anyway and if you're new to GitHub we're willing to guide you on that journey.
+If you want to contribute an enhancement, go for it! We might not always be able to accept your code, but there's a lot
+to be learned from trying anyway and if you're new to GitHub we're willing to guide you on that journey.
 
-When contributing a new example or making a change to a library please keep your code style consistent with ours. We
+When contributing please keep your code style consistent with ours. We
 try to stick to the pep8 guidelines for Python (https://www.python.org/dev/peps/pep-0008/).
 
 #### Do
@@ -48,36 +49,26 @@ try to stick to the pep8 guidelines for Python (https://www.python.org/dev/peps/
 * Do use pep8 style guidelines
 * Do use UNIX line breaks everywhere
 * Do comment your code where necessary
-* Do submit only a single example/feature per pull-request
-* Do include a description of what your example is expected to do
-* Do add any additional imports to requirements.txt
+* Do write docstrings in reST/Sphinx format (`:param name:`, `:return:`)
+* Do submit only a single feature or fix per pull request
+* Do include a description of what your change is expected to do
+* Do add any additional dependencies to `requirements.txt`
+* Do add or update unit tests for any changed functionality
 * Do strive for high test coverage
 
 #### Don't
 
-* Don't include any license information in your examples - our repositories are MIT licensed
-* Don't try to do too much at once - submit one or two examples at a time, and be receptive to feedback
-* Don't submit multiple variations of the same example, demonstrate one thing concisely
-* Don't ignore failures indicated by the buttons: you break it, you bought it
-* Don't add cruft (e.g. .DS_Store, Thumbs.db) to the repository
-
-### If you're submitting an example
-
-Try to do one thing, and do it concisely. Keep it simple. Don't mix too many ideas.
-
-The ideal example should:
-
-* demonstrate one idea, technique or API as concisely as possible in a single Python script
-* *just work* when you run it. Although sometimes configuration is necessary
-* be well commented and attempt to teach the user how and why it works
-* document any required configuration, and how to install API keys, dependencies, etc
+* Don't include any license information in your contributions — our repository is MIT licensed
+* Don't try to do too much at once — submit focused pull requests and be receptive to feedback
+* Don't ignore failures indicated by the CI status checks
+* Don't add cruft (e.g. `.DS_Store`, `Thumbs.db`, `__pycache__`) to the repository
 
 ### Licensing
 
-When you submit code to our libraries, you implicitly and irrevocably agree to adopt the associated licenses. You
+When you submit code to our repository, you implicitly and irrevocably agree to adopt the associated license. You
 should be able to find this in the file named `LICENSE`.
 
-We typically use the MIT license; which permits Commercial Use, Modification, Distribution and Private use of our code,
+We use the MIT license, which permits Commercial Use, Modification, Distribution and Private use of our code,
 and therefore also your contributions. It also provides good compatibility with other licenses, and is intended to make
 re-use of our code as painless as possible for all parties.
 
