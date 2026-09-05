@@ -1,5 +1,5 @@
 shap==0.51.0
-pyproj==3.7.2
+pyproj==3.8.0
 imblearn==0.0
 keras==3.13.2
 tqdm==4.67.3
