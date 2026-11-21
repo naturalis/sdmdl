@@ -3,7 +3,7 @@ pyproj==3.7.2
 imblearn==0.0
 keras==3.13.2
 tqdm==4.67.3
-PyYAML==6.0.3
+PyYAML==6.0.4
 fiona==1.10.1
 earthpy==0.9.4
 geopandas==1.1.3
